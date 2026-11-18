@@ -1,0 +1,26 @@
+
+=== fs_fixed_v2: 1116 frames -> NOT OK for the robot
+  POSITION: 0 joints outside the robot's limits (ok)
+    (inside the limits but closer than 2 deg: Left_arm_joint2, Left_arm_joint7, Right_arm_joint2, Right_arm_joint7, RF_joint_22, RF_joint_32, RF_joint_42, RF_joint_52, LF_joint_32, LF_joint_42, LF_joint_52)
+  SPEED: 38 joints faster than the robot's cap
+    RF_joint_12          95 frames over the cap, fastest 944 deg/s at frame 730 PACK_IN_HOLDER
+    LF_joint_12          93 frames over the cap, fastest 790 deg/s at frame 730 PACK_IN_HOLDER
+    Right_arm_joint6    300 frames over the cap, fastest 584 deg/s at frame 655 FLIP_BOX
+    LF_joint_42          95 frames over the cap, fastest 519 deg/s at frame 223 PLACE_PHONE
+    LF_joint_52          54 frames over the cap, fastest 519 deg/s at frame 223 PLACE_PHONE
+    Right_arm_joint5    239 frames over the cap, fastest 508 deg/s at frame 1077 MOVE_BOX_OUT
+    Right_arm_joint2    169 frames over the cap, fastest 491 deg/s at frame 655 FLIP_BOX
+    LF_joint_13          71 frames over the cap, fastest 436 deg/s at frame 238 PLACE_PHONE
+    Left_arm_joint7     141 frames over the cap, fastest 432 deg/s at frame 650 FLIP_BOX
+    Right_arm_joint3    196 frames over the cap, fastest 418 deg/s at frame 1037 PACK_IN_HOLDER
+    Right_arm_joint4    273 frames over the cap, fastest 406 deg/s at frame 1073 MOVE_BOX_OUT
+    LF_joint_11          78 frames over the cap, fastest 396 deg/s at frame 224 PLACE_PHONE
+    ... and 26 more joints
+  ACCELERATION (soft, the robot smooths it): 38 joints over the robot's 57 deg/s^2
+  SELF-COLLISION: 0 touching pairs (ok)
+  TOO CLOSE, robot vs itself (warning: a small model error makes them touch): 4 pairs
+    RF_link_13 vs Right_hand                  246 frames (623-644, 797-1020), closest 7.3 mm at frame 999 PACK_IN_HOLDER
+    LF_link_13 vs Left_hand                    80 frames (799-878), closest 9.7 mm at frame 868 PACK_IN_HOLDER
+    LF_link_12 vs Right_hand                    7 frames (919-925), closest 9.9 mm at frame 919 PACK_IN_HOLDER
+    LF_link_13 vs LF_link_23                  102 frames (257-358), closest 10.0 mm at frame 257 PLACE_PHONE
+  TOO CLOSE, robot vs table (warning: a small model error makes them touch): 0 pairs

@@ -1,0 +1,160 @@
+# REAL ROBOT settings (service/ros_app.py -> real_robot/robot_brain.py). AI Manager merges every yaml in config/.
+# Which brain: run.vla_w2_ik / run.vla_alone below (the same switches as config_isaac/run.yaml; the true phone pose is
+# Isaac-only). Where the model files are: service/brain/paths.py.
+# How it drives the arm: run.command_mode below (stream or latch, to match the BT tree on the robot computer).
+#   stream: the BT calls /tomo_brain/trigger ONCE; then, until the run ends: the arm stands still -> one picture -> the
+#           VLA's batch (stepping from its own commands, as in training) -> ONE timed JointTrajectory chunk to the servo
+#           (ros.servo_input_topic), ending at rest -> wait its time + stream_settle_s, then until the robot has arrived
+#           (arrival_tol_deg, at most arrival_max_wait_s longer) -> next batch.
+#   latch:  every trigger = one picture -> ONE brain step -> ONE 46-joint command on ros.joint_command_topic; the BT moves
+#           the arm there, then triggers again.
+
+run:
+  # ── Which brain: turn exactly ONE of the two on (the same switches as config_isaac/run.yaml), then restart ──────────
+  # true  = the full pipeline: the VLA drives through its step prompts; YOLO + XFeat measure the phone; at the end of
+  #         "reach the phone" the VLA's own grab is checked against the demos' grab spot (VLA grabs if close enough,
+  #         else W2 + IK grab); W2 + IK lower the phone into the box.
+  vla_w2_ik: true
+  # true  = the VLA ALONE drives everything with one instruction ("pick up the phone and put it in the box"): no camera
+  #         measuring, no grab check, no W2 + IK. Same batches, chunks, timing and suction rule as above.
+  vla_alone: false
+
+  # ── How the brain drives the arm: pick the one that matches the BT tree running on the robot computer, then restart ─
+  #   stream — BT ~/Documents/bt/tomo_brain_chunking (TriggerClient once + ServoControllerChunked): ONE trigger starts
+  #            the run; the brain sends timed JointTrajectory chunks to ros.servo_input_topic until the run ends.
+  #   latch  — BT ~/Documents/bt/tomo_brain_testing (RLRunnerBootstrap + ServoControllerPlanning): EVERY trigger = ONE
+  #            brain step = ONE 46-joint JointState on ros.joint_command_topic; the BT moves the arm there and triggers
+  #            again (stop-and-go, ~1.16 s per step in the successful run 2026-10-09 17:27, which ran in this mode).
+  #            The MAIN MOTION SETTINGS and stream_* settings below are used in stream mode only.
+  command_mode: stream
+
+  # ====================================================================================================================
+  #  MAIN MOTION SETTINGS — change these two, then restart the brain service.
+  #
+  #  batch_steps          waypoints in one batch = how often the VLA looks at the camera again, and the most
+  #                       waypoints in any chunk (a W2 + IK grab / lowering goes out in pieces of this many).
+  #                       8 = it looks every 8 steps (what it was tested with); 15 = 15 steps per look. Allowed 1..30.
+  #  stream_batch_time_s  seconds one full batch takes, spread evenly over its waypoints.
+  #                       2.0 with batch_steps 8 = 8 waypoints in 2 s (0.25 s each); longer batches (the grab) keep the
+  #                       same time per waypoint. null = timed by speed instead (stream_speed_rad_s, below).
+  #                       Safety: never faster than stream_max_speed_rad_s / stream_max_accel_rad_s2 per joint (such
+  #                       steps are slowed down), so a batch can take longer than this, never less.
+  # ====================================================================================================================
+  batch_steps: 8
+  stream_batch_time_s: null
+  # ====================================================================================================================
+
+  # --- ADVANCED: how the brain drives the arm. Normally leave everything below as it is. ---
+  stream_servo_wait_s: 15.0        # the BT calls the trigger BEFORE it starts its servo: wait this long for it
+  # timing (batch_steps / stream_batch_time_s are at the top). Every step of a batch takes the same time (the longest
+  # step's), like the VLA's training data; the whole batch is slowed down together when a limit below needs it.
+  stream_speed_rad_s: 0.6          # (stream_batch_time_s null) the longest step of a batch takes (its largest joint
+                                   # change / this); the smooth curve peaks above the average, 0.6 keeps peaks under 1.0
+  stream_max_speed_rad_s: 0.9      # always: no joint faster than this anywhere on the curve (servo cap 1.0)
+  stream_max_accel_rad_s2: 1.0     # always: no joint accelerates harder than this anywhere on the servo's curve. The servo
+                                   # drops feedback above 2.0 rad/s^2 and then brakes that group (2026-10-11 16:51: the
+                                   # arms hit 2.4-4.0, were braked, the run stopped). 1.0 = half its limit (the arm
+                                   # overshoots its command a little); 1.5 is ~25% faster, less margin
+  stream_min_step_s: 0.05          # ...and every step at least this long (identical waypoints still need increasing times)
+  stream_settle_s: 0.3             # after a chunk's planned time, wait this long before the next picture: the arm
+                                   # comes to rest (it lags the servo's reference a little), the picture is sharp
+  # --- added 2026-10-21: the next picture + prediction only once the robot has ARRIVED (both null = time only, as before) ---
+  arrival_tol_deg: 3.0             # after a chunk's planned time + stream_settle_s, wait until EVERY joint is within this
+                                   # of the chunk's last point (2026-10-20, 321 chunk ends without waiting: all 46 joints
+                                   # within 3 deg 48 %, within 1 deg 25 %; head + arms within 3 deg 89 %; the hand drives'
+                                   # own "arrived" window is 1.5-1.8 deg)
+  arrival_max_wait_s: 3.0          # FINGERS: ...at most this much longer, then carry on; the batch line names the joints that
+                                   # did not arrive (2026-10-20: the left fingers stall; fingers pressing on the lid never get there)
+  arrival_body_max_wait_s: 10.0    # HEAD + ARMS (2026-10-28, Praveen): wait up to this long for them to be within
+                                   # arrival_tol_deg; still not there = blocked or stopped -> the servo is asked for a smooth
+                                   # stop and the run stops with the joints named. null = as the fingers (carry on)
+  frozen_after_s: 8.0              # latch: head/arms not moving this long while a command is pending -> the run stops
+
+  #   once   — only the first trigger starts a run (default)
+  #   always — any idle trigger starts a new run
+  #   never  — triggers never start a run
+  trigger_starts_task: once
+  max_steps: 500                 # a run stops here even if the VLA never says done
+  # Box position in the robot base frame [[x0, y0], [x1, y1]] (m); null = where the demos had it (0.409, 0.0).
+  box: null
+  run_dir: runs/robot            # one folder per run: step_log.jsonl, run_arrays.npz, chunks.npz, summary.json, brain_view.mp4
+
+  # --- added 2026-10-06 after the real runs of 2026-10-05 (service/real_robot/robot_brain.py) ---
+  # true  = each run first drives the robot to the demos' first-frame pose (head straight, both arms resting: the pose
+  #         Isaac starts every run from), then starts the VLA. Needed while the BT's start_wp puts the left arm straight
+  #         out into the camera view with the head already down (a view the VLA never saw).
+  # false = the VLA starts from wherever the BT left the robot.
+  start_from_demo_pose: true
+  start_pose_tolerance_rad: 0.03 # "there" when every head/arm joint is this close to the start pose
+  start_step_rad: 0.10           # largest joint change between two waypoints on the way to the start pose
+  joint_limit_margin_rad: 0.10   # head/arm commands stay this far inside the URDF limits (never tighter than the demos)
+
+  # (2026-10-28: the TEMPORARY run-time fix for 4.0.0, run.temp_fix / tomo_safety_filter, was REMOVED (Praveen): its
+  #  finger / arm ranges came from 4.0.0's old dataset; 4.2.0's training data passed the joint-limit + collision checks.)
+
+  # --- added 2026-10-09 (run 16:26: the hand went exactly to the demos' grab height but stopped a few cm ABOVE the phone) ---
+  # The grab height is not measured; it is the demos' phone height. This moves the whole grab (hover, descent, suction
+  # spot) up/down in metres: negative = lower. 0.0 = exactly the behaviour before this setting.
+  grab_height_offset_m: -0.010   # 2026-10-09: run 16:51 stopped ~1.44 cm above the phone; -1.2 cm stalled at the grab
+                                 # (16:59), -1.0 cm = the successful full pick-and-place (17:27). Set on Thor, copied back.
+
+  # --- added 2026-10-11: which VLA model the brain loads (restart the service after changing it) ---
+  #   model/1.0.0/vla/best.pt  DINOv2-S eyes: the model of the successful run 2026-10-09 17:27 (also used if this line is missing)
+  #   model/2.0.0/vla/best.pt  SigLIP2-base eyes (trained 2026-10-10/11): real phone read-out 4.1 cm vs 9.6 cm, closer to the
+  #                            trained movement in closed loop on real frames; slightly less precise on renders (0.50 vs 0.40 deg)
+  #   model/3.1.0/vla/best.pt  CLOSING model (SigLIP2 + phone wire, 2026-10-15): pick -> hold lid -> drop -> close the
+  #                            lid. vla_w2_ik: the same W2 + IK grab and drop, then 'retract' -> 'prepare to close' ->
+  #                            'close the lid'. vla_alone: its full-job instruction. Isaac held-out 004/010/011/036:
+  #                            alone 4/4 grabbed by itself + in the box; vla_w2_ik 3/4 (011: the camera check never confirmed
+  #                            the phone - fixed the same day in brain/vla_w2.py). Replaces 3.0.0 (no phone wire; alone 0/4).
+  #   model/4.0.0/vla/best.pt  FULL SEQUENCE (2026-10-23): pick -> place -> close -> tape -> flip -> holder -> box out ->
+  #                            home; the other developer's full-sequence ACT with 3.1.0's SigLIP2 eyes + phone wire, in
+  #                            3.1.0's brain (brain/fullseq_w2.py): vla_w2_ik = the same W2 + IK grab and drop, the rest on
+  #                            its own skill-done. Reads the camera's RAW frame (camera.py last_raw), starts from its own
+  #                            first pose with its own joint ranges, max_steps raised to 1674 by itself. Right vacuum only:
+  #                            the tape is NOT picked (no left vacuum) until the sticker model exists. On Thor 2026-10-24
+  #                            (backup: thor_backups/20261024_before_4.0.0). Back to 3.1.0: model/3.1.0/vla/best.pt + restart.
+  #                            REMOVED from Thor 2026-10-28 (Praveen; the laptop keeps model/4.0.0, identical checksums).
+  #   model/4.2.0/vla/best.pt  FULL SEQUENCE, trained in the GUI (2026-10-27/28, runs/act_20261027_1927, update 92000):
+  #                            4.0.0's architecture from scratch on fullsequencedatasetoct27 (224 episodes), step-done +
+  #                            vacuums learned without the CVAE hint (done-now 100 % held out), predicts BOTH vacuums.
+  #                            vla_w2_ik: as 4.0.0, + the STICKER's W2 + IK (model/4.2.0/hlc/, brain/fullseq_w2.py
+  #                            StickerHLC): XFeat measures the sticker, W2 + IK pick it with the left arm and lay it on the
+  #                            measured carton; the left relay = ros.left_vacuum_* below. (4.0.0 is no longer on Thor.)
+  #   model/4.3.0/vla/best.pt  FULL SEQUENCE, the BACKUP to 4.2.0 (2026-10-28, training/fullseq_siglip_430): the other
+  #                            developer's newer full-sequence ACT (oldact_newdata, DINOv2, step 94k) with 2.0.0's SigLIP2
+  #                            eyes + phone wire, made exactly as 4.0.0 (5k + 30k updates) on fullsequencedatasetoct27;
+  #                            the same architecture and brain as 4.2.0 (vla_w2_ik: phone + sticker W2 + IK, model/4.3.0/
+  #                            hlc = 4.2.0's). Right vacuum output only (the left one is the sticker W2's, as in 4.2.0).
+  #                            Laptop tests: frame test job done 4/4 (every step on its own done); dry run full job on
+  #                            fs_000 / fs_085, fs_003 ended 'holder' early (no box out); 0 hand-to-hand touches.
+  #                            To use it: this line -> model/4.3.0/vla/best.pt, then restart the brain.
+  vla_checkpoint: model/4.2.0/vla/best.pt
+
+ros:
+  servo_input_topic: /servo_controller/joint_state_input    # stream: the servo's input (tomo_brain_chunking BT:
+                                                            #   brain_joint_command_topic_name)
+  servo_stop_topic: /trajectory_chunks/stop                 # stream: Bool true = the servo brakes smoothly
+                                                            #   (sent by the brain on an error or a service stop)
+  joint_command_topic: tomo_brain_interface_joint_command   # latch: one JointState per trigger; the BT's
+                                                            #   RLRunnerBootstrap forwards it to its servo
+  joint_state_topic: /joint_states                          # the robot's measured joints
+  status_topic: /tomo_brain/status                          # run start / one line per batch / run end
+  # true  = switch the real suction relay when the brain asks.
+  # false = arm-only test: the relay is never switched; the brain is told the vacuum is on while it asks for
+  #         suction, so the whole chain (lift -> carry -> lower -> release -> retract) still runs.
+  vacuum_enabled: true           # 2026-10-09: ON for the first real pick test (was false = arm only)
+  # The relay: tomo_iocontroller_srvpy service on Thor's 8-channel Arduino board.
+  vacuum_service_name: iocontroller
+  vacuum_on_command:   "01000000"  # = Thor's value in the successful run 2026-10-09 17:27 (pick_and_place.xml's "00110000"
+                                   #   is NOT this robot's suction channel; the laptop copy had it until 2026-10-11)
+  vacuum_off_command:  "00000000"
+  # The LEFT vacuum (the sticker, 2026-10-28): the same iocontroller board, switched by the brain's high-level control
+  # (StickerHLC: ON when the left hand has settled on the sticker, OFF at the release on the lid). Fill in its relay
+  # commands from the robot team; while they are null (or left_vacuum_enabled is false) the left relay is never switched
+  # and the brain's left-vacuum requests are only logged.
+  # The board takes ALL channels in one SET: when both vacuums' commands are 0/1 strings of the same length, every SET
+  # sends both vacuums' states (their ON bits OR-ed), so switching one never switches the other off.
+  left_vacuum_enabled: false
+  left_vacuum_on_command:  null    # e.g. "00100000"  <- from the robot team
+  left_vacuum_off_command: null    # e.g. "00000000"

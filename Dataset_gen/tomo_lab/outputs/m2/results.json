@@ -1,0 +1,57 @@
+[
+ {
+  "episode": "Find_and_Pick_001",
+  "success": true,
+  "steps": 207,
+  "phone_end": [
+   0.41600000858306885,
+   0.012000000104308128,
+   0.05000000074505806
+  ],
+  "max_cup_track_err_m": 0.1284
+ },
+ {
+  "episode": "Find_and_Pick_002",
+  "success": true,
+  "steps": 207,
+  "phone_end": [
+   0.41499999165534973,
+   0.03400000184774399,
+   0.05000000074505806
+  ],
+  "max_cup_track_err_m": 0.1284
+ },
+ {
+  "episode": "Find_and_Pick_003",
+  "success": true,
+  "steps": 207,
+  "phone_end": [
+   0.414000004529953,
+   0.009999999776482582,
+   0.05000000074505806
+  ],
+  "max_cup_track_err_m": 0.1284
+ },
+ {
+  "episode": "Find_and_Pick_005",
+  "success": true,
+  "steps": 207,
+  "phone_end": [
+   0.41499999165534973,
+   0.035999998450279236,
+   0.04899999871850014
+  ],
+  "max_cup_track_err_m": 0.1284
+ },
+ {
+  "episode": "Find_and_Pick_006",
+  "success": true,
+  "steps": 207,
+  "phone_end": [
+   0.41600000858306885,
+   0.027000000700354576,
+   0.05000000074505806
+  ],
+  "max_cup_track_err_m": 0.1284
+ }
+]

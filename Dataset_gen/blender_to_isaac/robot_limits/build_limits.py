@@ -1,0 +1,88 @@
+"""Build tomo_re_uhand_limits.yaml from the robot's own files in source/ (copied from the Orin on 2026-10-25):
+robot_description.urdf (the live robot_state_publisher URDF the servo checks against), joint_limits.yaml (MoveIt speed /
+acceleration limits), servo_config.yaml (servo joint margin) and tomo_config.srdf (which link pairs are NOT checked for
+collision). Speeds the brain streams at come from source/brain_robot.yaml (a frozen copy of
+tomo_brain_inference/config/robot.yaml, 2026-10-29).
+
+    ../env/bin/python build_limits.py
+"""
+import itertools
+import math
+import xml.etree.ElementTree as ET
+from pathlib import Path
+
+import yaml
+
+HERE = Path(__file__).resolve().parent
+SRC = HERE / "source"
+ROBOT_YAML = SRC / "brain_robot.yaml"
+SAFE_MARGIN_DEG = 2.0          # recommended distance from every joint limit in the demos (servo halts at 0.57 deg)
+
+
+def main():
+    urdf = ET.parse(SRC / "robot_description.urdf").getroot()
+    moveit = yaml.safe_load((SRC / "joint_limits.yaml").read_text())["joint_limits"]
+    servo = yaml.safe_load((SRC / "servo_config.yaml").read_text())
+    run = yaml.safe_load(ROBOT_YAML.read_text())["run"]
+    srdf = ET.parse(SRC / "tomo_config.srdf").getroot()
+
+    margin = float(min(servo["joint_limit_margins"]))
+    safe = math.radians(SAFE_MARGIN_DEG)
+    joints = {}
+    for j in urdf.iter("joint"):
+        lim = j.find("limit")
+        if j.get("type") not in ("revolute", "prismatic") or lim is None:
+            continue
+        lo, hi = float(lim.get("lower")), float(lim.get("upper"))
+        m = moveit.get(j.get("name"), {})
+        mim = j.find("mimic")
+        joints[j.get("name")] = {
+            "lower_rad": lo, "upper_rad": hi,
+            "lower_deg": round(math.degrees(lo), 2), "upper_deg": round(math.degrees(hi), 2),
+            "safe_lower_rad": round(lo + safe, 6), "safe_upper_rad": round(hi - safe, 6),
+            "urdf_velocity_rad_s": float(lim.get("velocity", "nan")),
+            "moveit_max_velocity_rad_s": m.get("max_velocity"),
+            "moveit_max_acceleration_rad_s2": m.get("max_acceleration"),
+            **({"mimic_of": mim.get("joint"), "mimic_multiplier": float(mim.get("multiplier", 1)),
+                "mimic_offset": float(mim.get("offset", 0))} if mim is not None else {}),
+        }
+
+    links = [l.get("name") for l in urdf.iter("link") if l.find("collision") is not None]
+    disabled = sorted({tuple(sorted((d.get("link1"), d.get("link2")))) for d in srdf.iter("disable_collisions")})
+    checked = [p for p in itertools.combinations(sorted(links), 2) if p not in set(disabled)]
+    finger = lambda link: link.split("_")[2][0]                    # LF_link_13 / LF_link_2endeff -> finger "1" / "2"
+    hand_pairs = {h: sum(1 for a, b in checked if a.startswith(h) and b.startswith(h) and finger(a) != finger(b))
+                  for h in ("LF_", "RF_")}
+
+    out = {
+        "robot": "TOMO re_uhand (live robot_description on the Orin, 2026-10-25)",
+        "rules_for_demos": {
+            "positions": f"every joint inside [lower, upper]; keep {SAFE_MARGIN_DEG} deg away (safe_lower/safe_upper). "
+                         f"The servo HALTS the whole arm when a joint is within {margin} rad "
+                         f"({math.degrees(margin):.2f} deg) of a limit and refuses any chunk outside the limits.",
+            "speed": f"no joint faster than {run['stream_max_speed_rad_s']} rad/s "
+                     f"({math.degrees(run['stream_max_speed_rad_s']):.0f} deg/s) - the brain's hard cap on every joint, "
+                     f"fingers included; the robot normally moves at {run['stream_speed_rad_s']} rad/s "
+                     f"({math.degrees(run['stream_speed_rad_s']):.0f} deg/s). Faster demo moves are slowed down on the robot.",
+            "acceleration": f"no joint accelerates harder than {run['stream_max_accel_rad_s2']} rad/s^2 "
+                            f"({math.degrees(run['stream_max_accel_rad_s2']):.0f} deg/s^2) on the robot.",
+            "self_collision": "no two links of the robot may touch unless the SRDF disables that pair. In each hand "
+                              "EVERY link of one finger is checked against every link of the other fingers "
+                              f"({hand_pairs['LF_']} pairs per hand), with the real collision meshes. The console stops "
+                              "the run on any touch ('Collision check failed').",
+        },
+        "servo_joint_limit_margin_rad": margin,
+        "brain_stream": {k: run[k] for k in ("stream_speed_rad_s", "stream_max_speed_rad_s", "stream_max_accel_rad_s2")},
+        "safe_margin_deg": SAFE_MARGIN_DEG,
+        "self_collision": {"links_with_shapes": len(links), "pairs_checked": len(checked),
+                           "pairs_disabled_by_srdf": len(disabled), "finger_pairs_checked_per_hand": hand_pairs},
+        "joints": joints,
+    }
+    (HERE / "tomo_re_uhand_limits.yaml").write_text(
+        "# GENERATED by build_limits.py from source/ - do not edit by hand\n" + yaml.safe_dump(out, sort_keys=False, width=120))
+    print(f"wrote tomo_re_uhand_limits.yaml: {len(joints)} joints, {len(checked)} collision pairs checked "
+          f"({hand_pairs} finger pairs), servo margin {margin} rad")
+
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,9 @@
+# blender_to_isaac's own Python environment (env/), the same versions as the training env it was split from (2026-10-29),
+# so every result stays identical. Base interpreter: Isaac Sim's own Python 3.12 (~/isaacsim/kit/python/bin/python3.12).
+#   ~/isaacsim/kit/python/bin/python3.12 -m venv env && env/bin/pip install -r requirements.txt
+numpy==2.4.4
+opencv-python-headless==5.0.0.93
+scipy==1.18.0
+PyYAML==6.0.3
+imageio-ffmpeg==0.6.0
+PySide6-Essentials==6.12.0

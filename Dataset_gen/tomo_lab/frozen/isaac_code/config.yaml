@@ -1,0 +1,239 @@
+# TOMO XYZRGB iDP3 (idp3colourrgbtraining/model/best_val.pt) in Isaac Sim.
+# Relative paths resolve against THIS file's folder.
+# Mode is set once per session, never changes mid-run.
+
+execution:
+  mode: isaac
+  task_default: "pick up the iPhone and place it inside the cardboard box"
+  recovery_pose: HOME
+
+# ── Frame mode (dev/test with saved dataset frames) ─────────────────
+frame_mode:
+  dataset_dir: dataset/findandpick_new
+  episode: Find_and_Pick_001
+  frame: 0                       # frame 0 = head level, looking straight
+  post_release_frame: 306
+
+# ── Isaac mode ──────────────────────────────────────────────────────
+isaac_mode:
+  usd_path: scene/tomo_packing_suction.usd   # extracted tomo_packing_suction_3171.usdz
+  headless: false
+  gui: true
+  physics: false                 # PhysX OFF: robot posed by USD forward kinematics
+  home_yaml: null                # start pose comes from dataset_start below
+  camera_prim: /tomo_re_uhand/Geometry/Body_base/Head_link1/Head_link2/Head_camera_link/robot_view_cam
+  robot_root: /tomo_re_uhand/Geometry
+  box_prim: /Iphone              # legacy key name: the PHONE prim that suction carries
+  phone_mesh_prim: /Iphone/geo/iPhone_14_Pro_Max
+  container_prim: /tomo_re_uhand/Box_1_v1___open
+  suction_prim: /tomo_re_uhand/Geometry/Body_base/Right_arm_link1/Right_arm_link2/Right_arm_link3/Right_arm_link4/Right_arm_link5/Right_arm_link6/Right_arm_endlink/Right_hand/RF_link_51/RF_link_52
+  cam_wh: [960, 720]
+  # Blender render intrinsics used for the whole training set. The USD lens
+  # (18.147 mm, 60 deg HFOV) is overridden to this (13.237 mm, 76.7 deg HFOV).
+  camera_intrinsics:
+    width: 960
+    height: 720
+    fx: 606.3965
+    fy: 606.3965
+    cx: 480.0
+    cy: 360.0
+  render_updates_per_frame: 3    # RTX subframes per RGB-D capture
+  warmup_ticks: 30
+
+  # Make the Isaac scene look like the Blender scene the dataset came from.
+  # Measured with tools/check_scene_vs_dataset.py (dataset depth vs Isaac
+  # depth back-projected from the same camera pose). Session layer only.
+  scene_fixes:
+    translate_world:             # ICP on box+jig points: residual 43 mm -> 1.6 mm
+      /tomo_re_uhand/Box_1_v1___open: [-0.0636, 0.0, 0.0]
+      /Env/geo/box_jig_v5: [-0.0636, 0.0, 0.0]
+      /Env/geo/Plane_009: [0.0, 0.0, -3.056]   # ceiling: dataset z = 2.302 (Isaac 5.358); inside 3 m at frame 0
+    fit_bbox_xy:
+      # work table: dataset far edge x = 0.765 (Isaac 0.875), right edge y = -0.60
+      # (Isaac -0.50); left edge is outside every demo view, so just made wide.
+      /Env/geo/TM1001_00_610001_R00: {x: [-0.125, 0.765], y: [-0.60, 0.70]}
+      # flat 6 cm tray right of the robot: dataset x[0.10,0.325] y[-0.475,-0.25]
+      # (Isaac label_pedestal sits at x[0.004,0.224] y[-0.411,-0.301])
+      /Env/geo/label_pedestal: {x: [0.10, 0.325], y: [-0.475, -0.25]}
+    hide:                        # not present in the dataset scene
+      - /Env/geo/Cube_003        # overhead beam
+      - /Env/geo/Cube_004        # slab left of the table
+      - /Env/geo/Plane_007       # vertical panel right of the robot (inside 3 m depth)
+    materials:                   # dataset: light brushed-metal table, white studio room
+      /Env/geo/TM1001_00_610001_R00: {color: [0.74, 0.74, 0.75], metallic: 0.5, roughness: 0.35}
+      /Env/geo/Plane_002: {color: [0.62, 0.62, 0.62], roughness: 0.6}   # floor
+      /Env/geo/Plane_003: {color: [0.57, 0.56, 0.55], roughness: 0.9}   # far wall
+      /Env/geo/Plane: {color: [0.57, 0.56, 0.55], roughness: 0.9}       # wall behind robot
+      /Env/geo/Plane_009: {color: [0.60, 0.60, 0.60], roughness: 0.9}   # ceiling
+      /Env/geo/label_pedestal/label_pedestal: {color: [0.015, 0.015, 0.015], roughness: 0.5}  # tray frame (dataset ~25 sRGB)
+      /Env/geo/label_pedestal/Tape_Foam: {color: [0.60, 0.40, 0.14], roughness: 0.7}          # tray slats (dataset 172,143,88)
+    shader_inputs:               # colour now comes from the baked box texture below
+      /tomo_re_uhand/Box_1_v1___open/Looks/Box1_v1/Box1_v1: {base_color_factor: [1.0, 1.0, 1.0]}
+    lighting:
+      dome_intensity: 1000
+      dome_color: [1.0, 1.0, 1.0]
+    exposure:                    # auto-exposure OFF; filmIso 50 matches the table (197 vs 196)
+      auto: false
+      film_iso: 50
+
+  # Textures baked from the dataset RGB frames (tools/bake_dataset_textures.py):
+  # every texel of the mesh is projected into recorded frames with the exact
+  # camera + object pose and coloured where the dataset depth agrees.
+  appearance:
+    bake_light_gain: 0.68        # Isaac rendered-linear / albedo for up-facing surfaces (table: 188 sRGB at albedo 0.74)
+    phone_texture_shader: /Iphone/geo/Looks/iPhone_14_pro_max/baseColorTex
+    phone_textures:              # picked per episode from metadata.py (Blender iPhone material)
+      iPhone_14_plus: scene_overrides/phone_iPhone_14_plus_refined.png          # baked from ep 001 + 1 refine step
+      iPhone_14_pro_max: scene_overrides/phone_iPhone_14_pro_max_refined.png    # baked from ep 004, same shading correction
+    table_prim: /Env/geo/TM1001_00_610001_R00
+    table_materials:             # per episode from metadata.py 'Wooden_interact_table'; colours measured from frame 50
+      Brushed metal: {color: [0.838, 0.838, 0.839], metallic: 0.5, roughness: 0.35}   # dataset 197,197,197
+      Dirty metal:   {color: [0.176, 0.187, 0.213], metallic: 0.5, roughness: 0.5}    # dataset 96,99,105
+      Wood.002:      {color: [0.074, 0.044, 0.040], roughness: 0.6}                   # dataset 63,48,45
+      Oak Wood2:     {color: [0.442, 0.262, 0.183], roughness: 0.6}                   # dataset 147,116,98
+      Wood 124:      {color: [0.509, 0.198, 0.118], roughness: 0.6}                   # dataset 157,102,79
+      Wood:          {color: [0.617, 0.463, 0.391], roughness: 0.6}                   # dataset 171,150,139
+    textures:
+      /tomo_re_uhand/Box_1_v1___open/Looks/Box1_v1/baseColorTex: scene_overrides/box_refined_from_Find_and_Pick_001.png  # baked from ep 001 + per-face refine
+
+  # Start exactly like a demonstration: frame 0 joints (head level, looking
+  # straight ahead) and that episode's recorded iPhone pose.
+  dataset_start:
+    enabled: true
+    dataset_dir: dataset/findandpick_new
+    episode: Find_and_Pick_001   # validation (never trained on): 004 010 011 036 043
+    start_frame: 0
+    phone_yaw_offset_deg: 0.0
+
+# ── iDP3 XYZRGB policy (runs in the idp3_rgb conda env as a local server) ──
+idp3_policy:
+  checkpoint: ~/Desktop/second_rgb_idp3/model/best_val.pt
+  training_bundle: ~/Desktop/second_rgb_idp3/training/current/tomo_rgbd_301_gapfix
+  idp3_project_root: ~/Desktop/second_rgb_idp3/idp3_project     # reviewed upstream iDP3 source + hydra config
+  python: ~/miniconda3/envs/idp3_rgb/bin/python
+  device: cuda:0
+  host: 127.0.0.1
+  port: 6010
+  authkey: tomo-idp3-xyzrgb
+  # Steps executed per policy call (1..16). Measured on Find_and_Pick_001 in Isaac:
+  # 8 -> joint MAE vs demo head 0.022 / right arm 0.117 rad; 1 -> 0.12 / 0.38 rad
+  # (per-frame replanning compounds the diffusion sampling noise).
+  replan_every: 8
+  inference_seed: 12345
+  max_steps: 306                 # demonstrations are 307 frames (0..306)
+  max_joint_step_rad: 0.20       # per-frame |dq| above this is logged as a jump
+  # Must equal the training converter (tomo_rgbd_pointcloud_review.py):
+  point_cloud:
+    grid_w: 336
+    grid_h: 252
+    num_points: 4096
+    depth_kind: z
+    min_depth_m: 0.15
+    max_depth_m: 3.0
+    point_seed: 42
+
+# ── ACT model (RGB-D DINOv2) ──
+act_rgbd_policy:          # RGB + depth, DINOv2-S/14 image encoder + depth CNN, 30-step chunks
+  adapter: ../act_adapter/act_rgbd_dinov2_adapter.py
+  checkpoint: ../../model/DEPLOY_V2_FINAL.pt          # relative to this config file
+  python: python3                  # the Python of your ACT env (activate it first, or put its full path here)
+  device: cuda:0
+  host: 127.0.0.1
+  port: 6021
+  authkey: tomo-act-rgbd
+  replan_every: 8
+
+# ── Kinematic suction (NOT learned: checkpoint has suction_trained=false) ──
+#   schedule  : vacuum on/off at the episode io_events frames (155 / 290 in every demo)
+#   proximity : vacuum on when the RF_link_52 grasp point reaches the phone,
+#               off when the phone is over the box and low enough
+suction:
+  mode: proximity
+  attach_xy_tolerance_m: 0.03    # cup grasp point vs phone centre, horizontal
+  attach_z_tolerance_m: 0.006    # cup at most 6 mm above the grasp height
+  release_max_z_m: 0.10          # demo releases at phone-centre z = 0.084 m
+  release_inside_margin_m: 0.0
+  rest_z_in_box_m: 0.0524        # recorded phone-centre z after release (frame 306)
+  # Replaying the recorded demos with this rule: ON at frame 151, OFF at 285,
+  # phone ends at (0.4104, 0.000, 0.052) vs recorded (0.410, 0.000, 0.052).
+
+# ── Visualisation (not seen by the policy) ─────────────────────────
+visualization:
+  observer:                      # outside camera: robot + policy trajectory overlay
+    enabled: true
+    eye: [1.25, -1.05, 0.95]
+    target: [0.38, -0.18, 0.08]
+    hfov_deg: 55
+    wh: [960, 720]
+
+# ── Logging ─────────────────────────────────────────────────────────
+logging:
+  run_dir: /tmp/tomo_idp3_isaac_runs
+  save_frames_every: 1           # 0 = no per-frame PNGs
+  save_depth_npy: false
+
+# ───────────────────────────────────────────────────────────────────
+# Sections below are unchanged from tomo_brain_inference so this file stays a
+# drop-in there. The iDP3 runner (isaac_backend.py main) does not read them.
+# ───────────────────────────────────────────────────────────────────
+
+ros2_mode:
+  joint_command_topic: tomo_brain_interface_joint_command
+  joint_state_topic: /joint_states
+  publish_rate_hz: 30
+  publish_tick_log_topic: /tomo_brain/tick_log
+  vacuum_service_name: iocontroller
+  vacuum_on_command:   "00110000"
+  vacuum_off_command:  "00000000"
+  vacuum_settle_sec: 0.5
+
+qwen:
+  model_id: Qwen/Qwen2.5-VL-3B-Instruct
+  device: auto
+  quantize_4bit: true
+  max_iterations: 40
+  max_new_tokens_per_call: 150
+  memory_dir: /tmp/tomo_brain_inference_memory
+  save_frames: true
+  resume_from: null
+  include_suggested_next_in_refusal: true
+
+perception:
+  yolo_weights: model/1.0.0/best_yolo.pt
+  xfeat_weights: model/1.0.0/xfeat.pt
+  bank_dir: assets/ref_bank
+  sim_bank_dir: ../pipeline/ref_bank_auto
+  urdf: assets/urdf/full_robot.urdf
+  camera_link: Head_camera_link
+  min_yolo_conf: 0.15
+  min_xfeat_inliers: 13
+  min_inliers: 13
+  grasp_tolerance_m: 0.02
+
+motion:
+  motion_map_path: model/1.0.0/motion_map.npz
+  grasp_offset_m: [0.00414, 0.14384, 0.19890]
+  grasp_tolerance_m: 0.03
+  delta_clamp_rad: 0.15
+
+safety:
+  workspace_x_m: [0.2, 0.9]
+  workspace_y_m: [-0.6, 0.6]
+  workspace_z_m: [-0.1, 0.5]
+  early_abort_frame: 170
+
+training_contexts:
+  root: assets/training_contexts
+
+monitoring:
+  enabled: false
+  sample_hz: 2.0
+  frame_size_px: 192
+  run_yolo: true
+  max_frames_per_turn: 3
+  drop_older_when_full: true
+  deduplicate_identical: true
+  queue_capacity: 32
+
+checkpoints:
+  max_size: 64

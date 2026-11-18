@@ -1,0 +1,45 @@
+
+=== full_sequnece_001.mmrt.yaml: 1116 frames -> NOT OK for the robot
+  POSITION: 2 joints outside the robot's limits
+    Left_arm_joint2      28 frames (9-36), went -16.0..53.43 deg, limits [-14.0, 164.0]
+    Right_arm_joint2     30 frames (9-38), went -77.3..19.0 deg, limits [-164.0, 14.0]
+    (inside the limits but closer than 2 deg: Left_arm_joint7, Right_arm_joint7, RF_joint_22, RF_joint_32, RF_joint_42, RF_joint_52, LF_joint_32, LF_joint_42, LF_joint_52)
+  SPEED: 38 joints faster than the robot's cap
+    RF_joint_12          95 frames over the cap, fastest 944 deg/s at frame 730 PACK_IN_HOLDER
+    LF_joint_12          93 frames over the cap, fastest 790 deg/s at frame 730 PACK_IN_HOLDER
+    Right_arm_joint6    296 frames over the cap, fastest 584 deg/s at frame 655 FLIP_BOX
+    LF_joint_42          96 frames over the cap, fastest 519 deg/s at frame 223 PLACE_PHONE
+    LF_joint_52          55 frames over the cap, fastest 519 deg/s at frame 223 PLACE_PHONE
+    Right_arm_joint5    240 frames over the cap, fastest 508 deg/s at frame 1077 MOVE_BOX_OUT
+    Right_arm_joint2    163 frames over the cap, fastest 491 deg/s at frame 655 FLIP_BOX
+    LF_joint_13          71 frames over the cap, fastest 436 deg/s at frame 238 PLACE_PHONE
+    Left_arm_joint7     142 frames over the cap, fastest 432 deg/s at frame 650 FLIP_BOX
+    Right_arm_joint3    202 frames over the cap, fastest 418 deg/s at frame 1037 PACK_IN_HOLDER
+    Right_arm_joint4    258 frames over the cap, fastest 406 deg/s at frame 1073 MOVE_BOX_OUT
+    LF_joint_11          73 frames over the cap, fastest 396 deg/s at frame 224 PLACE_PHONE
+    ... and 26 more joints
+  ACCELERATION (soft, the robot smooths it): 38 joints over the robot's 57 deg/s^2
+  SELF-COLLISION: 3 touching pairs
+    LF_link_12 vs Right_hand                   50 frames (918-928, 937-956, 976-994) PACK_IN_HOLDER
+    LF_link_13 vs Right_hand                   55 frames (918-952, 976-995) PACK_IN_HOLDER
+    RF_link_13 vs Right_hand                    1 frames (1031) PACK_IN_HOLDER
+  TOO CLOSE, robot vs itself (warning: a small model error makes them touch): 14 pairs
+    LF_link_13 vs Right_hand                   26 frames (916-917, 953-961, 975, 996-1009), closest 0.0 mm at frame 953 PACK_IN_HOLDER
+    RF_link_13 vs Right_hand                  261 frames (623-644, 797-1030, 1032-1036), closest 0.1 mm at frame 1032 PACK_IN_HOLDER
+    LF_link_12 vs Right_hand                   36 frames (916-917, 929-936, 957-975, 995-1001), closest 0.3 mm at frame 917 PACK_IN_HOLDER
+    LF_link_11 vs Right_hand                   46 frames (918-928, 937-960, 964-965, 973-981), closest 2.4 mm at frame 952 PACK_IN_HOLDER
+    LF_link_13 vs Left_hand                    83 frames (797-879), closest 5.6 mm at frame 800 PACK_IN_HOLDER
+    LF_link_13 vs LF_link_23                  110 frames (254-363), closest 6.4 mm at frame 257 PLACE_PHONE
+    RF_link_4endeff vs Right_hand             146 frames (479-624), closest 7.9 mm at frame 577 APPLY_TAPE
+    RF_link_5endeff vs Right_hand             391 frames (477-641, 799-1024), closest 8.0 mm at frame 579 APPLY_TAPE
+    ... and 6 more pairs (all in the --out report)
+  TOO CLOSE, robot vs table (warning: a small model error makes them touch): 26 pairs
+    LF_link_24 vs workcell_table               13 frames (673-685), closest 2.3 mm at frame 676 FLIP_BOX
+    LF_link_44 vs workcell_table               13 frames (673-685), closest 2.3 mm at frame 676 FLIP_BOX
+    RF_link_24 vs workcell_table               13 frames (673-685), closest 2.3 mm at frame 676 FLIP_BOX
+    RF_link_44 vs workcell_table               13 frames (673-685), closest 2.3 mm at frame 676 FLIP_BOX
+    LF_link_2endeff vs workcell_table          12 frames (673-684), closest 2.4 mm at frame 676 FLIP_BOX
+    LF_link_4endeff vs workcell_table          12 frames (673-684), closest 2.4 mm at frame 676 FLIP_BOX
+    RF_link_2endeff vs workcell_table          12 frames (673-684), closest 2.4 mm at frame 676 FLIP_BOX
+    RF_link_4endeff vs workcell_table          12 frames (673-684), closest 2.4 mm at frame 676 FLIP_BOX
+    ... and 18 more pairs (all in the --out report)

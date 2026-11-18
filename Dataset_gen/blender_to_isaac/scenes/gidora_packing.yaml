@@ -1,0 +1,58 @@
+# The new robot's packing scene (Leo's iPhone_Packing_Gidora_6.blend, 2026-11-09): what the generator needs that the .blend does not say.
+# Objects, materials, the motion, the Synthesizer's random ranges, the IO markers and the 17 steps are read from the .blend.
+blend: ../../../gidora_packing/iPhone_Packing_Gidora_6_synth.blend   # the copy with the panel filled (gidora_packing.synth.json)
+
+robot:
+  object: tomo_gidora_ehand_Object
+  # The LIVE robot's own description: /robot_description + /robot_description_semantic of the new robot's computer 192.168.0.108, ROS domain
+  # 111, read from Thor 2026-11-09 22:28 (meshes from tomo_gidora_ehand_desc on the Orin 192.168.0.7, same files). Same geometry, joint order and
+  # arm / head limits as Leo's URDF; it adds the work table; finger limits 1 deg wider than the Orin's files; 92 allowed-to-touch pairs (6 more
+  # finger pairs). Earlier copies: Orin files = $scratchpad, not kept.
+  urdf: ../robot_limits/source_gidora/robot_description.urdf
+  srdf: ../robot_limits/source_gidora/tomo_config.srdf
+  cup_links: "{hand}_link_{k}3"                 # the fingers' last links, for the joint fit's cup point
+  drawn: scene                                  # the .blend's own robot, moved like every other object
+  limits_stride: 10                             # self-collision every 10th frame: 3 min -> 20 s per episode (only frames 91-168 differ between episodes)
+camera:
+  object: Camera.001                            # on Head_camera_link
+  lens: [1077.76, 1077.76, 960.0, 720.0, 1920, 1440]   # = the .blend's Camera.001 (lens 4.21 mm, sensor 7.5 mm, no shift,
+                                                     #   render 1920x1440) - user's rule 2026-11-17: Isaac follows Blender
+  # (the live camera 192.168.0.238 sends: [1077.479492, 1077.479492, 968.955933, 563.322144, 1920, 1080])
+
+hide: []
+hide_from_frame: {}
+light_gain: 3000                                # its only light is the world background (exported as a dim dome): this gives picture
+dome: 2500                                      # brightness 31-65, the real camera's is 39-100 (2026-11-09 11:50 run)
+
+look: {}
+random_look:                                    # user 2026-11-17: balanced, no random colours. Seed picks table = seed % 9,
+  balanced: true                                #   print = (seed // 9) % 2 -> every 18 seeds hold all 9 x 2 once
+  recolor: {Alu_table.001: {colours: [null,                       # the .blend's own (black)
+                                      [0.15, 0.20, 0.35],         # dark blue      (the 9 of finalfullsequncepraveen_v2)
+                                      [0.18, 0.30, 0.20],         # dark green
+                                      [0.35, 0.35, 0.35],         # dark grey
+                                      [0.45, 0.30, 0.18],         # brown
+                                      [0.55, 0.57, 0.60],         # light grey
+                                      [0.70, 0.60, 0.45],         # tan
+                                      [0.75, 0.72, 0.66],         # light beige
+                                      [0.85, 0.85, 0.82]]}}       # off-white
+  retexture: {iPhone.001: {images: [null, renderer/assets/phone_textures/iphone_14_pro_max_texture_0.2x.png]}}   # 14 Plus (own), Pro Max; no hue shift
+
+vacuum_io: {right: 0, left: 2}                  # Suck_iPhone: io0 + io1, Suck_Ripcord: io2 (the live robot's coding, checked against the recording)
+track: iPhone.001                               # labelled as the phone: phone_world / phone_uv / phone_visible
+labels:
+  box_world: {world: Armature_Box1}
+  inf_pick: {influence: [iPhone.001, Child Of pick]}
+  inf_in_box: {influence: [iPhone.001, Child Of in box]}
+  inf_flip: {influence: [Armature_Box1, Child Of hand flip]}
+  inf_box_out: {influence: [Armature_Box1, Child Of hand out]}
+  inf_tape: {influence: [Ripcord_Armature.003, Child Of Peel]}
+
+camera_bars: false                              # the training crops to the picture area anyway
+live_camera_bars: {colour_cols: [246, 1673], colour_top_rows: 6, depth_cols: [131, 1748]}   # MEASURED in daylight 2026-11-10 from .238
+                                                                                            # (90 frames); also dark: rows 1076..1079 (this
+                                                                                            # setting has no bottom rows). Depth: no reading on
+                                                                                            # 44.5 % of the picture area (black table, far floor)
+task_yaml: scenes/gidora_packing.task.yaml
+task_files: [scenes/gidora_packing_carton_hinges.npz]
+recovery_task: ../../../data_gen/config/task_gidora.yaml   # data_gen failure / recovery settings (single / multi episodes)

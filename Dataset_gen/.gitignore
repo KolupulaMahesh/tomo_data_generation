@@ -1,0 +1,47 @@
+# CODE AND CONFIGS ONLY (2026-11-13). Models, datasets, renders, run folders, videos and environments stay OUT of git:
+# they live on disk / Thor / the 5090 PC and are copied separately. Everything is ignored, then only code types are let back in.
+*
+!*/
+!.gitignore
+!*.py
+!*.sh
+!*.ps1
+!*.bat
+!*.yaml
+!*.yml
+!*.toml
+!*.cfg
+!*.ini
+!*.md
+!*.txt
+!*.json
+!*.urdf
+!*.xacro
+!*.xml
+!*.rviz
+!*.service
+!Makefile
+# never: environments, caches, vendored libraries, assistant memory
+.venv/
+venv/
+env/
+__pycache__/
+.remember/
+gui_libs/
+isaac_pylibs/
+node_modules/
+# never: data and outputs (at any depth)
+out/
+runs/
+model/
+data/
+datasets/
+experiments/
+weights/
+thor_backups/
+code_backups/
+# this repo: Blender exports and episode copies (data with code-like extensions)
+**/blender_export/**/rig.json
+**/frozen/isaac_code/dataset/
+# vendored third-party packages (trimesh, fcl): installed, not tracked
+**/robot_limits/libs/

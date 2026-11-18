@@ -1,0 +1,43 @@
+
+=== full_sequence_limit_check_001.mmrt.yaml: 2401 frames -> NOT OK for the robot
+  POSITION: 1 joints outside the robot's limits
+    Right_arm_joint2      2 frames (2399-2400), went -77.3..14.59 deg, limits [-164.0, 14.0]
+    (inside the limits but closer than 2 deg: Left_arm_joint2, Left_arm_joint7, Right_arm_joint7, RF_joint_22, RF_joint_32, RF_joint_42, RF_joint_52, LF_joint_32, LF_joint_42, LF_joint_52)
+  SPEED: 38 joints faster than the robot's cap
+    LF_joint_42          43 frames over the cap, fastest 526 deg/s at frame 298 
+    LF_joint_52          21 frames over the cap, fastest 526 deg/s at frame 298 
+    RF_joint_12          87 frames over the cap, fastest 444 deg/s at frame 1369 
+    LF_joint_12          90 frames over the cap, fastest 444 deg/s at frame 1369 
+    LF_joint_13          53 frames over the cap, fastest 439 deg/s at frame 312 
+    Right_arm_joint2     76 frames over the cap, fastest 411 deg/s at frame 351 
+    LF_joint_11          41 frames over the cap, fastest 401 deg/s at frame 298 
+    Right_arm_joint3     75 frames over the cap, fastest 331 deg/s at frame 348 
+    LF_joint_43          29 frames over the cap, fastest 310 deg/s at frame 298 
+    LF_joint_53          15 frames over the cap, fastest 310 deg/s at frame 298 
+    RF_joint_13          50 frames over the cap, fastest 300 deg/s at frame 1358 
+    Right_arm_joint1    185 frames over the cap, fastest 294 deg/s at frame 348 
+    ... and 26 more joints
+  ACCELERATION (soft, the robot smooths it): 38 joints over the robot's 57 deg/s^2
+  SELF-COLLISION: 1 touching pairs
+    RF_link_13 vs Right_hand                    5 frames (2117-2121) 
+  TOO CLOSE, robot vs itself (warning: a small model error makes them touch): 13 pairs
+    RF_link_13 vs Right_hand                  584 frames (1079-1142, 1610-2116, 2122-2134), closest 0.2 mm at frame 2116 
+    LF_link_12 vs Right_hand                   81 frames (1936-1962, 1973-1998, 2029-2056), closest 4.8 mm at frame 1953 
+    LF_link_13 vs Left_hand                   226 frames (1609-1834), closest 5.6 mm at frame 1621 
+    LF_link_13 vs LF_link_23                  209 frames (329-537), closest 6.4 mm at frame 332 
+    LF_link_13 vs Right_hand                   92 frames (1937-1999, 2029-2057), closest 6.4 mm at frame 1981 
+    RF_link_4endeff vs Right_hand             353 frames (730-1082), closest 7.9 mm at frame 986 
+    RF_link_5endeff vs Right_hand             898 frames (724-1130, 1614-2104), closest 8.0 mm at frame 986 
+    RF_link_3endeff vs Right_hand             330 frames (732-1061), closest 9.1 mm at frame 972 
+    ... and 5 more pairs (all in the --out report)
+  TOO CLOSE, robot vs table (warning: a small model error makes them touch): 26 pairs
+    LF_link_24 vs workcell_table               24 frames (1333-1356), closest 2.3 mm at frame 1340 
+    LF_link_44 vs workcell_table               24 frames (1333-1356), closest 2.3 mm at frame 1340 
+    RF_link_24 vs workcell_table               24 frames (1333-1356), closest 2.3 mm at frame 1340 
+    RF_link_44 vs workcell_table               24 frames (1333-1356), closest 2.3 mm at frame 1340 
+    LF_link_2endeff vs workcell_table          24 frames (1333-1356), closest 2.4 mm at frame 1340 
+    LF_link_4endeff vs workcell_table          24 frames (1333-1356), closest 2.4 mm at frame 1340 
+    RF_link_2endeff vs workcell_table          24 frames (1333-1356), closest 2.4 mm at frame 1340 
+    RF_link_4endeff vs workcell_table          24 frames (1333-1356), closest 2.4 mm at frame 1340 
+    ... and 18 more pairs (all in the --out report)
+exit 1

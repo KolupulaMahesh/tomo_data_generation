@@ -1,0 +1,1 @@
+Frozen copies, 2026-11-03: isaac_code/ from the brain's dataset_gen/isaac_setup/isaac_code (scene, runtime, config, findandpick_new), kinematics/ + full_robot.urdf from the brain, cardboard_dim/ from the repo root.

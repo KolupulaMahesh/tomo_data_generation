@@ -1,0 +1,72 @@
+# The training's task file for datasets generated from the new robot's packing scene (2026-11-09). The steps are the 17 sub-episodes
+# stored in the .blend (MMRT recorder); no W2 + IK lines yet: the brain has not been moved to this robot.
+task: gidora_packing
+# x0, y0, x1, y1 of the live picture inside the black bars. MEASURED in daylight on 2026-11-10 from 192.168.0.238 (mean of 90 frames):
+# columns 246..1671 and rows 6..1074 are fully lit (column 1672 88 %, 1673 49 %, 1674+ black; row 1075 73 %, 1076+ black; column 245
+# and rows 0..5 dark). This window lies inside that, has no black column or row, is exactly 4:3 (1424x1068) and is even, so the
+# 960x540 renders are cut at exactly 124, 4, 836, 538. It is NOT the old camera's window (250, 8, 1680, 1080): that one would take in
+# 7 black columns on the right here. The crop is applied in the convert step, not in the renders. The brain for this robot must cut
+# the live picture with the same numbers.
+picture_area: [248, 8, 1672, 1076]
+steps:
+- name: Sub_Start
+  sentences: [get ready, move to the start pose]
+  test_sentences: [prepare to start]
+- name: Sub_LookAtIphone
+  sentences: [look at the phone box, find the iPhone box on the table]
+  test_sentences: [look for the phone]
+- name: Sub_PickIphone
+  sentences: [pick up the phone box, grab the iPhone box with suction, pick the phone]
+  test_sentences: [take the phone box]
+- name: Sub_LookAtJig
+  sentences: [look at the carton in the jig, look at the jig]
+  test_sentences: [look at the carton]
+- name: Sub_OpenLid
+  sentences: [open the carton lid, lift the lid of the carton]
+  test_sentences: [open the carton]
+- name: Sub_PlaceIphone
+  sentences: [place the phone in the carton, put the phone box into the carton, drop the phone into the carton]
+  test_sentences: [put the phone in the carton]
+- name: Sub_PrepareCloseLid
+  sentences: [get ready to close the lid, move the hands to the carton lid]
+  test_sentences: [prepare to shut the lid]
+- name: Sub_CloseLid
+  sentences: [close the lid, shut the carton lid]
+  test_sentences: [put the lid down]
+- name: Sub_LookAtRipcordStation
+  sentences: [look at the tape station, look at the ripcord tape]
+  test_sentences: [look at the tape]
+- name: Sub_PeelRipcord
+  sentences: [peel the ripcord tape, take the ripcord tape from the sheet]
+  test_sentences: [peel the tape off]
+- name: Sub_AlignRipcord
+  sentences: [align the tape over the box, line the ripcord tape up with the carton]
+  test_sentences: [line up the tape]
+- name: Sub_PasteRipcord
+  sentences: [paste the tape on the box, stick the ripcord tape onto the carton]
+  test_sentences: [stick the tape down]
+- name: Sub_SecureRipcordTop
+  sentences: [press the tape down on top of the box, secure the tape on the top]
+  test_sentences: [press the top of the tape]
+- name: Sub_FlipCarton
+  sentences: [flip the carton, turn the box over]
+  test_sentences: [rotate the box]
+- name: Sub_CloseLip
+  sentences: [close the carton lip, fold the lip of the box in]
+  test_sentences: [tuck the lip in]
+- name: Sub_SecureRipcordSide
+  sentences: [press the tape down on the side of the box, secure the tape on the side]
+  test_sentences: [press the side of the tape]
+- name: Sub_ReturnBox
+  sentences: [take the box out, move the finished box to the output, return the box]
+  test_sentences: [put the box away]
+whole_task:
+  sentences: [pack the phone into the carton and finish the box, do the whole packing task, 'put the phone in the carton, close it, tape it and move it out']
+  test_sentences: [pack the phone box completely]
+vacuums: {right: suction, left: left_suction}
+target: phone
+carton:
+  parts: [lid, side_L, side_R, tab, tape_L, tape_R]
+  from_hinges:
+    file: gidora_packing_carton_hinges.npz   # in this dataset folder (make_hinges.py)
+    bones: {lid: DEF-E3, side_L: DEF-E4.L, side_R: DEF-E4.R, tab: DEF-E1, tape_L: DEF-E2.L, tape_R: DEF-E2.R}

@@ -1,0 +1,42 @@
+# iPhone_Packing_Gidora_6_synth_8: added by the dataset generator window on 2026-11-18. What the generator needs that the .blend itself does not
+# say - edit it; everything else (objects, materials, motion, the Synthesizer's ranges, the IO markers) comes from the
+# .blend. iPhone_Packing_local.yaml is a filled-in example.
+blend: ../../../gidora_packing/iPhone_Packing_Gidora_6_synth.blend
+
+hide: []                          # objects to leave out of the pictures (Blender names)
+hide_from_frame: {}               # {object: frame}: not drawn from that frame on
+light_gain: 3000                   # = gidora_packing (setup_failures.py)
+dome: 2500                        # plus an even dome light of this intensity
+look: {}                          # the fixed look (runs without a seed)
+random_look: {"balanced": true, "recolor": {"Alu_table.001": {"colours": [null, [0.15, 0.2, 0.35], [0.18, 0.3, 0.2], [0.35, 0.35, 0.35], [0.45, 0.3, 0.18], [0.55, 0.57, 0.6], [0.7, 0.6, 0.45], [0.75, 0.72, 0.66], [0.85, 0.85, 0.82]]}}, "retexture": {"iPhone.001": {"images": [null, "renderer/assets/phone_textures/iphone_14_pro_max_texture_0.2x.png"]}}}   # = gidora_packing's balanced look (setup_failures.py)
+# steps: [[NAME, first frame], ...]   # without it: the sub-episodes of the .blend's MMRT recorder, else one step per marker
+vacuum_io: {right: 0, left: 2}    # the robot's IO pins of the two vacuums (the same robot in every scene)
+# Another robot than the first TOMO (scene_robot.py; gidora_packing.yaml is a filled-in example):
+
+
+track: iPhone.001
+labels: {}                        # extra labels: {name: {world: object}} or {name: {influence: [object, constraint]}}
+camera_bars: false
+task_yaml: null                   # the training's task file (scenes/iPhone_Packing_Gidora_6_synth_8.task.yaml): needed to train on the dataset
+task_files: []
+
+robot:
+  object: tomo_gidora_ehand_Object
+  # The LIVE robot's own description: /robot_description + /robot_description_semantic of the new robot's computer 192.168.0.108, ROS domain
+  # 111, read from Thor 2026-11-09 22:28 (meshes from tomo_gidora_ehand_desc on the Orin 192.168.0.7, same files). Same geometry, joint order and
+  # arm / head limits as Leo's URDF; it adds the work table; finger limits 1 deg wider than the Orin's files; 92 allowed-to-touch pairs (6 more
+  # finger pairs). Earlier copies: Orin files = $scratchpad, not kept.
+  urdf: ../robot_limits/source_gidora/robot_description.urdf
+  srdf: ../robot_limits/source_gidora/tomo_config.srdf
+  cup_links: "{hand}_link_{k}3"                 # the fingers' last links, for the joint fit's cup point
+  drawn: scene                                  # the .blend's own robot, moved like every other object
+  limits_stride: 10                             # self-collision every 10th frame: 3 min -> 20 s per episode (only frames 91-168 differ between episodes)
+
+camera:
+  object: Camera.001                            # on Head_camera_link
+  lens: [1077.76, 1077.76, 960.0, 720.0, 1920, 1440]   # = the .blend's Camera.001 (lens 4.21 mm, sensor 7.5 mm, no shift,
+                                                     #   render 1920x1440) - user's rule 2026-11-17: Isaac follows Blender
+  # (the live camera 192.168.0.238 sends: [1077.479492, 1077.479492, 968.955933, 563.322144, 1920, 1080])
+
+
+recovery_task: ../../../data_gen/config/task_iPhone_Packing_Gidora_6_synth_8.yaml

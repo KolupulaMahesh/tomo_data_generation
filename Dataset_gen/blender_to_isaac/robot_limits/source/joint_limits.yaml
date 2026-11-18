@@ -1,0 +1,154 @@
+# joint_limits.yaml allows the dynamics properties specified in the URDF to be overwritten or augmented as needed
+# Specific joint properties can be changed with the keys [max_position, min_position, max_velocity, max_acceleration]
+# Joint limits can be turned off with [has_velocity_limits, has_acceleration_limits]
+joint_limits:
+  LF_joint_11:
+    has_velocity_limits: true
+    max_velocity: 3.61
+    has_acceleration_limits: true
+    max_acceleration: 200.0
+  LF_joint_12:
+    has_velocity_limits: true
+    max_velocity: 5.776
+    has_acceleration_limits: true
+    max_acceleration: 200.0
+  LF_joint_13:
+    has_velocity_limits: true
+    max_velocity: 5.776
+    has_acceleration_limits: true
+    max_acceleration: 200.0
+  LF_joint_21:
+    has_velocity_limits: true
+    max_velocity: 3.0
+    has_acceleration_limits: true
+    max_acceleration: 30.0
+  LF_joint_22:
+    has_velocity_limits: true
+    max_velocity: 3.0
+    has_acceleration_limits: true
+    max_acceleration: 30.0
+  LF_joint_23:
+    has_velocity_limits: true
+    max_velocity: 3.0
+    has_acceleration_limits: true
+    max_acceleration: 30.0
+  LF_joint_31:
+    has_velocity_limits: true
+    max_velocity: 3.0
+    has_acceleration_limits: true
+    max_acceleration: 30.0
+  LF_joint_32:
+    has_velocity_limits: true
+    max_velocity: 3.0
+    has_acceleration_limits: true
+    max_acceleration: 30.0
+  LF_joint_33:
+    has_velocity_limits: true
+    max_velocity: 3.0
+    has_acceleration_limits: true
+    max_acceleration: 30.0
+  LF_joint_41:
+    has_velocity_limits: true
+    max_velocity: 3.0
+    has_acceleration_limits: true
+    max_acceleration: 30.0
+  LF_joint_42:
+    has_velocity_limits: true
+    max_velocity: 3.0
+    has_acceleration_limits: true
+    max_acceleration: 30.0
+  LF_joint_43:
+    has_velocity_limits: true
+    max_velocity: 3.0
+    has_acceleration_limits: true
+    max_acceleration: 30.0
+  LF_joint_51:
+    has_velocity_limits: true
+    max_velocity: 3.0
+    has_acceleration_limits: true
+    max_acceleration: 30.0
+  LF_joint_52:
+    has_velocity_limits: true
+    max_velocity: 3.0
+    has_acceleration_limits: true
+    max_acceleration: 30.0
+  LF_joint_53:
+    has_velocity_limits: true
+    max_velocity: 3.0
+    has_acceleration_limits: true
+    max_acceleration: 30.0
+  RF_joint_11:
+    has_velocity_limits: true
+    max_velocity: 7.2
+    has_acceleration_limits: true
+    max_acceleration: 200.0
+  RF_joint_12:
+    has_velocity_limits: true
+    max_velocity: 5.776
+    has_acceleration_limits: true
+    max_acceleration: 200.0
+  RF_joint_13:
+    has_velocity_limits: true
+    max_velocity: 5.776
+    has_acceleration_limits: true
+    max_acceleration: 200.0
+  RF_joint_21:
+    has_velocity_limits: true
+    max_velocity: 3.0
+    has_acceleration_limits: true
+    max_acceleration: 30.0
+  RF_joint_22:
+    has_velocity_limits: true
+    max_velocity: 3.0
+    has_acceleration_limits: true
+    max_acceleration: 30.0
+  RF_joint_23:
+    has_velocity_limits: true
+    max_velocity: 3.0
+    has_acceleration_limits: true
+    max_acceleration: 30.0
+  RF_joint_31:
+    has_velocity_limits: true
+    max_velocity: 3.0
+    has_acceleration_limits: true
+    max_acceleration: 30.0
+  RF_joint_32:
+    has_velocity_limits: true
+    max_velocity: 3.0
+    has_acceleration_limits: true
+    max_acceleration: 30.0
+  RF_joint_33:
+    has_velocity_limits: true
+    max_velocity: 3.0
+    has_acceleration_limits: true
+    max_acceleration: 30.0
+  RF_joint_41:
+    has_velocity_limits: true
+    max_velocity: 3.0
+    has_acceleration_limits: true
+    max_acceleration: 30.0
+  RF_joint_42:
+    has_velocity_limits: true
+    max_velocity: 3.0
+    has_acceleration_limits: true
+    max_acceleration: 30.0
+  RF_joint_43:
+    has_velocity_limits: true
+    max_velocity: 3.0
+    has_acceleration_limits: true
+    max_acceleration: 30.0
+  RF_joint_51:
+    has_velocity_limits: true
+    max_velocity: 3.0
+    has_acceleration_limits: true
+    max_acceleration: 30.0
+  RF_joint_52:
+    has_velocity_limits: true
+    max_velocity: 3.0
+    has_acceleration_limits: true
+    max_acceleration: 30.0
+  RF_joint_53:
+    has_velocity_limits: true
+    max_velocity: 3.0
+    has_acceleration_limits: true
+    max_acceleration: 30.0
