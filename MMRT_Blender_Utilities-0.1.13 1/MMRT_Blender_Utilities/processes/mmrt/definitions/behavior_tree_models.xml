@@ -1,0 +1,591 @@
+<?xml version='1.0' encoding='utf-8'?>
+<root BTCPP_format="4">
+	<TreeNodesModel>
+		<Action ID="PoseDetectArray" editable="false" package="tomo_bt_ai">
+			<input_port name="service_name" type="std::string" default="/pose6dof/predict" description="Detection Trigger service" />
+			<input_port name="pose_topic" type="std::string" description="Topic publishing geometry_msgs/PoseArray" />
+			<input_port name="object_id" type="int" default="0" description="Selected object ID, 0 through 4" />
+			<input_port name="camera_frame" type="std::string" default="" description="Fallback if PoseArray.header.frame_id is empty" />
+			<input_port name="timeout" type="double" default="10.0" description="Total timeout in seconds, including discovery" />
+			<output_port name="status" type="bool" description="Trigger and pose validation succeeded" />
+			<output_port name="message" type="std::string" description="Trigger response or failure reason" />
+			<output_port name="output_poses" type="geometry_msgs::msg::PoseArray" description="Five poses indexed by object ID 0 through 4" />
+			<output_port name="output_transform" type="tomo::TomoTransform" description="Selected object pose in the array frame" />
+		</Action>
+		<Action ID="PoseTrack" editable="false" package="tomo_bt_ai">
+			<input_port name="service_name" type="string" description="the pose tracking camera service server" />
+			<input_port name="command" type="string" description="command to send" />
+			<input_port name="target_frame" type="string" description="the tf target frame to track" />
+			<output_port name="status" type="bool" description="the status of service request" />
+			<output_port name="message" type="string" description="the response message" />
+			<output_port name="output_pose" type="TomoPose" description="The Position of the tracked object" />
+		</Action>
+		<Action ID="DetectState" editable="false" package="tomo_bt_ai">
+			<input_port name="service_name" type="string" description="the pose tracking camera service server" />
+			<input_port name="command" type="string" description="command to send" />
+			<output_port name="status" type="bool" description="the status of service request" />
+			<output_port name="message" type="string" description="the response message" />
+			<output_port name="result_status" type="TomoPose" description="The resulting state detected" />
+		</Action>
+		<Action ID="Keypoints" editable="false" package="tomo_bt_ai">
+			<input_port name="service_name" type="string" description="the camera_keypoint service name" />
+			<input_port name="command" type="string" description="command to send" />
+			<input_port name="target_frame" type="string" description="the tf target frame to track" />
+			<output_port name="status" type="bool" description="the status of service request" />
+			<output_port name="message" type="string" description="the response message" />
+			<output_port name="keypoints" type="KinematicObjects" description="The vector of detected key points as TomoPose" />
+		</Action>
+		<Action ID="PoseTrackTF" editable="false" package="tomo_bt_ai">
+			<input_port name="service_name" type="std::string" description="PoseTrack service name" default="/pose6dof/test" />
+			<input_port name="camera_frame" type="std::string" description="Object TF frame published by tomo_imaging" />
+			<input_port name="target_frame" type="std::string" description="Object TF frame published by tomo_imaging" />
+			<input_port name="output_mode" type="std::string" description="Output mode: transform, index, or alignment" default="transform" />
+			<output_port name="status" type="bool" description="Pose tracking succeeded" />
+			<output_port name="message" type="std::string" description="Reply message from AI service" />
+			<output_port name="output_transform" type="tomo::TomoTransform" description="Object transform expressed in Body_base" />
+			<output_port name="output_index" type="int" description="Index of the detected sticker position" />
+			<output_port name="output_x" type="double" description="X position of the detected object" />
+			<output_port name="output_y" type="double" description="Y position of the detected object" />
+			<output_port name="output_yaw" type="double" description="Yaw angle of the detected object" />
+		</Action>
+		<Action ID="Iheart" editable="false" description="Plugin to control the iheart: &lt;br&gt; Modes: &lt;br&gt; [set, fade, blink, spin, rand, progress] &lt;br&gt; Color: &lt;br&gt; [white, black, red, green, blue, yellow. cyan, magenta, gray, orange]" package="tomo_bt_devices">
+			<input_port name="center_mode" type="string" required="false" description="the mode of center light" />
+			<input_port name="center_color" type="string" required="false" description="the color of center light" />
+			<input_port name="center_progress" type="int" required="false" description="for progress mode the progress to display" />
+			<input_port name="outer_mode" type="string" required="false" description="the mode of outer light" />
+			<input_port name="outer_color" type="string" required="false" description="the color of outer light" />
+			<input_port name="outer_progress" type="int" required="false" description="for progress mode the progress to display" />
+		</Action>
+		<Action ID="IOController" editable="false" description="Plugin to control the 8 iocontroller: &lt;br&gt; command: &lt;br&gt; [set, get, help]" package="tomo_bt_devices">
+			<input_port name="command" type="string" description="set, get, help" />
+			<inout_port name="data" type="string" description="on off signal for iocontroller. Eg: 10101010" />
+		</Action>
+		<Action ID="DialGauge" editable="false" description="Read values from dial gauge server" package="tomo_bt_devices">
+			<input_port name="command" type="string" description="read_single, read_all, read_previous" />
+			<input_port name="index" type="int" description="channel index (0-3) for read_single" />
+			<output_port name="values" type="std::vector&lt;float&gt;" description="returned dial gauge values" />
+			<output_port name="value0" type="float" description="channel 0 value" />
+			<output_port name="value1" type="float" description="channel 1 value" />
+			<output_port name="value2" type="float" description="channel 2 value" />
+			<output_port name="value3" type="float" description="channel 3 value" />
+		</Action>
+		<Action ID="MoveTomo" editable="false" package="tomo_bt_move">
+			<input_port name="pose_name" type="string" description="The name of tomo position" required="false" />
+			<input_port name="movegroup" type="string" description="The motion planning movegroup" required="true" />
+			<input_port name="plan_pipeline" type="string" description="The planning pipeline" required="false" />
+			<input_port name="plan_id" type="string" description="Velocity or acceleration scaling parameter (see node documentation)" required="false" />
+			<input_port name="save_plan" type="bool" default="false" description="Save the plan to file or not" required="false" />
+			<input_port name="visualize" type="bool" default="false" description="visualize the plan or not" required="false" />
+			<input_port name="head_joint" type="TomoJoint" description="The head joint value" required="false" />
+			<input_port name="rarm_pose" type="TomoPose" description="The right arm endlink position" required="false" />
+			<input_port name="rarm_joint" type="TomoJoint" description="The right arm joint value" required="false" />
+			<input_port name="rhand_joint" type="TomoJoint" description="The right hand finger joint value" required="false" />
+			<input_port name="larm_pose" type="TomoPose" description="The left arm endlink position" required="false" />
+			<input_port name="larm_joint" type="TomoJoint" description="The left arm joint value" required="false" />
+			<input_port name="lhand_joint" type="TomoJoint" description="The right hand finger joint value" required="false" />
+		</Action>
+		<Action ID="MoveTomoWaypoint" editable="false" package="tomo_bt_move">
+			<input_port name="waypoint_name" type="string" description="The name of waypoint" required="false" />
+			<input_port name="waypoint" type="TomoWaypoint" description="The TomoWaypoint object" required="false" />
+			<input_port name="plan_pipeline" type="string" description="The planning pipeline" required="false" />
+			<input_port name="plan_id" type="string" description="Velocity or acceleration scaling parameter (see node documentation)" required="false" />
+			<input_port name="save_plan" type="bool" default="false" description="Save the plan to file or not" required="false" />
+			<input_port name="visualize" type="bool" default="false" description="visualize the plan or not" required="false" />
+		</Action>
+		<Action ID="MoveTomoTrajectory" editable="false" package="tomo_bt_move">
+			<input_port name="trajectory_name" type="string" description="The name of trajectory" required="false" />
+			<input_port name="trajectory" type="TomoTrajectory" description="The TomoTrajectory object" required="false" />
+			<input_port name="strategy" type="string" description="The trajectory generation strategy" required="false" />
+			<input_port name="resample" type="string" description="The trajectory resampling strategy." required="false" />
+			<input_port name="time_parameterization" type="string" description="The trajectory time parameterization strategy." required="false" />
+			<input_port name="velocity_scale" type="double" default="1.0" description="The velocity scale." required="false" />
+			<input_port name="acceleration_scale" type="double" default="1.0" description="The acceleration scale." required="false" />
+			<input_port name="resolution" type="double" description="The resolution for resampling" required="false" />
+			<input_port name="blend_radius" type="double" description="The blending radius for trajectory smoothing." required="false" />
+			<input_port name="collision_checks" type="int" description="number of points in the trajectory to check for collision. &lt;br&gt; 0 = Full trajectory checking. &lt;br&gt; -1 = Bypass collision checking" required="false" />
+			<input_port name="save_plan" type="bool" default="false" description="Save the plan to file or not" required="false" />
+			<input_port name="visualize" type="bool" default="false" description="visualize the plan or not" required="false" />
+		</Action>
+		<Action ID="MoveTomoTrajectories" editable="false" package="tomo_bt_move">
+			<input_port name="trajectories_name" type="string" description="The name of trajectory list" required="false" />
+			<input_port name="trajectories" type="std::vector&lt;TomoTrajectory&gt;" description="The TomoTrajectory object" required="false" />
+			<input_port name="strategy" type="string" description="The trajectory generation strategy" required="false" />
+			<input_port name="resample" type="string" description="The trajectory resampling strategy." required="false" />
+			<input_port name="time_parameterization" type="string" description="The trajectory time parameterization strategy." required="false" />
+			<input_port name="velocity_scale" type="double" default="1.0" description="The velocity scale." required="false" />
+			<input_port name="acceleration_scale" type="double" default="1.0" description="The acceleration scale." required="false" />
+			<input_port name="resolution" type="double" description="The resolution for resampling" required="false" />
+			<input_port name="blend_radius" type="double" description="The blending radius for trajectory smoothing." required="false" />
+			<input_port name="collision_checks" type="int" description="number of points in the trajectory to check for collision. &lt;br&gt; 0 = Full trajectory checking. &lt;br&gt; -1 = Bypass collision checking" required="false" />
+			<input_port name="save_plan" type="bool" description="Save the plan to file or not" required="false" />
+			<input_port name="visualize" type="bool" description="visualize the plan or not" required="false" />
+		</Action>
+		<Action ID="CreateWaypoint" editable="false" package="tomo_bt_move_utils">
+			<input_port name="movegroup" type="string" description="The motion planning movegroup" required="true" />
+			<input_port name="dt" type="double" description="the offset time from trajectory start" required="true" />
+			<input_port name="wait_time" type="double" description="the wait time at this waypoint" required="true" />
+			<input_port name="head_joint" type="TomoJoint" description="The head joint value" required="false" />
+			<input_port name="rarm_pose" type="TomoPose" description="The right arm endlink position" required="false" />
+			<input_port name="rarm_joint" type="TomoJoint" description="The right arm joint value" required="false" />
+			<input_port name="rhand_joint" type="TomoJoint" description="The right hand finger joint value" required="false" />
+			<input_port name="larm_pose" type="TomoPose" description="The left arm endlink position" required="false" />
+			<input_port name="larm_joint" type="TomoJoint" description="The left arm joint value" required="false" />
+			<input_port name="lhand_joint" type="TomoJoint" description="The left hand finger joint value" required="false" />
+			<output_port name="waypoint" type="TomoWaypoint" description="The full body tomo waypoint generated" />
+		</Action>
+		<Action ID="CreateWaypoint2" editable="false" package="tomo_bt_move_utils">
+			<input_port name="movegroup" type="string" description="The motion planning movegroup" required="true" />
+			<input_port name="dt" type="double" description="the offset time from trajectory start" required="true" />
+			<input_port name="wait_time" type="double" description="the wait time at this waypoint" required="true" />
+			<input_port name="head_joint" type="TomoJoint" description="The head joint value" required="false" />
+			<input_port name="rarm_pose" type="TomoPose" description="The right arm endlink position" required="false" />
+			<input_port name="rarm_joint" type="TomoJoint" description="The right arm joint value" required="false" />
+			<input_port name="rhand_joint" type="TomoJoint" description="The right hand finger joint value" required="false" />
+			<input_port name="larm_pose" type="TomoPose" description="The left arm endlink position" required="false" />
+			<input_port name="larm_joint" type="TomoJoint" description="The left arm joint value" required="false" />
+			<input_port name="lhand_joint" type="TomoJoint" description="The left hand finger joint value" required="false" />
+			<input_port name="lehand_joint" type="TomoJoint" description="The left ehand finger joint value" required="false" />
+			<input_port name="rehand_joint" type="TomoJoint" description="The right ehand finger joint value" required="false" />
+			<output_port name="waypoint" type="TomoWaypoint" description="The full body tomo waypoint generated" />
+		</Action>
+		<Action ID="CreateTrajectory" editable="false" package="tomo_bt_move_utils">
+			<input_port name="movegroup" type="string" description="The motion planning movegroup" required="true" />
+			<output_port name="trajectory" type="TomoTrajectory" description="An empty trajectory" />
+		</Action>
+		<Action ID="InsertTrajectory" editable="false" package="tomo_bt_move_utils">
+			<input_port name="waypoint" type="TomoWaypoint" description="the waypoint to insert" required="true" />
+			<input_port name="index" type="size_t" description="the index in trajectory to insert" required="true" />
+			<inout_port name="trajectory" type="TomoTrajectory" description="the target trajectory" />
+		</Action>
+		<Action ID="PushBackTrajectory" editable="false" package="tomo_bt_move_utils">
+			<input_port name="waypoint" type="TomoWaypoint" description="the waypoint to pushback" required="true" />
+			<inout_port name="trajectory" type="TomoTrajectory" description="the target trajectory" />
+		</Action>
+		<Action ID="PushFrontTrajectory" editable="false" package="tomo_bt_move_utils">
+			<input_port name="waypoint" type="TomoWaypoint" description="the waypoint to pushfront" required="true" />
+			<inout_port name="trajectory" type="TomoTrajectory" description="the target trajectory" />
+		</Action>
+		<Action ID="RemoveTrajectory" editable="false" package="tomo_bt_move_utils">
+			<input_port name="index" type="size_t" description="the index in trajectory to remove" required="true" />
+			<inout_port name="trajectory" type="TomoTrajectory" description="the target trajectory" />
+		</Action>
+		<Action ID="ReverseTrajectory" editable="false" package="tomo_bt_move_utils">
+			<inout_port name="trajectory" type="TomoTrajectory" description="the target trajectory" />
+		</Action>
+		<Action ID="SplitTrajectoryTime" editable="false" package="tomo_bt_move_utils">
+			<input_port name="trajectory" type="TomoTrajectory" description="the target trajectory" />
+			<input_port name="time_threshold" type="double" description="time threshold to split trajectory" />
+			<output_port name="trajectories" type="std::vector&lt;TomoTrajectory&gt;" description="the split trajectory list" />
+		</Action>
+		<Action ID="PublishString" editable="false" package="tomo_bt_ros">
+			<input_port name="topic" type="string" description="The ros topic to publish to" required="true" />
+			<input_port name="message" type="string" description="The message in string to publish" required="true" />
+		</Action>
+		<Action ID="PublishPoseStamped" editable="false" package="tomo_bt_ros">
+			<input_port name="topic" type="string" description="The ros topic to publish to" required="true" />
+			<input_port name="pose" type="TomoPose" description="The Pose message to publish" required="true" />
+		</Action>
+		<Action ID="PublishFloat64MultiArray" editable="false" package="tomo_bt_ros">
+			<input_port name="topic" type="string" description="The ros topic to publish to" required="true" />
+			<input_port name="data" type="TomoJoint" description="The joint torque in mNm" required="true" />
+		</Action>
+		<Action ID="TriggerClient" editable="false" package="tomo_bt_ros">
+			<input_port name="service_name" type="string" description="The name of the service to trigger" required="true" />
+		</Action>
+		<Action ID="WaitForRostopic" editable="false" package="tomo_bt_ros">
+			<input_port name="topic_name" type="std::string" description="ROS topic to wait for" />
+			<input_port name="message" type="std::string" description="Expected message content" />
+		</Action>
+		<Control ID="StepSequence" editable="false" package="tomo_bt_ros">
+			<input_port name="topic_name" type="std::string" default="/bt_command" description="Topic carrying next commands" />
+		</Control>
+		<Action ID="AddObject" editable="false" package="tomo_bt_scene">
+			<input_port name="object_name" type="string" description="Unique object label in planning scene" required="true" />
+			<input_port name="mesh_name" type="string" description="Mesh name or file path (supports package://, .stl, .obj)" required="true" />
+			<input_port name="position" type="TomoPose" description="Object pose in planning frame" required="true" />
+		</Action>
+		<Action ID="AttachObject" editable="false" package="tomo_bt_scene">
+			<input_port name="object_name" type="string" description="Object label in planning scene" required="true" />
+			<input_port name="link_name" type="string" description="Robot link to attach the object to" required="true" />
+		</Action>
+		<Action ID="DetachObject" editable="false" package="tomo_bt_scene">
+			<input_port name="object_name" type="string" description="Object label in planning scene" required="true" />
+		</Action>
+		<Action ID="MoveObject" editable="false" package="tomo_bt_scene">
+			<input_port name="object_name" type="string" description="Object label in planning scene" required="true" />
+			<input_port name="position" type="TomoPose" description="Target global pose for the object" required="true" />
+		</Action>
+		<Action ID="RemoveObject" editable="false" package="tomo_bt_scene">
+			<input_port name="object_name" type="string" description="Object label in planning scene" required="true" />
+		</Action>
+		<Action ID="SetCollisionObjectMovegroup" editable="false" package="tomo_bt_scene">
+			<input_port name="object_name" type="string" description="Object label in planning scene" required="true" />
+			<input_port name="movegroup" type="string" description="Movegroup to check collision against" required="true" />
+			<input_port name="allow_collision" type="bool" description="Allow collision or not" required="true" />
+		</Action>
+		<Action ID="SetCollisionObjectLink" package="tomo_bt_scene">
+			<input_port name="object" type="string" description="Object label in planning scene" required="true" />
+			<input_port name="links" type="string" description="Link names to check collision against. Names are separated by commas" required="true" />
+			<input_port name="allow" type="bool" description="Allow collision or not" required="true" />
+		</Action>
+		<Action ID="SetCollisionMovegroups" editable="false" package="tomo_bt_scene">
+			<input_port name="movegroup_1" type="string" description="First movegroup" required="true" />
+			<input_port name="movegroup_2" type="string" description="Second movegroup" required="true" />
+			<input_port name="allow_collision" type="bool" description="Allow collision or not" required="true" />
+		</Action>
+		<Action ID="SetCollisionLinks" editable="false" package="tomo_bt_scene">
+			<input_port name="links_1" type="string" description="First set of link names. Names are separated by commas" required="true" />
+			<input_port name="links_2" type="string" description="Second set of link names. Names are separated by commas" required="true" />
+			<input_port name="allow_collision" type="bool" description="Allow collision or not" required="true" />
+		</Action>
+		<Action ID="SceneReset" editable="false" package="tomo_bt_scene" />
+		<Action ID="PublishYamlTrajectoryChunks" editable="false" package="tomo_bt_servo">
+			<input_port name="yaml_path" type="string" description="Absolute path to recorded frames YAML" />
+			<input_port name="servo_groups" type="string" default="" />
+			<input_port name="servo_groups_file" type="string" default="" />
+			<input_port name="trajectory_topic" type="string" default="trajectory_chunks" />
+			<input_port name="stop_topic" type="string" default="trajectory_chunks/stop" />
+			<input_port name="chunk_duration" type="double" default="2.0" />
+			<input_port name="publish_period" type="double" default="0.25" />
+			<input_port name="initial_hold" type="double" default="0.5" />
+			<input_port name="final_hold" type="double" default="1.0" />
+			<input_port name="subscriber_timeout" type="double" default="5.0" />
+			<output_port name="published_chunks" type="uint64_t" />
+			<output_port name="message" type="string" />
+		</Action>
+		<Action ID="ComposeJointTrajectoryChunks" editable="false" package="tomo_bt_servo">
+			<input_port name="input_topics" type="string" description="Required JSON map of move group to {topic, type}; type is pose or joint_state" />
+			<input_port name="trajectory_topic" type="string" default="trajectory_chunks" />
+			<input_port name="feedback_topic" type="string" default="joint_states" />
+			<input_port name="stop_topic" type="string" default="trajectory_chunks/stop" />
+			<input_port name="stop" type="bool" default="false" />
+			<input_port name="chunk_duration" type="double" default="0.5" />
+			<input_port name="publish_period" type="double" default="0.1" />
+			<input_port name="points_per_chunk" type="unsigned" default="11" />
+			<input_port name="input_timeout" type="double" default="0.5" />
+			<input_port name="feedback_timeout" type="double" default="0.1" />
+			<output_port name="published_chunks" type="uint64_t" />
+			<output_port name="rejected_targets" type="uint64_t" />
+			<output_port name="message" type="string" />
+		</Action>
+		<Action ID="SetServoCommandType" editable="false" package="tomo_bt_servo">
+			<input_port name="movegroup" type="string" description="the servo movegroup" />
+			<input_port name="type" type="string" description="type of command to set" />
+
+		</Action>
+		<Action ID="SendWaypointToServo" editable="false" package="tomo_bt_servo">
+			<input_port name="waypoint_name" type="string" description="the waypoint name" />
+			<input_port name="waypoint" type="TomoWaypoint" description="the waypoint to send to servo" required="true" />
+			<input_port name="plan_pipeline" type="string" description="The planning pipeline" required="false" />
+			<input_port name="plan_id" type="string" description="The planner id" required="false" />
+		</Action>
+		<Action ID="SendTrajectoryToServo" editable="false" package="tomo_bt_servo">
+			<input_port name="trajectory_name" type="string" description="The name of trajectory" required="false" />
+			<input_port name="trajectory" type="TomoTrajectory" description="The TomoTrajectory object" required="false" />
+			<input_port name="strategy" type="string" description="The trajectory generation strategy" required="false" />
+			<input_port name="resample" type="string" description="The trajectory resampling strategy." required="false" />
+			<input_port name="time_parameterization" type="string" description="The trajectory time parameterization strategy." required="false" />
+			<input_port name="velocity_scale" type="double" default="1.0" description="The velocity scale." required="false" />
+			<input_port name="acceleration_scale" type="double" default="1.0" description="The acceleration scale." required="false" />
+			<input_port name="blend_radius" type="double" default="0.0" description="The blending radius for trajectory smoothing." required="false" />
+			<input_port name="collision_checks" type="int" default="0" description="number of points in the trajectory to check for collision. &lt;br&gt; 0 = Full trajectory checking. &lt;br&gt; -1 = Bypass collision checking" required="false" />
+		</Action>
+		<Action ID="ServoControllerNaive" editable="false" package="tomo_bt_servo">
+			<input_port name="input_joint_states_topic" type="string" description="Rostopic name of joint states input topic" required="false" />
+			<input_port name="controller_id" type="std::string" default="TRACKING" description="id of controller used (TRACKING, RUCKIG)" required="false" />
+			<input_port name="control_rate" type="double" default="100.0" description="rate of controll loop (Hz)" required="false" />
+			<input_port name="collision_check" type="bool" default="true" description="" required="false" />
+			<input_port name="position_tolerance" type="double" default="0.01" description="Threshold to determine goal reach" required="false" />
+			<input_port name="velocity_tolerance_gain" type="double" default="0.05" description="Threshold to determine goal reach" required="false" />
+			<input_port name="acceleration_tolerance_gain" type="double" default="0.05" description="Threshold to determine goal reach" required="false" />
+			<input_port name="kp" type="double" default="1.5" description="Proportionality gain of joint jog control" required="false" />
+			<input_port name="kv" type="double" default="1.5" description="Feed-forward velocity gain of joint jog control" required="false" />
+			<input_port name="max_velocity" type="double" default="1.5" description="max joint velocity" required="false" />
+			<input_port name="min_velocity" type="double" default="0.0" description="min joint velocity" required="false" />
+			<input_port name="max_acceleration" type="double" default="0.0" description="max joint acceleration" required="false" />
+			<input_port name="min_push" type="double" default="0.0" description="min joint velocity to push" required="false" />
+			<input_port name="max_jerk" type="double" default="10.0" description="maximum joint jerk allowed (RUCKIG)" required="false" />
+			<output_port name="status" type="bool" description="TReturn false when controller in false state." required="false" />
+			<output_port name="message" type="std::string" description="Reply message" required="false" />
+		</Action>
+		<Action ID="ServoControllerNaiveLookahead" editable="false" package="tomo_bt_servo">
+			<input_port name="input_joint_states_topic" type="string" description="Rostopic name of joint states input topic" required="false" />
+			<input_port name="controller_id" type="std::string" default="TRACKING" description="id of controller used (TRACKING, RUCKIG)" required="false" />
+			<input_port name="control_rate" type="double" default="100.0" description="rate of controll loop (Hz)" required="false" />
+			<input_port name="collision_check" type="bool" default="true" description="" required="false" />
+			<input_port name="position_tolerance" type="double" default="0.01" description="Threshold to determine goal reach" required="false" />
+			<input_port name="velocity_tolerance_gain" type="double" default="0.05" description="Threshold to determine goal reach" required="false" />
+			<input_port name="acceleration_tolerance_gain" type="double" default="0.05" description="Threshold to determine goal reach" required="false" />
+			<input_port name="kp" type="double" default="1.5" description="Proportionality gain of joint jog control" required="false" />
+			<input_port name="kv" type="double" default="1.5" description="Feed-forward velocity gain of joint jog control" required="false" />
+			<input_port name="max_velocity" type="double" default="1.5" description="max joint velocity" required="false" />
+			<input_port name="min_velocity" type="double" default="0.0" description="min joint velocity" required="false" />
+			<input_port name="max_acceleration" type="double" default="0.0" description="max joint acceleration" required="false" />
+			<input_port name="min_push" type="double" default="0.0" description="min joint velocity to push" required="false" />
+			<input_port name="max_jerk" type="double" default="10.0" description="maximum joint jerk allowed (RUCKIG)" required="false" />
+			<input_port name="lookahead" type="int" default="5" description="number of waypoint for trajectory planning" required="false" />
+			<input_port name="lookahead_distance" type="double" default="1.0" description="lookahead distance for trajectory planning" required="false" />
+			<output_port name="status" type="bool" description="TReturn false when controller in false state." required="false" />
+			<output_port name="message" type="std::string" description="Reply message" required="false" />
+		</Action>
+
+		<Action ID="ServoControllerPlanning" editable="false" package="tomo_bt_servo">
+			<input_port name="input_joint_states_topic" type="string" description="Rostopic name of joint states input topic" required="false" />
+			<input_port name="strategy" type="string" description="The trajectory generation strategy" required="false" />
+			<input_port name="resample" type="string" description="The trajectory resampling strategy." required="false" />
+			<input_port name="time_parameterization" type="string" description="The trajectory time parameterization strategy." required="false" />
+			<input_port name="velocity_scale" type="double" default="1.0" description="The velocity scale." required="false" />
+			<input_port name="acceleration_scale" type="double" default="1.0" description="The acceleration scale." required="false" />
+			<input_port name="blend_radius" type="double" default="0.0" description="The blending radius for trajectory smoothing." required="false" />
+			<input_port name="collision_checks" type="int" default="0" description="number of points in the trajectory to check for collision. &lt;br&gt; 0 = Full trajectory checking. &lt;br&gt; -1 = Bypass collision checking" required="false" />
+			<output_port name="status" type="bool" description="Return false when controller in false state." required="false" />
+			<output_port name="message" type="std::string" description="Return the output messages" required="false" />
+		</Action>
+		<Action ID="ServoControllerChunked" editable="false" package="tomo_bt_servo">
+			<input_port name="servo_groups" type="string" default="" description="YAML sequence of group and command_topic pairs; joints come from the robot model" />
+			<input_port name="servo_groups_file" type="string" default="" description="YAML file containing servo_groups; alternative to inline configuration" />
+			<input_port name="command_type_service" type="string" default="servo_node/switch_command_type" description="ServoCommandType service; empty if JOINT_JOG mode is configured externally" />
+			<input_port name="input_trajectory_topic" type="string" default="trajectory_chunks" description="Timed JointTrajectory chunks" />
+			<input_port name="feedback_topic" type="string" default="joint_states" description="JointState with positions and optional measured velocities" />
+			<input_port name="stop_topic" type="string" default="trajectory_chunks/stop" description="Bool true requests a smooth stop; empty disables" />
+			<input_port name="stop" type="bool" default="false" description="Latch a smooth stop and return SUCCESS after braking" />
+			<input_port name="finish_on_completion" type="bool" default="false" description="Finish after the accepted trajectory settles or brakes to rest" />
+			<input_port name="collision_check" type="bool" default="true" description="Check input chunk states through planner_manager before acceptance" />
+			<input_port name="control_rate" type="double" default="200.0" description="Generation and publishing rate in Hz" />
+			<input_port name="kp" type="double" default="2.0" description="Position feedback gain" />
+			<input_port name="kv" type="double" default="1.0" description="Velocity feedforward gain" />
+			<input_port name="max_velocity" type="double" default="1.0" description="Symmetric joint velocity limit" />
+			<input_port name="max_acceleration" type="double" default="2.0" description="Symmetric joint acceleration limit" />
+			<input_port name="max_jerk" type="double" default="10.0" description="Positive joint jerk limit" />
+			<input_port name="commit_horizon" type="double" default="0.02" description="Seconds of old reference retained at chunk handoff" />
+			<input_port name="blend_duration" type="double" default="0.10" description="Seconds used to join the replacement reference" />
+			<input_port name="feedback_timeout" type="double" default="0.10" description="Maximum age of accepted feedback in seconds" />
+			<input_port name="max_control_gap" type="double" default="0.05" description="Maximum control gap before braking" />
+			<input_port name="position_tolerance" type="double" default="0.001" description="Endpoint position tolerance" />
+			<input_port name="stop_tolerance" type="double" default="1e-6" description="Command velocity/acceleration rest tolerance" />
+			<input_port name="acceleration_filter" type="double" default="0.02" description="Time constant for feedback derivative filtering" />
+			<input_port name="startup_timeout" type="double" default="5.0" description="Seconds to wait for feedback and servo-mode acknowledgements" />
+			<input_port name="stop_timeout" type="double" default="5.0" description="Maximum braking wait, including on BT halt" />
+			<input_port name="validation_timeout" type="double" default="1.0" description="Maximum asynchronous collision-check latency" />
+			<output_port name="status" type="bool" description="False after a fault" />
+			<output_port name="message" type="string" description="Execution state or rejection reason" />
+			<output_port name="accepted_chunks" type="uint64_t" description="Number of accepted group chunks" />
+			<output_port name="rejected_chunks" type="uint64_t" description="Rejected group chunks plus unroutable messages" />
+		</Action>
+		<Action ID="SetPlanner" editable="false" package="tomo_bt_system">
+			<input_port name="pipeline" type="string" description="The planning pipeline" required="true" />
+			<input_port name="id" type="string" description="The planner id" required="true" />
+		</Action>
+		<Action ID="SetVelAcc" editable="false" package="tomo_bt_system">
+			<input_port name="velocity" type="double" description="The planner id" required="true" />
+			<input_port name="acceleration" type="double" description="The planner id" required="true" />
+		</Action>
+		<Action ID="SwitchRosController" editable="false" description="Activates and deactivates ROS 2 controllers via the controller_manager" package="tomo_bt_system">
+			<input_port name="activate_controllers" type="string" description="List of controllers to activate (e.g., 'joint_state_broadcaster;arm_controller')" />
+			<input_port name="deactivate_controllers" type="string" description="List of controllers to deactivate (e.g., 'velocity_controller;gripper_controller')" />
+			<output_port name="status" type="bool" description="the status of service request" />
+			<output_port name="message" type="string" description="the response message" />
+		</Action>
+		<Action ID="ConcatenateTransform" editable="false" package="tomo_bt_transform">
+			<input_port name="input_transform" type="tomo::TomoTransform" description="Initial input transform" />
+			<input_port name="offset_value" type="tomo::TomoTransform" description="The offset transform to adjust" />
+			<output_port name="output_transform" type="tomo::TomoTransform" description="Resulting transform after offset" />
+			<output_port name="output_pose" type="tomo::TomoPose" description="Pose representation in the new parent frame" />
+		</Action>
+
+		<Action ID="ChangeTfFrame" editable="false" package="tomo_bt_transform">
+			<input_port name="input_transform" type="tomo::TomoTransform" description="Input transform with original parent frame" />
+			<input_port name="target_frame" type="std::string" description="New parent frame for the transform" />
+			<output_port name="output_transform" type="tomo::TomoTransform" description="Transform converted into the new parent frame" />
+			<output_port name="output_pose" type="tomo::TomoPose" description="Pose representation in the new parent frame" />
+		</Action>
+
+		<Action ID="ComposeTransform" editable="false" package="tomo_bt_transform">
+			<input_port name="transform_a" type="tomo::TomoTransform" description="Transform A (Parent A to Child A)" />
+			<input_port name="transform_b" type="tomo::TomoTransform" description="Transform B (Parent B to Child B)" />
+			<output_port name="output_transform" type="tomo::TomoTransform" description="Transform C in A's parent frame" />
+			<output_port name="output_pose" type="tomo::TomoPose" description="Pose representation of Transform C" />
+		</Action>
+
+		<Action ID="LimitLocation" editable="false" package="tomo_bt_transform">
+			<input_port name="target_transform" type="tomo::TomoTransform" description="Target transform to limit" />
+			<input_port name="use_min_x" type="bool" default="false" description="Enable minimum limit for X" />
+			<input_port name="min_x" type="double" default="0.0" description="Minimum X location" />
+			<input_port name="use_max_x" type="bool" default="false" description="Enable maximum limit for X" />
+			<input_port name="max_x" type="double" default="0.0" description="Maximum X location" />
+			<input_port name="use_min_y" type="bool" default="false" description="Enable minimum limit for Y" />
+			<input_port name="min_y" type="double" default="0.0" description="Minimum Y location" />
+			<input_port name="use_max_y" type="bool" default="false" description="Enable maximum limit for Y" />
+			<input_port name="max_y" type="double" default="0.0" description="Maximum Y location" />
+			<input_port name="use_min_z" type="bool" default="false" description="Enable minimum limit for Z" />
+			<input_port name="min_z" type="double" default="0.0" description="Minimum Z location" />
+			<input_port name="use_max_z" type="bool" default="false" description="Enable maximum limit for Z" />
+			<input_port name="max_z" type="double" default="0.0" description="Maximum Z location" />
+			<output_port name="output_transform" type="tomo::TomoTransform" description="Clamped transform" />
+			<output_port name="output_pose" type="tomo::TomoPose" description="Clamped pose" />
+		</Action>
+
+		<Action ID="LimitRotation" editable="false" package="tomo_bt_transform">
+			<input_port name="target_transform" type="tomo::TomoTransform" description="Target transform to limit" />
+			<input_port name="use_min_x" type="bool" default="false" description="Enable minimum limit for Roll (X)" />
+			<input_port name="min_x" type="double" default="-180.0" description="Minimum X rotation in degrees" />
+			<input_port name="use_max_x" type="bool" default="false" description="Enable maximum limit for Roll (X)" />
+			<input_port name="max_x" type="double" default="180.0" description="Maximum X rotation in degrees" />
+			<input_port name="use_min_y" type="bool" default="false" description="Enable minimum limit for Pitch (Y)" />
+			<input_port name="min_y" type="double" default="-180.0" description="Minimum Y rotation in degrees" />
+			<input_port name="use_max_y" type="bool" default="false" description="Enable maximum limit for Pitch (Y)" />
+			<input_port name="max_y" type="double" default="180.0" description="Maximum Y rotation in degrees" />
+			<input_port name="use_min_z" type="bool" default="false" description="Enable minimum limit for Yaw (Z)" />
+			<input_port name="min_z" type="double" default="-180.0" description="Minimum Z rotation in degrees" />
+			<input_port name="use_max_z" type="bool" default="false" description="Enable maximum limit for Yaw (Z)" />
+			<input_port name="max_z" type="double" default="180.0" description="Maximum Z rotation in degrees" />
+			<output_port name="output_transform" type="tomo::TomoTransform" description="Clamped transform" />
+			<output_port name="output_pose" type="tomo::TomoPose" description="Clamped pose" />
+		</Action>
+
+		<Action ID="UnflipYaw" editable="false" package="tomo_bt_transform">
+			<input_port name="target_transform" type="tomo::TomoTransform" description="Target transform to check and flip yaw" />
+			<input_port name="expected_yaw" type="double" default="0.0" description="Expected nominal yaw in degrees" />
+			<input_port name="threshold_deg" type="double" default="90.0" description="Deviation threshold in degrees to trigger flip" />
+			<output_port name="output_transform" type="tomo::TomoTransform" description="Corrected transform" />
+			<output_port name="output_pose" type="tomo::TomoPose" description="Corrected pose" />
+		</Action>
+
+		<Action ID="InvertTransform" editable="false" package="tomo_bt_transform">
+			<input_port name="input_transform" type="tomo::TomoTransform" description="Input transform to invert" />
+			<output_port name="output_transform" type="tomo::TomoTransform" description="Inverted transform" />
+			<output_port name="output_pose" type="tomo::TomoPose" description="Inverted pose" />
+		</Action>
+
+		<Action ID="ApplyLocalOffset" editable="false" package="tomo_bt_transform">
+			<input_port name="target_transform" type="tomo::TomoTransform" description="Base target transform" />
+			<input_port name="offset_x" type="double" default="0.0" description="Local X translation offset" />
+			<input_port name="offset_y" type="double" default="0.0" description="Local Y translation offset" />
+			<input_port name="offset_z" type="double" default="0.0" description="Local Z translation offset" />
+			<input_port name="offset_roll" type="double" default="0.0" description="Local Roll offset in degrees" />
+			<input_port name="offset_pitch" type="double" default="0.0" description="Local Pitch offset in degrees" />
+			<input_port name="offset_yaw" type="double" default="0.0" description="Local Yaw offset in degrees" />
+			<output_port name="output_transform" type="tomo::TomoTransform" description="Offset transform" />
+			<output_port name="output_pose" type="tomo::TomoPose" description="Offset pose" />
+		</Action>
+
+		<Action ID="InterpolateTransform" editable="false" package="tomo_bt_transform">
+			<input_port name="start_transform" type="tomo::TomoTransform" description="Start transform (t=0)" />
+			<input_port name="end_transform" type="tomo::TomoTransform" description="End transform (t=1)" />
+			<input_port name="factor_t" type="double" default="0.5" description="Interpolation weight t in range [0, 1]" />
+			<output_port name="output_transform" type="tomo::TomoTransform" description="Interpolated transform" />
+			<output_port name="output_pose" type="tomo::TomoPose" description="Interpolated pose" />
+		</Action>
+
+		<Action ID="CheckPoseDistance" editable="false" package="tomo_bt_transform">
+			<input_port name="transform_a" type="tomo::TomoTransform" description="First transform" />
+			<input_port name="transform_b" type="tomo::TomoTransform" description="Second transform" />
+			<input_port name="max_linear_distance" type="double" default="0.05" description="Max allowed linear distance in meters" />
+			<input_port name="max_angular_distance_deg" type="double" default="10.0" description="Max allowed angular distance in degrees" />
+			<output_port name="linear_distance" type="double" description="Calculated linear distance" />
+			<output_port name="angular_distance_deg" type="double" description="Calculated angular distance in degrees" />
+		</Action>
+
+		<Action ID="SanityCheckTransform" editable="false" package="tomo_bt_transform">
+			<input_port name="target_transform" type="tomo::TomoTransform" description="Transform to validate" />
+			<input_port name="min_x" type="double" default="-2.0" description="Minimum workspace X boundary" />
+			<input_port name="max_x" type="double" default="2.0" description="Maximum workspace X boundary" />
+			<input_port name="min_y" type="double" default="-2.0" description="Minimum workspace Y boundary" />
+			<input_port name="max_y" type="double" default="2.0" description="Maximum workspace Y boundary" />
+			<input_port name="min_z" type="double" default="-0.5" description="Minimum workspace Z boundary" />
+			<input_port name="max_z" type="double" default="2.5" description="Maximum workspace Z boundary" />
+		</Action>
+
+		<Action ID="AlignToVector" editable="false" package="tomo_bt_transform">
+			<input_port name="target_transform" type="tomo::TomoTransform" description="Target transform to reorient" />
+			<input_port name="align_axis" type="std::string" default="z" description="Local axis to align (x, y, or z)" />
+			<input_port name="target_x" type="double" default="0.0" description="Target vector X in parent frame" />
+			<input_port name="target_y" type="double" default="0.0" description="Target vector Y in parent frame" />
+			<input_port name="target_z" type="double" default="1.0" description="Target vector Z in parent frame" />
+			<output_port name="output_transform" type="tomo::TomoTransform" description="Aligned transform" />
+			<output_port name="output_pose" type="tomo::TomoPose" description="Aligned pose" />
+		</Action>
+
+		<Action ID="SnapRotation90" editable="false" package="tomo_bt_transform">
+			<input_port name="target_transform" type="tomo::TomoTransform" description="Target transform to snap" />
+			<input_port name="snap_x" type="bool" default="true" description="Snap Roll (X) to nearest 90 deg" />
+			<input_port name="snap_y" type="bool" default="true" description="Snap Pitch (Y) to nearest 90 deg" />
+			<input_port name="snap_z" type="bool" default="true" description="Snap Yaw (Z) to nearest 90 deg" />
+			<output_port name="output_transform" type="tomo::TomoTransform" description="Snapped transform" />
+			<output_port name="output_pose" type="tomo::TomoPose" description="Snapped pose" />
+		</Action>
+
+		<Action ID="DecomposeTransform" editable="false" package="tomo_bt_transform">
+			<input_port name="target_transform" type="tomo::TomoTransform" description="Transform to decompose" />
+			<output_port name="parent_frame" type="std::string" description="Parent frame name" />
+			<output_port name="child_frame" type="std::string" description="Child frame name" />
+			<output_port name="x" type="double" description="Position X" />
+			<output_port name="y" type="double" description="Position Y" />
+			<output_port name="z" type="double" description="Position Z" />
+			<output_port name="roll_deg" type="double" description="Roll in degrees" />
+			<output_port name="pitch_deg" type="double" description="Pitch in degrees" />
+			<output_port name="yaw_deg" type="double" description="Yaw in degrees" />
+		</Action>
+
+		<Action ID="ConstructTransform" editable="false" package="tomo_bt_transform">
+			<input_port name="parent_frame" type="std::string" default="world" description="Parent frame identifier" />
+			<input_port name="child_frame" type="std::string" default="target" description="Child frame identifier" />
+			<input_port name="x" type="double" default="0.0" description="Position X" />
+			<input_port name="y" type="double" default="0.0" description="Position Y" />
+			<input_port name="z" type="double" default="0.0" description="Position Z" />
+			<input_port name="roll_deg" type="double" default="0.0" description="Roll in degrees" />
+			<input_port name="pitch_deg" type="double" default="0.0" description="Pitch in degrees" />
+			<input_port name="yaw_deg" type="double" default="0.0" description="Yaw in degrees" />
+			<output_port name="output_transform" type="tomo::TomoTransform" description="Constructed transform" />
+			<output_port name="output_pose" type="tomo::TomoPose" description="Constructed pose" />
+		</Action>
+
+		<Action ID="GetTransform" editable="false" package="tomo_bt_transform">
+			<input_port name="parent_frame" type="std::string" description="Parent frame name" />
+			<input_port name="child_frame" type="std::string" description="Child frame name" />
+			<output_port name="output_transform" type="tomo::TomoTransform" description="Aligned transform" />
+			<output_port name="output_pose" type="tomo::TomoPose" description="Aligned pose" />
+		</Action>
+
+		<Action ID="ApplyTransformOffset" package="tomo_bt_transform">
+			<input_port name="input_transform" type="tomo::TomoTransform" description="Base transform (Parent -&gt; Child)" />
+			<input_port name="offset_transform" type="tomo::TomoTransform" description="Offset transform to apply" />
+			<input_port name="offset_frame" type="std::string" default="child" description="Frame where offset is applied ('child', 'parent', or TF frame name)" />
+			<output_port name="output_transform" type="tomo::TomoTransform" description="Resulting offset TomoTransform" />
+			<output_port name="output_pose" type="tomo::TomoPose" description="Resulting offset TomoPose" />
+		</Action>
+		<Action ID="LimitTransform" editable="false" package="tomo_bt_transform">
+			<input_port name="target_transform" type="tomo::TomoTransform" description="Target transform" />
+			<input_port name="reference_transform" type="std::string" description="Reference transform frame name" />
+			<input_port name="min_yaw" type="double" default="-15.0" description="Minimum allowed yaw tolerance in degrees" />
+			<input_port name="max_yaw" type="double" default="15.0" description="Maximum allowed yaw tolerance in degrees" />
+			<output_port name="output_transform" type="tomo::TomoTransform" description="Corrected transform" />
+			<output_port name="output_pose" type="tomo::TomoPose" description="Corrected pose" />
+		</Action>
+		<Action ID="LoadBlackboard" editable="false" package="tomo_bt_utils">
+			<input_port name="file_name" type="string" description="The yaml file name " required="true" />
+		</Action>
+		<Action ID="Randomizer" editable="false" description="Generate a random integer or float with optional seed" package="tomo_bt_utils">
+			<input_port name="type" type="string" description="Random type: int or float" />
+			<input_port name="min" type="double" description="Minimum value" />
+			<input_port name="max" type="double" description="Maximum value" />
+			<input_port name="seed" type="string" description="Optional RNG seed (deterministic)" />
+			<output_port name="value" type="string" description="Generated random value" />
+		</Action>
+		<Decorator ID="TimeTrigger" editable="false" package="tomo_bt_utils">
+			<input_port name="expr" type="string" description="Cron-style time expression controlling when the child node is triggered. Format: 'MIN HOUR DAY MONTH WEEKDAY'. Examples: '*/5 * * * *' (every 5 minutes), '0 12 * * *' (daily at noon)." required="true" />
+			<input_port name="tolerance_sec" type="int" description="Allowed time window (seconds) to match the trigger condition." required="false" />
+		</Decorator>
+		<Decorator ID="RateController" editable="false" package="tomo_bt_utils">
+			<input_port name="rate_hz" type="double" default="10.0" description="Tick rate in Hz (frequency at which the child node is executed)" />
+		</Decorator>
+		<Action ID="WriteCSV" editable="false" description="Write values from multiple blackboard variables into a CSV file" package="tomo_bt_utils">
+			<input_port name="file_name" type="string" description="Base name of CSV file (without extension)" required="true" />
+			<input_port name="values" type="string" description="Semicolon separated list of blackboard keys to record (e.g. g1;g2;g3)" required="true" />
+			<input_port name="labels" type="string" description="Comma separated CSV header labels" required="false" />
+			<input_port name="append" type="bool" description="Append to existing file if true" required="false" />
+			<input_port name="auto_datetime" type="bool" description="Append datetime to file name" required="false" />
+			<input_port name="timestamp" type="bool" description="Add timestamp column to CSV" required="false" />
+		</Action>
+	</TreeNodesModel>
+</root>

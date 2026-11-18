@@ -1,0 +1,85 @@
+# iPhone_Packing_Gidora_6_synth_8: made by Dataset_gen/blender_to_isaac/setup_failures.py from task_gidora.yaml (same job, same timing):
+# pick iPhone.001, tape Ripcord_Armature.003, carton Armature_Box1; sizes measured from the scene's export.
+# The boxing task (TOMO Gidora, 5-finger e-hands): what the recovery generator needs to know about it.
+# Frames are the demo's own frame numbers (boxing_001.mmrt.yaml, 30 fps, 0..1100).
+# Paths are relative to this file.
+
+source:
+  mmrt: boxing_001.mmrt.yaml     # robot joints + phone pose per frame (no carton / tape: those come from motion)
+  urdf: ../../Dataset_gen/blender_to_isaac/robot_limits/source_gidora/gidora.urdf   # FK / IK + collision hulls (copy of boxing_001.urdf, 2026-11-18)
+  motion: null                                # blender_to_isaac motion.npz (full scene: carton, flaps, tape, holder) - set by
+                                              # generate.py --motion, needed for the carton / tape scenarios and for rendering
+  mmrt_io_bit_order: msb_first                # boxing_001.mmrt.yaml io_events: 192 = io0+io1, 32 = io2 (checked against the
+                                              # scene file's vacuum_io and the video)
+
+hands:
+  right: {link: Right_hand, arm: [Right_arm_joint1, Right_arm_joint2, Right_arm_joint3, Right_arm_joint4,
+                                  Right_arm_joint5, Right_arm_joint6, Right_arm_joint7], fingers: RF_, io_bits: [0, 1]}
+  left:  {link: Left_hand,  arm: [Left_arm_joint1, Left_arm_joint2, Left_arm_joint3, Left_arm_joint4,
+                                  Left_arm_joint5, Left_arm_joint6, Left_arm_joint7], fingers: LF_, io_bits: [2]}
+head: {joints: [Head_joint1, Head_joint2], camera_link: Head_camera_link}
+camera_lens: [1077.76, 1077.76, 960.0, 720.0, 1920, 1440]   # = the .blend's camera (scenes/gidora_packing.yaml), user's rule 2026-11-17
+
+table_z: 0.0                                  # table top in the robot base frame (the phone rests at z = 0.0145 = half its height)
+table_xy: [[0.25, 1.15], [-0.75, 0.75]]       # x range, y range of the table top (Alu_table.001 at x = 0.8); off it = fallen to floor
+
+# The 17 MMRT subtasks (name, first frame). Each stage runs to the next stage's first frame.
+stages:
+  - [startseq, 0]
+  - [lookobj, 25]
+  - [pickobj, 65]
+  - [lookjig, 173]
+  - [openlid, 188]
+  - [placeobj, 233]
+  - [precloselid, 300]
+  - [closelid, 328]
+  - [lookrpcd, 458]
+  - [peelrpcd, 474]
+  - [alignrpcd, 568]
+  - [pasterpcd, 639]
+  - [secrpcdtop, 669]
+  - [flipbox, 723]
+  - [closelip, 804]
+  - [secrpcdside, 895]
+  - [retbox, 994]
+
+# Every time a hand holds an object in the demo. grip / release = the IO frames (MMRT io_events).
+# object: the .blend object name. hand: right / left / both. approach: frames before grip where the hand comes in.
+grasps:
+  phone:     {object: iPhone.001,           hand: right, grip: 132, release: 275, approach: 35, stage: pickobj,
+              place_stage: placeobj, settle: 25, lands_in_target: false, on_table_z: 0.0145,
+              size_half: [0.0897, 0.0476, 0.0145], carton_gap_m: 0.03,   # carried >= 3 cm from the carton (user 2026-11-18)
+              keep_out_xy: [[[0.33, 0.565], [-0.475, -0.258]],    # a dropped phone never lands on / beside the tape
+                            [[0.477, 0.717], [-0.135, 0.135]]],   # stand (pedestal + strips) or the carton stand
+              keep_out_margin_m: 0.04,
+              keep_in_xy: [[0.585, 0.855], [-0.49, -0.195]]}       # a dropped phone lies fully inside this (the red box, back-projected
+                                                                   # table between carton and tape stand, user 2026-11-17)                            # (box_jig.001), 4 cm clear (user 2026-11-17)       # the phone box 17.96 x 9.52 x 2.9 cm (objects export)   # dropped near the tray: lands in it, tilted
+  tape:      {object: Ripcord_Armature.003, hand: auto,  grip: 511, release: 656, approach: 30, stage: peelrpcd,
+              place_stage: pasterpcd, settle: 10, on_table_z: 0.002,       # a flat strip
+              size_half: [0.0877, 0.0220, 0.0010], size_centre: [0.0877, 0.0002, -0.0000],
+              keep_in_xy: [[0.325, 0.42], [-0.135, 0.14]],
+              mirror_other: true, land_on_carton: true}                          # picking it up again: the other hand mirrors this one   # a dropped strip lies fully inside this (the green box
+                                                              # in front of the carton stand, back-projected, user 2026-11-17)   # 17.5 x 4.4 cm, origin at one end
+  box_flip:  {object: Armature_Box1,        hand: both,  grip: 747, release: 784, approach: 20, stage: flipbox,
+              place_stage: flipbox, settle: 20, release_order: [left, right], release_frames: [790, 812]}
+  box_out:   {object: Armature_Box1,        hand: auto,  grip: 1014, release: 1078, approach: 25, stage: retbox,
+              place_stage: retbox, settle: 15, on_table_z: 0.0}            # carton origin = its bottom face
+
+# Carton parts moved by fingers (bones of the carton armature). Bone names are only known after the Blender export:
+#   python -m data_gen.inspect_motion <motion.npz> --armature Armature_Box1 --frames 328 454
+# lists the bones that turn in that window. Fill `bones`, then the flap scenarios switch on.
+# Filled 2026-11-16 from gidora_packing seed 0 (bone, frames it turns): E4.L 328-343, E4.R 387-391, E3/E1/E2 406-443 (lid),
+# E2.L/E2.R/E1 824-890 (tuck lip).
+carton_parts:
+  # named by the ROBOT's side (the carton's bones are named from the carton's side: E4.L is on the robot's right, y -0.115;
+  # E4.R on its left, y +0.115 - measured 2026-11-17); the hand on that side pushes it
+  side_flap_right: {armature: Armature_Box1, bones: [DEF-E4.L], fold: [326, 345], hand: right, stage: closelid}
+  side_flap_left:  {armature: Armature_Box1, bones: [DEF-E4.R], fold: [380, 393], hand: left,  stage: closelid}
+  lid:             {armature: Armature_Box1, bones: [DEF-E3, DEF-E1, DEF-E2.L, DEF-E2.R], fold: [404, 445], hand: both, stage: closelid}
+  tuck_lip:        {armature: Armature_Box1, bones: [DEF-E2.L, DEF-E2.R, DEF-E1], fold: [822, 892], hand: both, stage: closelip}
+
+holder: {object: Armature_Box1, stage: flipbox, check_frame: 830}   # the carton standing in the holder (FlipCarton end)
+
+# The closed carton's box in its own frame (Armature_Box1), measured from the .blend's mesh 'Box 1_v1.001' at frames 454
+# and 830 (2026-11-16): 27.1-27.8 x 18.8 x 3.6 cm, origin on its bottom face. (Open, frame 0: 11.2 cm tall, lid up.)
+carton_box_local: {min: [-0.1355, -0.1102, -0.0000], max: [0.1355, 0.0775, 0.0359]}

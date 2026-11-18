@@ -1,0 +1,92 @@
+# Failure injection and recovery: every number the generator varies lives here.
+# Lengths in metres, angles in degrees, times in frames (30 fps).
+
+episode_mix:                # share of each episode category (A..E). D (varied conditions) applies to all of them.
+  normal: 0.30              # A: no failure
+  single: 0.40              # B: one failure, recovered
+  multi: 0.30               # C: 2-3 failures at different stages, each recovered
+  unrecoverable: 0.0        # E: off (recovery runs out of attempts or cannot continue safely -> success: false)
+multi_count: [2, 3]
+
+retry:
+  max_attempts: 3           # recovery attempts per failure before it is terminal
+  max_recoveries: 6         # per episode
+  retry_fail_prob: 0.0      # user 2026-11-17: the failure is the 1st time; the very next try always works (no failed retries)
+reaction_frames: [5, 10]   # after a failure the robot carries on with the original motion 5-10 frames (does not know yet), then notices and comes back (user rule 2026-11-16)
+notice:                     # the camera rule (cases with camera_rule: true - 4, 5, 6, 9): after reaction_frames, the robot notices once its head
+  seen_fraction: 0.7        # camera sees >= 70 % of the failed object's top face, not hidden by a hand / arm,
+  seen_frames: 4            # for 4 frames in a row; it never waits longer than max_frames
+  max_frames: 40
+
+conditions:                 # D: varied on every episode
+  phone_xy_m: 0.03          # phone start offset (uniform +-)
+  phone_yaw_deg: 15
+  grasp_offset_m: 0.006     # small grasp error that still succeeds
+
+tolerances:                 # the success checks (detect.py, validate.py)
+  attached_pos_m: 0.01      # hand-to-object offset change that counts as "not held"
+  attached_rot_deg: 8
+  placed_pos_m: 0.012       # object vs its target pose
+  placed_rot_deg: 6
+  flap_deg: 10              # flap / lid bone vs its folded pose
+  upright_deg: 10           # carton tilt in the holder
+  min_arm_gap_m: 0.025      # a failure's hand offset is re-drawn until the arms stay this far apart (demo's own: 24 mm)
+  min_arm_gap_generated_m: 0.015   # validation: the arms never closer than this in generated frames
+  max_step_m: 0.2           # an object moving more than this in one frame = a jump (validation). Free fall off the table
+                            # to the floor reaches 0.13 m/frame, so this only catches real jumps
+
+scenarios:                  # weight 0 = off. Each scenario = one failure type with its own recovery.
+  phone_pick_miss:          # 1: fingers close beside the phone / phone not lifted
+    weight: 1
+    miss_offset_m: [0.025, 0.06]
+  phone_pick_slip:          # 1: lifted, then slips back to the table
+    weight: 1
+    slip_after: [4, 12]
+  phone_drop_transport:     # 2: falls straight down just after the lift, into the free area between the carton and the tape
+    camera_rule: true       #    noticed when the head camera really sees it (the hand above hides it at first)
+    weight: 1               #    stand (user 2026-11-17: the red box; keep_in_xy in task_gidora.yaml), no sliding
+    window: [143, 162]      # the phone is over that area here (from 165 the demo holds it over the stands)
+    scatter_m: 0.01         # falls naturally: lands right under where it left the hand
+    yaw_change_deg: [-15, 15]
+  phone_misplaced:          # 3: released beside / across the tray, or tilted
+    camera_rule: true       # hidden under the hand at first: noticed when the head camera sees it
+    weight: 2               # user 2026-11-18: a bit more often (was 1)
+    offset_m: [0.02, 0.06]
+    yaw_deg: [-10, 10]      # how much the hand turns it (the wrist keeps the demo's orientation otherwise)
+    tilt_deg: [0, 18]       # the phone's lean where it lands (on the tray's edge), not the hand's
+  flap_not_folded:          # 4: a side flap stops part way or springs back
+    camera_rule: true       # hidden under the hand at first: noticed when the head camera sees it
+    weight: 1
+    reach: [0.2, 0.7]       # fraction of the fold it reaches
+  lid_not_closed:           # 5
+    camera_rule: true       # hidden under the hand at first: noticed when the head camera sees it
+    weight: 0               # user 2026-11-18: removed for this project (the tuck flap)
+    reach: [0.4, 0.85]
+  tape_not_lifted:          # 6: fingers come up without the strip
+    weight: 1
+  tape_drop_transport:      # 7: falls straight down into the free area in front of the carton stand (user 2026-11-17: the
+    camera_rule: true       #    green box; keep_in_xy in task_gidora.yaml), no sliding; noticed when the head camera sees it
+    weight: 1
+    window: [642, 645]      # the demo carries the strip over that area only here (x 0.33 -> 0.39)
+    scatter_m: 0.005        # falls naturally: lands right under where it left the fingers
+    yaw_change_deg: [-10, 10]
+  tape_misapplied:          # 8: stuck beside the target
+    camera_rule: true       # hidden under the hand at first: noticed when the head camera sees it
+    weight: 1
+    offset_m: [0.01, 0.03]
+  box_lift_miss:            # 9: carton flip: vacuum ON, the carton is not lifted; the hands go back the demo's way and
+    weight: 1               #    grip + lift it again as the demo does (user 2026-11-17)
+  box_falls_on_release:     # 10: OFF (user 2026-11-17): without physics the falling carton went through the stand
+    weight: 0
+    tilt_deg: [20, 55]      # leaning in / against the holder's slot (it cannot fall flat out of the slot)
+  box_out_no_lift:          # 11: carton out: vacuum ON, not lifted; again the demo's way, out to the left corner
+    weight: 1
+  box_drop_out:             # OFF (user 2026-11-17): replaced by box_out_no_lift
+    weight: 0
+    window: [1025, 1055]    # later, it is already near the table's front corner, at the edge of the left hand's reach
+    scatter_m: 0.02         # a carton dropped from a few cm does not skid or spin far
+    yaw_change_deg: [-20, 20]
+
+unrecoverable:              # how E episodes end up unrecoverable (picked at random)
+  - attempts_exhausted      # every attempt fails
+  - off_table               # the object falls off the table: out of reach, the robot stops and goes home

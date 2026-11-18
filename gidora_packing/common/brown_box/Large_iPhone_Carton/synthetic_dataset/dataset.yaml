@@ -1,0 +1,11 @@
+{
+  "depth_format": "PNG",
+  "depth_png_meters_per_unit": 0.001,
+  "names": {
+    "0": "box_1_v1"
+  },
+  "path": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset",
+  "schema_version": 3,
+  "train": "rgb",
+  "val": "rgb"
+}

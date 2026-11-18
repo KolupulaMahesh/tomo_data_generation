@@ -1,0 +1,4877 @@
+{
+  "addon_version": "0.2.0",
+  "classes": {
+    "0": "box_1_v1"
+  },
+  "dataset_name": "dataset",
+  "dataset_schema_version": 3,
+  "frame_end": 15,
+  "frame_start": 1,
+  "frame_step": 1,
+  "frames": {
+    "1": {
+      "appearance": {
+        "exposure": 0.0,
+        "gamma": 1.0,
+        "managed": false,
+        "saturation": 1.0,
+        "temperature": 6500.0,
+        "tint": 10.0,
+        "white_balance_managed": false
+      },
+      "camera": {
+        "intrinsics": {
+          "focal_length": 50.0,
+          "sensor_height": 24.0,
+          "sensor_width": 36.0,
+          "shift_x": 0.0,
+          "shift_y": 0.0
+        },
+        "matrix_world": [
+          0.8420767784118652,
+          -0.28900250792503357,
+          0.45539459586143494,
+          0.45896583795547485,
+          0.5393576622009277,
+          0.4512079358100891,
+          -0.7109885215759277,
+          -0.9030447006225586,
+          -1.8800625412040972e-07,
+          0.8443275094032288,
+          0.5358274579048157,
+          0.5400294661521912,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "object": "Camera",
+        "pose_mode": "FIXED"
+      },
+      "cameras": [
+        {
+          "intrinsics": {
+            "focal_length": 50.0,
+            "sensor_height": 24.0,
+            "sensor_width": 36.0,
+            "shift_x": 0.0,
+            "shift_y": 0.0
+          },
+          "matrix_world": [
+            0.8420767784118652,
+            -0.28900250792503357,
+            0.45539459586143494,
+            0.45896583795547485,
+            0.5393576622009277,
+            0.4512079358100891,
+            -0.7109885215759277,
+            -0.9030447006225586,
+            -1.8800625412040972e-07,
+            0.8443275094032288,
+            0.5358274579048157,
+            0.5400294661521912,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "object": "Camera",
+          "pose_mode": "FIXED"
+        }
+      ],
+      "distractors": [],
+      "drivers": [],
+      "environment": {
+        "background_color": [
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "filepath": "",
+        "image": "",
+        "managed": true,
+        "mode": "STATIC",
+        "rotation_degrees": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "strength": 1.0,
+        "world": "World"
+      },
+      "lights": [],
+      "output": {
+        "class_mask": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\masks\\000001.png",
+        "depth": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\depth\\000001.png",
+        "instance_mask": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\instance_masks\\000001.png",
+        "label": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\labels\\000001.txt",
+        "metadata": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\metadata\\000001.json",
+        "part_class_mask": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\part_masks\\000001.png",
+        "part_instance_mask": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\part_instance_masks\\000001.png",
+        "pose": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\pose\\000001.json",
+        "rgb": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\rgb\\000001.png"
+      },
+      "targets": [
+        {
+          "baseline_pass_index": 0,
+          "class_id": 0,
+          "class_name": "box_1_v1",
+          "include_pose": true,
+          "include_segmentation": true,
+          "instance_id": 1,
+          "materials": [
+            "IDG_PART_MAT_6ecc92ef2ee9",
+            "IDG_PART_MAT_00a4f3b5a1dc",
+            "IDG_PART_MAT_8de1127a95f7",
+            "IDG_PART_MAT_32c9c69dc362"
+          ],
+          "matrix_basis": [
+            0.04605923593044281,
+            -0.2266259491443634,
+            0.9728922247886658,
+            -0.18454574048519135,
+            0.5534120202064514,
+            0.8165984153747559,
+            0.16401883959770203,
+            -0.03515733778476715,
+            -0.8316331505775452,
+            0.530855655670166,
+            0.16302941739559174,
+            -0.15008744597434998,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "matrix_parent_inverse": [
+            1.0,
+            -0.0,
+            0.0,
+            -0.0,
+            -0.0,
+            1.0,
+            -0.0,
+            0.0,
+            0.0,
+            -0.0,
+            1.0,
+            -0.0,
+            -0.0,
+            0.0,
+            -0.0,
+            1.0
+          ],
+          "matrix_world": [
+            0.04605923593044281,
+            -0.2266259491443634,
+            0.9728922247886658,
+            -0.18454574048519135,
+            0.5534120202064514,
+            0.8165984153747559,
+            0.16401883959770203,
+            -0.03515733778476715,
+            -0.8316331505775452,
+            0.530855655670166,
+            0.16302941739559174,
+            -0.15008744597434998,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "object": "Box 1_v1",
+          "parent": "Armature_Box1",
+          "parts": [
+            {
+              "bone_name": "DEF-Base",
+              "include_mask": true,
+              "include_pose": false,
+              "name": "Base",
+              "part_class_id": 10,
+              "part_id": 1,
+              "part_instance_id": 10,
+              "pose_object": "",
+              "pose_offset": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ],
+              "pose_source": "BONE",
+              "role": "ANCHOR"
+            },
+            {
+              "bone_name": "",
+              "include_mask": true,
+              "include_pose": false,
+              "name": "Lid",
+              "part_class_id": 100,
+              "part_id": 2,
+              "part_instance_id": 100,
+              "pose_object": "",
+              "pose_offset": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ],
+              "pose_source": "NONE",
+              "role": "MOVABLE"
+            },
+            {
+              "bone_name": "",
+              "include_mask": true,
+              "include_pose": false,
+              "name": "EAR",
+              "part_class_id": 101,
+              "part_id": 3,
+              "part_instance_id": 1,
+              "pose_object": "",
+              "pose_offset": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ],
+              "pose_source": "NONE",
+              "role": "MOVABLE"
+            }
+          ],
+          "render_object_id": 1,
+          "rig": {
+            "bones": [
+              {
+                "export_pose": true,
+                "matrix_basis": [
+                  1.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.8610668778419495,
+                  -0.5084916949272156,
+                  0.0,
+                  0.0,
+                  0.5084916949272156,
+                  0.8610668778419495,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ],
+                "name": "DEF-E3"
+              }
+            ],
+            "object": "Armature_Box1",
+            "placement_root": {
+              "matrix_world": [
+                0.04605923593044281,
+                -0.2266259491443634,
+                0.9728922247886658,
+                -0.18454574048519135,
+                0.5534120202064514,
+                0.8165984153747559,
+                0.16401883959770203,
+                -0.03515733778476715,
+                -0.8316331505775452,
+                0.530855655670166,
+                0.16302941739559174,
+                -0.15008744597434998,
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ],
+              "object": "Armature_Box1"
+            },
+            "root_bone": "Root"
+          },
+          "transform_via_root": true,
+          "visible": true,
+          "visible_threshold": 0.0
+        }
+      ]
+    },
+    "10": {
+      "appearance": {
+        "exposure": 0.0,
+        "gamma": 1.0,
+        "managed": false,
+        "saturation": 1.0,
+        "temperature": 6500.0,
+        "tint": 10.0,
+        "white_balance_managed": false
+      },
+      "camera": {
+        "intrinsics": {
+          "focal_length": 50.0,
+          "sensor_height": 24.0,
+          "sensor_width": 36.0,
+          "shift_x": 0.0,
+          "shift_y": 0.0
+        },
+        "matrix_world": [
+          0.8420767784118652,
+          -0.28900250792503357,
+          0.45539459586143494,
+          0.45896583795547485,
+          0.5393576622009277,
+          0.4512079358100891,
+          -0.7109885215759277,
+          -0.9030447006225586,
+          -1.8800625412040972e-07,
+          0.8443275094032288,
+          0.5358274579048157,
+          0.5400294661521912,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "object": "Camera",
+        "pose_mode": "FIXED"
+      },
+      "cameras": [
+        {
+          "intrinsics": {
+            "focal_length": 50.0,
+            "sensor_height": 24.0,
+            "sensor_width": 36.0,
+            "shift_x": 0.0,
+            "shift_y": 0.0
+          },
+          "matrix_world": [
+            0.8420767784118652,
+            -0.28900250792503357,
+            0.45539459586143494,
+            0.45896583795547485,
+            0.5393576622009277,
+            0.4512079358100891,
+            -0.7109885215759277,
+            -0.9030447006225586,
+            -1.8800625412040972e-07,
+            0.8443275094032288,
+            0.5358274579048157,
+            0.5400294661521912,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "object": "Camera",
+          "pose_mode": "FIXED"
+        }
+      ],
+      "distractors": [],
+      "drivers": [],
+      "environment": {
+        "background_color": [
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "filepath": "",
+        "image": "",
+        "managed": true,
+        "mode": "STATIC",
+        "rotation_degrees": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "strength": 1.0,
+        "world": "World"
+      },
+      "lights": [],
+      "output": {
+        "class_mask": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\masks\\000010.png",
+        "depth": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\depth\\000010.png",
+        "instance_mask": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\instance_masks\\000010.png",
+        "label": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\labels\\000010.txt",
+        "metadata": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\metadata\\000010.json",
+        "part_class_mask": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\part_masks\\000010.png",
+        "part_instance_mask": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\part_instance_masks\\000010.png",
+        "pose": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\pose\\000010.json",
+        "rgb": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\rgb\\000010.png"
+      },
+      "targets": [
+        {
+          "baseline_pass_index": 0,
+          "class_id": 0,
+          "class_name": "box_1_v1",
+          "include_pose": true,
+          "include_segmentation": true,
+          "instance_id": 1,
+          "materials": [
+            "IDG_PART_MAT_6ecc92ef2ee9",
+            "IDG_PART_MAT_00a4f3b5a1dc",
+            "IDG_PART_MAT_8de1127a95f7",
+            "IDG_PART_MAT_32c9c69dc362"
+          ],
+          "matrix_basis": [
+            -0.637917160987854,
+            -0.7610702514648438,
+            -0.11761702597141266,
+            0.14952796697616577,
+            0.2668675482273102,
+            -0.07520143687725067,
+            -0.9607946872711182,
+            0.07821705937385559,
+            0.7223872542381287,
+            -0.6442956328392029,
+            0.25107723474502563,
+            0.07801426202058792,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "matrix_parent_inverse": [
+            1.0,
+            -0.0,
+            0.0,
+            -0.0,
+            -0.0,
+            1.0,
+            -0.0,
+            0.0,
+            0.0,
+            -0.0,
+            1.0,
+            -0.0,
+            -0.0,
+            0.0,
+            -0.0,
+            1.0
+          ],
+          "matrix_world": [
+            -0.637917160987854,
+            -0.7610702514648438,
+            -0.11761702597141266,
+            0.14952796697616577,
+            0.2668675482273102,
+            -0.07520143687725067,
+            -0.9607946872711182,
+            0.07821705937385559,
+            0.7223872542381287,
+            -0.6442956328392029,
+            0.25107723474502563,
+            0.07801426202058792,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "object": "Box 1_v1",
+          "parent": "Armature_Box1",
+          "parts": [
+            {
+              "bone_name": "DEF-Base",
+              "include_mask": true,
+              "include_pose": false,
+              "name": "Base",
+              "part_class_id": 10,
+              "part_id": 1,
+              "part_instance_id": 10,
+              "pose_object": "",
+              "pose_offset": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ],
+              "pose_source": "BONE",
+              "role": "ANCHOR"
+            },
+            {
+              "bone_name": "",
+              "include_mask": true,
+              "include_pose": false,
+              "name": "Lid",
+              "part_class_id": 100,
+              "part_id": 2,
+              "part_instance_id": 100,
+              "pose_object": "",
+              "pose_offset": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ],
+              "pose_source": "NONE",
+              "role": "MOVABLE"
+            },
+            {
+              "bone_name": "",
+              "include_mask": true,
+              "include_pose": false,
+              "name": "EAR",
+              "part_class_id": 101,
+              "part_id": 3,
+              "part_instance_id": 1,
+              "pose_object": "",
+              "pose_offset": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ],
+              "pose_source": "NONE",
+              "role": "MOVABLE"
+            }
+          ],
+          "render_object_id": 1,
+          "rig": {
+            "bones": [
+              {
+                "export_pose": true,
+                "matrix_basis": [
+                  1.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.9924550652503967,
+                  0.12260881066322327,
+                  0.0,
+                  0.0,
+                  -0.12260881066322327,
+                  0.9924550652503967,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ],
+                "name": "DEF-E3"
+              }
+            ],
+            "object": "Armature_Box1",
+            "placement_root": {
+              "matrix_world": [
+                -0.637917160987854,
+                -0.7610702514648438,
+                -0.11761702597141266,
+                0.14952796697616577,
+                0.2668675482273102,
+                -0.07520143687725067,
+                -0.9607946872711182,
+                0.07821705937385559,
+                0.7223872542381287,
+                -0.6442956328392029,
+                0.25107723474502563,
+                0.07801426202058792,
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ],
+              "object": "Armature_Box1"
+            },
+            "root_bone": "Root"
+          },
+          "transform_via_root": true,
+          "visible": true,
+          "visible_threshold": 0.0
+        }
+      ]
+    },
+    "11": {
+      "appearance": {
+        "exposure": 0.0,
+        "gamma": 1.0,
+        "managed": false,
+        "saturation": 1.0,
+        "temperature": 6500.0,
+        "tint": 10.0,
+        "white_balance_managed": false
+      },
+      "camera": {
+        "intrinsics": {
+          "focal_length": 50.0,
+          "sensor_height": 24.0,
+          "sensor_width": 36.0,
+          "shift_x": 0.0,
+          "shift_y": 0.0
+        },
+        "matrix_world": [
+          0.8420767784118652,
+          -0.28900250792503357,
+          0.45539459586143494,
+          0.45896583795547485,
+          0.5393576622009277,
+          0.4512079358100891,
+          -0.7109885215759277,
+          -0.9030447006225586,
+          -1.8800625412040972e-07,
+          0.8443275094032288,
+          0.5358274579048157,
+          0.5400294661521912,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "object": "Camera",
+        "pose_mode": "FIXED"
+      },
+      "cameras": [
+        {
+          "intrinsics": {
+            "focal_length": 50.0,
+            "sensor_height": 24.0,
+            "sensor_width": 36.0,
+            "shift_x": 0.0,
+            "shift_y": 0.0
+          },
+          "matrix_world": [
+            0.8420767784118652,
+            -0.28900250792503357,
+            0.45539459586143494,
+            0.45896583795547485,
+            0.5393576622009277,
+            0.4512079358100891,
+            -0.7109885215759277,
+            -0.9030447006225586,
+            -1.8800625412040972e-07,
+            0.8443275094032288,
+            0.5358274579048157,
+            0.5400294661521912,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "object": "Camera",
+          "pose_mode": "FIXED"
+        }
+      ],
+      "distractors": [],
+      "drivers": [],
+      "environment": {
+        "background_color": [
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "filepath": "",
+        "image": "",
+        "managed": true,
+        "mode": "STATIC",
+        "rotation_degrees": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "strength": 1.0,
+        "world": "World"
+      },
+      "lights": [],
+      "output": {
+        "class_mask": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\masks\\000011.png",
+        "depth": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\depth\\000011.png",
+        "instance_mask": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\instance_masks\\000011.png",
+        "label": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\labels\\000011.txt",
+        "metadata": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\metadata\\000011.json",
+        "part_class_mask": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\part_masks\\000011.png",
+        "part_instance_mask": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\part_instance_masks\\000011.png",
+        "pose": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\pose\\000011.json",
+        "rgb": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\rgb\\000011.png"
+      },
+      "targets": [
+        {
+          "baseline_pass_index": 0,
+          "class_id": 0,
+          "class_name": "box_1_v1",
+          "include_pose": true,
+          "include_segmentation": true,
+          "instance_id": 1,
+          "materials": [
+            "IDG_PART_MAT_6ecc92ef2ee9",
+            "IDG_PART_MAT_00a4f3b5a1dc",
+            "IDG_PART_MAT_8de1127a95f7",
+            "IDG_PART_MAT_32c9c69dc362"
+          ],
+          "matrix_basis": [
+            -0.9076878428459167,
+            -0.3554657995700836,
+            -0.2230399250984192,
+            0.1627179980278015,
+            0.01555646676570177,
+            0.5026279091835022,
+            -0.864362895488739,
+            -0.18825040757656097,
+            0.4193575382232666,
+            -0.7880414128303528,
+            -0.45069944858551025,
+            0.07014227658510208,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "matrix_parent_inverse": [
+            1.0,
+            -0.0,
+            0.0,
+            -0.0,
+            -0.0,
+            1.0,
+            -0.0,
+            0.0,
+            0.0,
+            -0.0,
+            1.0,
+            -0.0,
+            -0.0,
+            0.0,
+            -0.0,
+            1.0
+          ],
+          "matrix_world": [
+            -0.9076878428459167,
+            -0.3554657995700836,
+            -0.2230399250984192,
+            0.1627179980278015,
+            0.01555646676570177,
+            0.5026279091835022,
+            -0.864362895488739,
+            -0.18825040757656097,
+            0.4193575382232666,
+            -0.7880414128303528,
+            -0.45069944858551025,
+            0.07014227658510208,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "object": "Box 1_v1",
+          "parent": "Armature_Box1",
+          "parts": [
+            {
+              "bone_name": "DEF-Base",
+              "include_mask": true,
+              "include_pose": false,
+              "name": "Base",
+              "part_class_id": 10,
+              "part_id": 1,
+              "part_instance_id": 10,
+              "pose_object": "",
+              "pose_offset": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ],
+              "pose_source": "BONE",
+              "role": "ANCHOR"
+            },
+            {
+              "bone_name": "",
+              "include_mask": true,
+              "include_pose": false,
+              "name": "Lid",
+              "part_class_id": 100,
+              "part_id": 2,
+              "part_instance_id": 100,
+              "pose_object": "",
+              "pose_offset": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ],
+              "pose_source": "NONE",
+              "role": "MOVABLE"
+            },
+            {
+              "bone_name": "",
+              "include_mask": true,
+              "include_pose": false,
+              "name": "EAR",
+              "part_class_id": 101,
+              "part_id": 3,
+              "part_instance_id": 1,
+              "pose_object": "",
+              "pose_offset": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ],
+              "pose_source": "NONE",
+              "role": "MOVABLE"
+            }
+          ],
+          "render_object_id": 1,
+          "rig": {
+            "bones": [
+              {
+                "export_pose": true,
+                "matrix_basis": [
+                  1.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.9987577199935913,
+                  -0.04982921481132507,
+                  0.0,
+                  0.0,
+                  0.04982921481132507,
+                  0.9987577199935913,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ],
+                "name": "DEF-E3"
+              }
+            ],
+            "object": "Armature_Box1",
+            "placement_root": {
+              "matrix_world": [
+                -0.9076878428459167,
+                -0.3554657995700836,
+                -0.2230399250984192,
+                0.1627179980278015,
+                0.01555646676570177,
+                0.5026279091835022,
+                -0.864362895488739,
+                -0.18825040757656097,
+                0.4193575382232666,
+                -0.7880414128303528,
+                -0.45069944858551025,
+                0.07014227658510208,
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ],
+              "object": "Armature_Box1"
+            },
+            "root_bone": "Root"
+          },
+          "transform_via_root": true,
+          "visible": true,
+          "visible_threshold": 0.0
+        }
+      ]
+    },
+    "12": {
+      "appearance": {
+        "exposure": 0.0,
+        "gamma": 1.0,
+        "managed": false,
+        "saturation": 1.0,
+        "temperature": 6500.0,
+        "tint": 10.0,
+        "white_balance_managed": false
+      },
+      "camera": {
+        "intrinsics": {
+          "focal_length": 50.0,
+          "sensor_height": 24.0,
+          "sensor_width": 36.0,
+          "shift_x": 0.0,
+          "shift_y": 0.0
+        },
+        "matrix_world": [
+          0.8420767784118652,
+          -0.28900250792503357,
+          0.45539459586143494,
+          0.45896583795547485,
+          0.5393576622009277,
+          0.4512079358100891,
+          -0.7109885215759277,
+          -0.9030447006225586,
+          -1.8800625412040972e-07,
+          0.8443275094032288,
+          0.5358274579048157,
+          0.5400294661521912,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "object": "Camera",
+        "pose_mode": "FIXED"
+      },
+      "cameras": [
+        {
+          "intrinsics": {
+            "focal_length": 50.0,
+            "sensor_height": 24.0,
+            "sensor_width": 36.0,
+            "shift_x": 0.0,
+            "shift_y": 0.0
+          },
+          "matrix_world": [
+            0.8420767784118652,
+            -0.28900250792503357,
+            0.45539459586143494,
+            0.45896583795547485,
+            0.5393576622009277,
+            0.4512079358100891,
+            -0.7109885215759277,
+            -0.9030447006225586,
+            -1.8800625412040972e-07,
+            0.8443275094032288,
+            0.5358274579048157,
+            0.5400294661521912,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "object": "Camera",
+          "pose_mode": "FIXED"
+        }
+      ],
+      "distractors": [],
+      "drivers": [],
+      "environment": {
+        "background_color": [
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "filepath": "",
+        "image": "",
+        "managed": true,
+        "mode": "STATIC",
+        "rotation_degrees": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "strength": 1.0,
+        "world": "World"
+      },
+      "lights": [],
+      "output": {
+        "class_mask": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\masks\\000012.png",
+        "depth": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\depth\\000012.png",
+        "instance_mask": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\instance_masks\\000012.png",
+        "label": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\labels\\000012.txt",
+        "metadata": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\metadata\\000012.json",
+        "part_class_mask": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\part_masks\\000012.png",
+        "part_instance_mask": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\part_instance_masks\\000012.png",
+        "pose": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\pose\\000012.json",
+        "rgb": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\rgb\\000012.png"
+      },
+      "targets": [
+        {
+          "baseline_pass_index": 0,
+          "class_id": 0,
+          "class_name": "box_1_v1",
+          "include_pose": true,
+          "include_segmentation": true,
+          "instance_id": 1,
+          "materials": [
+            "IDG_PART_MAT_6ecc92ef2ee9",
+            "IDG_PART_MAT_00a4f3b5a1dc",
+            "IDG_PART_MAT_8de1127a95f7",
+            "IDG_PART_MAT_32c9c69dc362"
+          ],
+          "matrix_basis": [
+            0.061296507716178894,
+            0.41983532905578613,
+            -0.9055280685424805,
+            -0.1113971620798111,
+            -0.07803501933813095,
+            -0.9024412631988525,
+            -0.42368650436401367,
+            -0.030015740543603897,
+            -0.9950644373893738,
+            0.09663339704275131,
+            -0.022554641589522362,
+            0.045888595283031464,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "matrix_parent_inverse": [
+            1.0,
+            -0.0,
+            0.0,
+            -0.0,
+            -0.0,
+            1.0,
+            -0.0,
+            0.0,
+            0.0,
+            -0.0,
+            1.0,
+            -0.0,
+            -0.0,
+            0.0,
+            -0.0,
+            1.0
+          ],
+          "matrix_world": [
+            0.061296507716178894,
+            0.41983532905578613,
+            -0.9055280685424805,
+            -0.1113971620798111,
+            -0.07803501933813095,
+            -0.9024412631988525,
+            -0.42368650436401367,
+            -0.030015740543603897,
+            -0.9950644373893738,
+            0.09663339704275131,
+            -0.022554641589522362,
+            0.045888595283031464,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "object": "Box 1_v1",
+          "parent": "Armature_Box1",
+          "parts": [
+            {
+              "bone_name": "DEF-Base",
+              "include_mask": true,
+              "include_pose": false,
+              "name": "Base",
+              "part_class_id": 10,
+              "part_id": 1,
+              "part_instance_id": 10,
+              "pose_object": "",
+              "pose_offset": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ],
+              "pose_source": "BONE",
+              "role": "ANCHOR"
+            },
+            {
+              "bone_name": "",
+              "include_mask": true,
+              "include_pose": false,
+              "name": "Lid",
+              "part_class_id": 100,
+              "part_id": 2,
+              "part_instance_id": 100,
+              "pose_object": "",
+              "pose_offset": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ],
+              "pose_source": "NONE",
+              "role": "MOVABLE"
+            },
+            {
+              "bone_name": "",
+              "include_mask": true,
+              "include_pose": false,
+              "name": "EAR",
+              "part_class_id": 101,
+              "part_id": 3,
+              "part_instance_id": 1,
+              "pose_object": "",
+              "pose_offset": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ],
+              "pose_source": "NONE",
+              "role": "MOVABLE"
+            }
+          ],
+          "render_object_id": 1,
+          "rig": {
+            "bones": [
+              {
+                "export_pose": true,
+                "matrix_basis": [
+                  1.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.9368788599967957,
+                  -0.34965407848358154,
+                  0.0,
+                  0.0,
+                  0.34965407848358154,
+                  0.9368788599967957,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ],
+                "name": "DEF-E3"
+              }
+            ],
+            "object": "Armature_Box1",
+            "placement_root": {
+              "matrix_world": [
+                0.061296507716178894,
+                0.41983532905578613,
+                -0.9055280685424805,
+                -0.1113971620798111,
+                -0.07803501933813095,
+                -0.9024412631988525,
+                -0.42368650436401367,
+                -0.030015740543603897,
+                -0.9950644373893738,
+                0.09663339704275131,
+                -0.022554641589522362,
+                0.045888595283031464,
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ],
+              "object": "Armature_Box1"
+            },
+            "root_bone": "Root"
+          },
+          "transform_via_root": true,
+          "visible": true,
+          "visible_threshold": 0.0
+        }
+      ]
+    },
+    "13": {
+      "appearance": {
+        "exposure": 0.0,
+        "gamma": 1.0,
+        "managed": false,
+        "saturation": 1.0,
+        "temperature": 6500.0,
+        "tint": 10.0,
+        "white_balance_managed": false
+      },
+      "camera": {
+        "intrinsics": {
+          "focal_length": 50.0,
+          "sensor_height": 24.0,
+          "sensor_width": 36.0,
+          "shift_x": 0.0,
+          "shift_y": 0.0
+        },
+        "matrix_world": [
+          0.8420767784118652,
+          -0.28900250792503357,
+          0.45539459586143494,
+          0.45896583795547485,
+          0.5393576622009277,
+          0.4512079358100891,
+          -0.7109885215759277,
+          -0.9030447006225586,
+          -1.8800625412040972e-07,
+          0.8443275094032288,
+          0.5358274579048157,
+          0.5400294661521912,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "object": "Camera",
+        "pose_mode": "FIXED"
+      },
+      "cameras": [
+        {
+          "intrinsics": {
+            "focal_length": 50.0,
+            "sensor_height": 24.0,
+            "sensor_width": 36.0,
+            "shift_x": 0.0,
+            "shift_y": 0.0
+          },
+          "matrix_world": [
+            0.8420767784118652,
+            -0.28900250792503357,
+            0.45539459586143494,
+            0.45896583795547485,
+            0.5393576622009277,
+            0.4512079358100891,
+            -0.7109885215759277,
+            -0.9030447006225586,
+            -1.8800625412040972e-07,
+            0.8443275094032288,
+            0.5358274579048157,
+            0.5400294661521912,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "object": "Camera",
+          "pose_mode": "FIXED"
+        }
+      ],
+      "distractors": [],
+      "drivers": [],
+      "environment": {
+        "background_color": [
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "filepath": "",
+        "image": "",
+        "managed": true,
+        "mode": "STATIC",
+        "rotation_degrees": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "strength": 1.0,
+        "world": "World"
+      },
+      "lights": [],
+      "output": {
+        "class_mask": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\masks\\000013.png",
+        "depth": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\depth\\000013.png",
+        "instance_mask": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\instance_masks\\000013.png",
+        "label": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\labels\\000013.txt",
+        "metadata": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\metadata\\000013.json",
+        "part_class_mask": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\part_masks\\000013.png",
+        "part_instance_mask": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\part_instance_masks\\000013.png",
+        "pose": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\pose\\000013.json",
+        "rgb": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\rgb\\000013.png"
+      },
+      "targets": [
+        {
+          "baseline_pass_index": 0,
+          "class_id": 0,
+          "class_name": "box_1_v1",
+          "include_pose": true,
+          "include_segmentation": true,
+          "instance_id": 1,
+          "materials": [
+            "IDG_PART_MAT_6ecc92ef2ee9",
+            "IDG_PART_MAT_00a4f3b5a1dc",
+            "IDG_PART_MAT_8de1127a95f7",
+            "IDG_PART_MAT_32c9c69dc362"
+          ],
+          "matrix_basis": [
+            -0.439056932926178,
+            0.0006053375545889139,
+            0.8984590172767639,
+            -0.1384047418832779,
+            0.095856674015522,
+            0.9943236708641052,
+            0.046173095703125,
+            0.14923447370529175,
+            -0.8933311104774475,
+            0.1063959151506424,
+            -0.4366227388381958,
+            0.039423391222953796,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "matrix_parent_inverse": [
+            1.0,
+            -0.0,
+            0.0,
+            -0.0,
+            -0.0,
+            1.0,
+            -0.0,
+            0.0,
+            0.0,
+            -0.0,
+            1.0,
+            -0.0,
+            -0.0,
+            0.0,
+            -0.0,
+            1.0
+          ],
+          "matrix_world": [
+            -0.439056932926178,
+            0.0006053375545889139,
+            0.8984590172767639,
+            -0.1384047418832779,
+            0.095856674015522,
+            0.9943236708641052,
+            0.046173095703125,
+            0.14923447370529175,
+            -0.8933311104774475,
+            0.1063959151506424,
+            -0.4366227388381958,
+            0.039423391222953796,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "object": "Box 1_v1",
+          "parent": "Armature_Box1",
+          "parts": [
+            {
+              "bone_name": "DEF-Base",
+              "include_mask": true,
+              "include_pose": false,
+              "name": "Base",
+              "part_class_id": 10,
+              "part_id": 1,
+              "part_instance_id": 10,
+              "pose_object": "",
+              "pose_offset": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ],
+              "pose_source": "BONE",
+              "role": "ANCHOR"
+            },
+            {
+              "bone_name": "",
+              "include_mask": true,
+              "include_pose": false,
+              "name": "Lid",
+              "part_class_id": 100,
+              "part_id": 2,
+              "part_instance_id": 100,
+              "pose_object": "",
+              "pose_offset": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ],
+              "pose_source": "NONE",
+              "role": "MOVABLE"
+            },
+            {
+              "bone_name": "",
+              "include_mask": true,
+              "include_pose": false,
+              "name": "EAR",
+              "part_class_id": 101,
+              "part_id": 3,
+              "part_instance_id": 1,
+              "pose_object": "",
+              "pose_offset": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ],
+              "pose_source": "NONE",
+              "role": "MOVABLE"
+            }
+          ],
+          "render_object_id": 1,
+          "rig": {
+            "bones": [
+              {
+                "export_pose": true,
+                "matrix_basis": [
+                  1.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.5594005584716797,
+                  -0.8288974761962891,
+                  0.0,
+                  0.0,
+                  0.8288974761962891,
+                  0.5594005584716797,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ],
+                "name": "DEF-E3"
+              }
+            ],
+            "object": "Armature_Box1",
+            "placement_root": {
+              "matrix_world": [
+                -0.439056932926178,
+                0.0006053375545889139,
+                0.8984590172767639,
+                -0.1384047418832779,
+                0.095856674015522,
+                0.9943236708641052,
+                0.046173095703125,
+                0.14923447370529175,
+                -0.8933311104774475,
+                0.1063959151506424,
+                -0.4366227388381958,
+                0.039423391222953796,
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ],
+              "object": "Armature_Box1"
+            },
+            "root_bone": "Root"
+          },
+          "transform_via_root": true,
+          "visible": true,
+          "visible_threshold": 0.0
+        }
+      ]
+    },
+    "14": {
+      "appearance": {
+        "exposure": 0.0,
+        "gamma": 1.0,
+        "managed": false,
+        "saturation": 1.0,
+        "temperature": 6500.0,
+        "tint": 10.0,
+        "white_balance_managed": false
+      },
+      "camera": {
+        "intrinsics": {
+          "focal_length": 50.0,
+          "sensor_height": 24.0,
+          "sensor_width": 36.0,
+          "shift_x": 0.0,
+          "shift_y": 0.0
+        },
+        "matrix_world": [
+          0.8420767784118652,
+          -0.28900250792503357,
+          0.45539459586143494,
+          0.45896583795547485,
+          0.5393576622009277,
+          0.4512079358100891,
+          -0.7109885215759277,
+          -0.9030447006225586,
+          -1.8800625412040972e-07,
+          0.8443275094032288,
+          0.5358274579048157,
+          0.5400294661521912,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "object": "Camera",
+        "pose_mode": "FIXED"
+      },
+      "cameras": [
+        {
+          "intrinsics": {
+            "focal_length": 50.0,
+            "sensor_height": 24.0,
+            "sensor_width": 36.0,
+            "shift_x": 0.0,
+            "shift_y": 0.0
+          },
+          "matrix_world": [
+            0.8420767784118652,
+            -0.28900250792503357,
+            0.45539459586143494,
+            0.45896583795547485,
+            0.5393576622009277,
+            0.4512079358100891,
+            -0.7109885215759277,
+            -0.9030447006225586,
+            -1.8800625412040972e-07,
+            0.8443275094032288,
+            0.5358274579048157,
+            0.5400294661521912,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "object": "Camera",
+          "pose_mode": "FIXED"
+        }
+      ],
+      "distractors": [],
+      "drivers": [],
+      "environment": {
+        "background_color": [
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "filepath": "",
+        "image": "",
+        "managed": true,
+        "mode": "STATIC",
+        "rotation_degrees": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "strength": 1.0,
+        "world": "World"
+      },
+      "lights": [],
+      "output": {
+        "class_mask": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\masks\\000014.png",
+        "depth": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\depth\\000014.png",
+        "instance_mask": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\instance_masks\\000014.png",
+        "label": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\labels\\000014.txt",
+        "metadata": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\metadata\\000014.json",
+        "part_class_mask": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\part_masks\\000014.png",
+        "part_instance_mask": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\part_instance_masks\\000014.png",
+        "pose": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\pose\\000014.json",
+        "rgb": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\rgb\\000014.png"
+      },
+      "targets": [
+        {
+          "baseline_pass_index": 0,
+          "class_id": 0,
+          "class_name": "box_1_v1",
+          "include_pose": true,
+          "include_segmentation": true,
+          "instance_id": 1,
+          "materials": [
+            "IDG_PART_MAT_6ecc92ef2ee9",
+            "IDG_PART_MAT_00a4f3b5a1dc",
+            "IDG_PART_MAT_8de1127a95f7",
+            "IDG_PART_MAT_32c9c69dc362"
+          ],
+          "matrix_basis": [
+            -0.7760255336761475,
+            -0.47368481755256653,
+            -0.4164217412471771,
+            0.0779319480061531,
+            0.5157104134559631,
+            -0.09647516906261444,
+            -0.8513138890266418,
+            0.08539620041847229,
+            0.36308008432388306,
+            -0.875394344329834,
+            0.319151371717453,
+            0.014466380700469017,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "matrix_parent_inverse": [
+            1.0,
+            -0.0,
+            0.0,
+            -0.0,
+            -0.0,
+            1.0,
+            -0.0,
+            0.0,
+            0.0,
+            -0.0,
+            1.0,
+            -0.0,
+            -0.0,
+            0.0,
+            -0.0,
+            1.0
+          ],
+          "matrix_world": [
+            -0.7760255336761475,
+            -0.47368481755256653,
+            -0.4164217412471771,
+            0.0779319480061531,
+            0.5157104134559631,
+            -0.09647516906261444,
+            -0.8513138890266418,
+            0.08539620041847229,
+            0.36308008432388306,
+            -0.875394344329834,
+            0.319151371717453,
+            0.014466380700469017,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "object": "Box 1_v1",
+          "parent": "Armature_Box1",
+          "parts": [
+            {
+              "bone_name": "DEF-Base",
+              "include_mask": true,
+              "include_pose": false,
+              "name": "Base",
+              "part_class_id": 10,
+              "part_id": 1,
+              "part_instance_id": 10,
+              "pose_object": "",
+              "pose_offset": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ],
+              "pose_source": "BONE",
+              "role": "ANCHOR"
+            },
+            {
+              "bone_name": "",
+              "include_mask": true,
+              "include_pose": false,
+              "name": "Lid",
+              "part_class_id": 100,
+              "part_id": 2,
+              "part_instance_id": 100,
+              "pose_object": "",
+              "pose_offset": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ],
+              "pose_source": "NONE",
+              "role": "MOVABLE"
+            },
+            {
+              "bone_name": "",
+              "include_mask": true,
+              "include_pose": false,
+              "name": "EAR",
+              "part_class_id": 101,
+              "part_id": 3,
+              "part_instance_id": 1,
+              "pose_object": "",
+              "pose_offset": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ],
+              "pose_source": "NONE",
+              "role": "MOVABLE"
+            }
+          ],
+          "render_object_id": 1,
+          "rig": {
+            "bones": [
+              {
+                "export_pose": true,
+                "matrix_basis": [
+                  1.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.9965412616729736,
+                  0.08309945464134216,
+                  0.0,
+                  0.0,
+                  -0.08309945464134216,
+                  0.9965412616729736,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ],
+                "name": "DEF-E3"
+              }
+            ],
+            "object": "Armature_Box1",
+            "placement_root": {
+              "matrix_world": [
+                -0.7760255336761475,
+                -0.47368481755256653,
+                -0.4164217412471771,
+                0.0779319480061531,
+                0.5157104134559631,
+                -0.09647516906261444,
+                -0.8513138890266418,
+                0.08539620041847229,
+                0.36308008432388306,
+                -0.875394344329834,
+                0.319151371717453,
+                0.014466380700469017,
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ],
+              "object": "Armature_Box1"
+            },
+            "root_bone": "Root"
+          },
+          "transform_via_root": true,
+          "visible": true,
+          "visible_threshold": 0.0
+        }
+      ]
+    },
+    "15": {
+      "appearance": {
+        "exposure": 0.0,
+        "gamma": 1.0,
+        "managed": false,
+        "saturation": 1.0,
+        "temperature": 6500.0,
+        "tint": 10.0,
+        "white_balance_managed": false
+      },
+      "camera": {
+        "intrinsics": {
+          "focal_length": 50.0,
+          "sensor_height": 24.0,
+          "sensor_width": 36.0,
+          "shift_x": 0.0,
+          "shift_y": 0.0
+        },
+        "matrix_world": [
+          0.8420767784118652,
+          -0.28900250792503357,
+          0.45539459586143494,
+          0.45896583795547485,
+          0.5393576622009277,
+          0.4512079358100891,
+          -0.7109885215759277,
+          -0.9030447006225586,
+          -1.8800625412040972e-07,
+          0.8443275094032288,
+          0.5358274579048157,
+          0.5400294661521912,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "object": "Camera",
+        "pose_mode": "FIXED"
+      },
+      "cameras": [
+        {
+          "intrinsics": {
+            "focal_length": 50.0,
+            "sensor_height": 24.0,
+            "sensor_width": 36.0,
+            "shift_x": 0.0,
+            "shift_y": 0.0
+          },
+          "matrix_world": [
+            0.8420767784118652,
+            -0.28900250792503357,
+            0.45539459586143494,
+            0.45896583795547485,
+            0.5393576622009277,
+            0.4512079358100891,
+            -0.7109885215759277,
+            -0.9030447006225586,
+            -1.8800625412040972e-07,
+            0.8443275094032288,
+            0.5358274579048157,
+            0.5400294661521912,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "object": "Camera",
+          "pose_mode": "FIXED"
+        }
+      ],
+      "distractors": [],
+      "drivers": [],
+      "environment": {
+        "background_color": [
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "filepath": "",
+        "image": "",
+        "managed": true,
+        "mode": "STATIC",
+        "rotation_degrees": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "strength": 1.0,
+        "world": "World"
+      },
+      "lights": [],
+      "output": {
+        "class_mask": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\masks\\000015.png",
+        "depth": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\depth\\000015.png",
+        "instance_mask": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\instance_masks\\000015.png",
+        "label": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\labels\\000015.txt",
+        "metadata": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\metadata\\000015.json",
+        "part_class_mask": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\part_masks\\000015.png",
+        "part_instance_mask": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\part_instance_masks\\000015.png",
+        "pose": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\pose\\000015.json",
+        "rgb": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\rgb\\000015.png"
+      },
+      "targets": [
+        {
+          "baseline_pass_index": 0,
+          "class_id": 0,
+          "class_name": "box_1_v1",
+          "include_pose": true,
+          "include_segmentation": true,
+          "instance_id": 1,
+          "materials": [
+            "IDG_PART_MAT_6ecc92ef2ee9",
+            "IDG_PART_MAT_00a4f3b5a1dc",
+            "IDG_PART_MAT_8de1127a95f7",
+            "IDG_PART_MAT_32c9c69dc362"
+          ],
+          "matrix_basis": [
+            -0.8908214569091797,
+            -0.45396366715431213,
+            0.018818572163581848,
+            -0.14359928667545319,
+            -0.2208237648010254,
+            0.39638572931289673,
+            -0.8911314010620117,
+            -0.016253948211669922,
+            0.3970818817615509,
+            -0.7979945540428162,
+            -0.4533548653125763,
+            0.09928766638040543,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "matrix_parent_inverse": [
+            1.0,
+            -0.0,
+            0.0,
+            -0.0,
+            -0.0,
+            1.0,
+            -0.0,
+            0.0,
+            0.0,
+            -0.0,
+            1.0,
+            -0.0,
+            -0.0,
+            0.0,
+            -0.0,
+            1.0
+          ],
+          "matrix_world": [
+            -0.8908214569091797,
+            -0.45396366715431213,
+            0.018818572163581848,
+            -0.14359928667545319,
+            -0.2208237648010254,
+            0.39638572931289673,
+            -0.8911314010620117,
+            -0.016253948211669922,
+            0.3970818817615509,
+            -0.7979945540428162,
+            -0.4533548653125763,
+            0.09928766638040543,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "object": "Box 1_v1",
+          "parent": "Armature_Box1",
+          "parts": [
+            {
+              "bone_name": "DEF-Base",
+              "include_mask": true,
+              "include_pose": false,
+              "name": "Base",
+              "part_class_id": 10,
+              "part_id": 1,
+              "part_instance_id": 10,
+              "pose_object": "",
+              "pose_offset": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ],
+              "pose_source": "BONE",
+              "role": "ANCHOR"
+            },
+            {
+              "bone_name": "",
+              "include_mask": true,
+              "include_pose": false,
+              "name": "Lid",
+              "part_class_id": 100,
+              "part_id": 2,
+              "part_instance_id": 100,
+              "pose_object": "",
+              "pose_offset": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ],
+              "pose_source": "NONE",
+              "role": "MOVABLE"
+            },
+            {
+              "bone_name": "",
+              "include_mask": true,
+              "include_pose": false,
+              "name": "EAR",
+              "part_class_id": 101,
+              "part_id": 3,
+              "part_instance_id": 1,
+              "pose_object": "",
+              "pose_offset": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ],
+              "pose_source": "NONE",
+              "role": "MOVABLE"
+            }
+          ],
+          "render_object_id": 1,
+          "rig": {
+            "bones": [
+              {
+                "export_pose": true,
+                "matrix_basis": [
+                  1.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.34232524037361145,
+                  -0.9395815134048462,
+                  0.0,
+                  0.0,
+                  0.9395815134048462,
+                  0.34232524037361145,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ],
+                "name": "DEF-E3"
+              }
+            ],
+            "object": "Armature_Box1",
+            "placement_root": {
+              "matrix_world": [
+                -0.8908214569091797,
+                -0.45396366715431213,
+                0.018818572163581848,
+                -0.14359928667545319,
+                -0.2208237648010254,
+                0.39638572931289673,
+                -0.8911314010620117,
+                -0.016253948211669922,
+                0.3970818817615509,
+                -0.7979945540428162,
+                -0.4533548653125763,
+                0.09928766638040543,
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ],
+              "object": "Armature_Box1"
+            },
+            "root_bone": "Root"
+          },
+          "transform_via_root": true,
+          "visible": true,
+          "visible_threshold": 0.0
+        }
+      ]
+    },
+    "2": {
+      "appearance": {
+        "exposure": 0.0,
+        "gamma": 1.0,
+        "managed": false,
+        "saturation": 1.0,
+        "temperature": 6500.0,
+        "tint": 10.0,
+        "white_balance_managed": false
+      },
+      "camera": {
+        "intrinsics": {
+          "focal_length": 50.0,
+          "sensor_height": 24.0,
+          "sensor_width": 36.0,
+          "shift_x": 0.0,
+          "shift_y": 0.0
+        },
+        "matrix_world": [
+          0.8420767784118652,
+          -0.28900250792503357,
+          0.45539459586143494,
+          0.45896583795547485,
+          0.5393576622009277,
+          0.4512079358100891,
+          -0.7109885215759277,
+          -0.9030447006225586,
+          -1.8800625412040972e-07,
+          0.8443275094032288,
+          0.5358274579048157,
+          0.5400294661521912,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "object": "Camera",
+        "pose_mode": "FIXED"
+      },
+      "cameras": [
+        {
+          "intrinsics": {
+            "focal_length": 50.0,
+            "sensor_height": 24.0,
+            "sensor_width": 36.0,
+            "shift_x": 0.0,
+            "shift_y": 0.0
+          },
+          "matrix_world": [
+            0.8420767784118652,
+            -0.28900250792503357,
+            0.45539459586143494,
+            0.45896583795547485,
+            0.5393576622009277,
+            0.4512079358100891,
+            -0.7109885215759277,
+            -0.9030447006225586,
+            -1.8800625412040972e-07,
+            0.8443275094032288,
+            0.5358274579048157,
+            0.5400294661521912,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "object": "Camera",
+          "pose_mode": "FIXED"
+        }
+      ],
+      "distractors": [],
+      "drivers": [],
+      "environment": {
+        "background_color": [
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "filepath": "",
+        "image": "",
+        "managed": true,
+        "mode": "STATIC",
+        "rotation_degrees": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "strength": 1.0,
+        "world": "World"
+      },
+      "lights": [],
+      "output": {
+        "class_mask": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\masks\\000002.png",
+        "depth": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\depth\\000002.png",
+        "instance_mask": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\instance_masks\\000002.png",
+        "label": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\labels\\000002.txt",
+        "metadata": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\metadata\\000002.json",
+        "part_class_mask": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\part_masks\\000002.png",
+        "part_instance_mask": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\part_instance_masks\\000002.png",
+        "pose": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\pose\\000002.json",
+        "rgb": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\rgb\\000002.png"
+      },
+      "targets": [
+        {
+          "baseline_pass_index": 0,
+          "class_id": 0,
+          "class_name": "box_1_v1",
+          "include_pose": true,
+          "include_segmentation": true,
+          "instance_id": 1,
+          "materials": [
+            "IDG_PART_MAT_6ecc92ef2ee9",
+            "IDG_PART_MAT_00a4f3b5a1dc",
+            "IDG_PART_MAT_8de1127a95f7",
+            "IDG_PART_MAT_32c9c69dc362"
+          ],
+          "matrix_basis": [
+            -0.32529398798942566,
+            0.590103268623352,
+            0.7388923764228821,
+            0.026146123185753822,
+            0.47926950454711914,
+            0.7764780521392822,
+            -0.4091241955757141,
+            -0.1592971384525299,
+            -0.8151592016220093,
+            0.2210429310798645,
+            -0.5354021191596985,
+            -0.08827271312475204,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "matrix_parent_inverse": [
+            1.0,
+            -0.0,
+            0.0,
+            -0.0,
+            -0.0,
+            1.0,
+            -0.0,
+            0.0,
+            0.0,
+            -0.0,
+            1.0,
+            -0.0,
+            -0.0,
+            0.0,
+            -0.0,
+            1.0
+          ],
+          "matrix_world": [
+            -0.32529398798942566,
+            0.590103268623352,
+            0.7388923764228821,
+            0.026146123185753822,
+            0.47926950454711914,
+            0.7764780521392822,
+            -0.4091241955757141,
+            -0.1592971384525299,
+            -0.8151592016220093,
+            0.2210429310798645,
+            -0.5354021191596985,
+            -0.08827271312475204,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "object": "Box 1_v1",
+          "parent": "Armature_Box1",
+          "parts": [
+            {
+              "bone_name": "DEF-Base",
+              "include_mask": true,
+              "include_pose": false,
+              "name": "Base",
+              "part_class_id": 10,
+              "part_id": 1,
+              "part_instance_id": 10,
+              "pose_object": "",
+              "pose_offset": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ],
+              "pose_source": "BONE",
+              "role": "ANCHOR"
+            },
+            {
+              "bone_name": "",
+              "include_mask": true,
+              "include_pose": false,
+              "name": "Lid",
+              "part_class_id": 100,
+              "part_id": 2,
+              "part_instance_id": 100,
+              "pose_object": "",
+              "pose_offset": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ],
+              "pose_source": "NONE",
+              "role": "MOVABLE"
+            },
+            {
+              "bone_name": "",
+              "include_mask": true,
+              "include_pose": false,
+              "name": "EAR",
+              "part_class_id": 101,
+              "part_id": 3,
+              "part_instance_id": 1,
+              "pose_object": "",
+              "pose_offset": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ],
+              "pose_source": "NONE",
+              "role": "MOVABLE"
+            }
+          ],
+          "render_object_id": 1,
+          "rig": {
+            "bones": [
+              {
+                "export_pose": true,
+                "matrix_basis": [
+                  1.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.7396010160446167,
+                  -0.6730455756187439,
+                  0.0,
+                  0.0,
+                  0.6730455756187439,
+                  0.7396010160446167,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ],
+                "name": "DEF-E3"
+              }
+            ],
+            "object": "Armature_Box1",
+            "placement_root": {
+              "matrix_world": [
+                -0.32529398798942566,
+                0.590103268623352,
+                0.7388923764228821,
+                0.026146123185753822,
+                0.47926950454711914,
+                0.7764780521392822,
+                -0.4091241955757141,
+                -0.1592971384525299,
+                -0.8151592016220093,
+                0.2210429310798645,
+                -0.5354021191596985,
+                -0.08827271312475204,
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ],
+              "object": "Armature_Box1"
+            },
+            "root_bone": "Root"
+          },
+          "transform_via_root": true,
+          "visible": true,
+          "visible_threshold": 0.0
+        }
+      ]
+    },
+    "3": {
+      "appearance": {
+        "exposure": 0.0,
+        "gamma": 1.0,
+        "managed": false,
+        "saturation": 1.0,
+        "temperature": 6500.0,
+        "tint": 10.0,
+        "white_balance_managed": false
+      },
+      "camera": {
+        "intrinsics": {
+          "focal_length": 50.0,
+          "sensor_height": 24.0,
+          "sensor_width": 36.0,
+          "shift_x": 0.0,
+          "shift_y": 0.0
+        },
+        "matrix_world": [
+          0.8420767784118652,
+          -0.28900250792503357,
+          0.45539459586143494,
+          0.45896583795547485,
+          0.5393576622009277,
+          0.4512079358100891,
+          -0.7109885215759277,
+          -0.9030447006225586,
+          -1.8800625412040972e-07,
+          0.8443275094032288,
+          0.5358274579048157,
+          0.5400294661521912,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "object": "Camera",
+        "pose_mode": "FIXED"
+      },
+      "cameras": [
+        {
+          "intrinsics": {
+            "focal_length": 50.0,
+            "sensor_height": 24.0,
+            "sensor_width": 36.0,
+            "shift_x": 0.0,
+            "shift_y": 0.0
+          },
+          "matrix_world": [
+            0.8420767784118652,
+            -0.28900250792503357,
+            0.45539459586143494,
+            0.45896583795547485,
+            0.5393576622009277,
+            0.4512079358100891,
+            -0.7109885215759277,
+            -0.9030447006225586,
+            -1.8800625412040972e-07,
+            0.8443275094032288,
+            0.5358274579048157,
+            0.5400294661521912,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "object": "Camera",
+          "pose_mode": "FIXED"
+        }
+      ],
+      "distractors": [],
+      "drivers": [],
+      "environment": {
+        "background_color": [
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "filepath": "",
+        "image": "",
+        "managed": true,
+        "mode": "STATIC",
+        "rotation_degrees": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "strength": 1.0,
+        "world": "World"
+      },
+      "lights": [],
+      "output": {
+        "class_mask": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\masks\\000003.png",
+        "depth": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\depth\\000003.png",
+        "instance_mask": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\instance_masks\\000003.png",
+        "label": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\labels\\000003.txt",
+        "metadata": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\metadata\\000003.json",
+        "part_class_mask": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\part_masks\\000003.png",
+        "part_instance_mask": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\part_instance_masks\\000003.png",
+        "pose": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\pose\\000003.json",
+        "rgb": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\rgb\\000003.png"
+      },
+      "targets": [
+        {
+          "baseline_pass_index": 0,
+          "class_id": 0,
+          "class_name": "box_1_v1",
+          "include_pose": true,
+          "include_segmentation": true,
+          "instance_id": 1,
+          "materials": [
+            "IDG_PART_MAT_6ecc92ef2ee9",
+            "IDG_PART_MAT_00a4f3b5a1dc",
+            "IDG_PART_MAT_8de1127a95f7",
+            "IDG_PART_MAT_32c9c69dc362"
+          ],
+          "matrix_basis": [
+            -0.6013392210006714,
+            -0.33964037895202637,
+            -0.723211944103241,
+            -0.015446275472640991,
+            -0.6803377270698547,
+            0.6922904849052429,
+            0.24057118594646454,
+            -0.059025224298238754,
+            0.41896504163742065,
+            0.6366932988166809,
+            -0.6473715901374817,
+            -0.12416081130504608,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "matrix_parent_inverse": [
+            1.0,
+            -0.0,
+            0.0,
+            -0.0,
+            -0.0,
+            1.0,
+            -0.0,
+            0.0,
+            0.0,
+            -0.0,
+            1.0,
+            -0.0,
+            -0.0,
+            0.0,
+            -0.0,
+            1.0
+          ],
+          "matrix_world": [
+            -0.6013392210006714,
+            -0.33964037895202637,
+            -0.723211944103241,
+            -0.015446275472640991,
+            -0.6803377270698547,
+            0.6922904849052429,
+            0.24057118594646454,
+            -0.059025224298238754,
+            0.41896504163742065,
+            0.6366932988166809,
+            -0.6473715901374817,
+            -0.12416081130504608,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "object": "Box 1_v1",
+          "parent": "Armature_Box1",
+          "parts": [
+            {
+              "bone_name": "DEF-Base",
+              "include_mask": true,
+              "include_pose": false,
+              "name": "Base",
+              "part_class_id": 10,
+              "part_id": 1,
+              "part_instance_id": 10,
+              "pose_object": "",
+              "pose_offset": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ],
+              "pose_source": "BONE",
+              "role": "ANCHOR"
+            },
+            {
+              "bone_name": "",
+              "include_mask": true,
+              "include_pose": false,
+              "name": "Lid",
+              "part_class_id": 100,
+              "part_id": 2,
+              "part_instance_id": 100,
+              "pose_object": "",
+              "pose_offset": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ],
+              "pose_source": "NONE",
+              "role": "MOVABLE"
+            },
+            {
+              "bone_name": "",
+              "include_mask": true,
+              "include_pose": false,
+              "name": "EAR",
+              "part_class_id": 101,
+              "part_id": 3,
+              "part_instance_id": 1,
+              "pose_object": "",
+              "pose_offset": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ],
+              "pose_source": "NONE",
+              "role": "MOVABLE"
+            }
+          ],
+          "render_object_id": 1,
+          "rig": {
+            "bones": [
+              {
+                "export_pose": true,
+                "matrix_basis": [
+                  1.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.8603098392486572,
+                  -0.5097714066505432,
+                  0.0,
+                  0.0,
+                  0.5097714066505432,
+                  0.8603098392486572,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ],
+                "name": "DEF-E3"
+              }
+            ],
+            "object": "Armature_Box1",
+            "placement_root": {
+              "matrix_world": [
+                -0.6013392210006714,
+                -0.33964037895202637,
+                -0.723211944103241,
+                -0.015446275472640991,
+                -0.6803377270698547,
+                0.6922904849052429,
+                0.24057118594646454,
+                -0.059025224298238754,
+                0.41896504163742065,
+                0.6366932988166809,
+                -0.6473715901374817,
+                -0.12416081130504608,
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ],
+              "object": "Armature_Box1"
+            },
+            "root_bone": "Root"
+          },
+          "transform_via_root": true,
+          "visible": true,
+          "visible_threshold": 0.0
+        }
+      ]
+    },
+    "4": {
+      "appearance": {
+        "exposure": 0.0,
+        "gamma": 1.0,
+        "managed": false,
+        "saturation": 1.0,
+        "temperature": 6500.0,
+        "tint": 10.0,
+        "white_balance_managed": false
+      },
+      "camera": {
+        "intrinsics": {
+          "focal_length": 50.0,
+          "sensor_height": 24.0,
+          "sensor_width": 36.0,
+          "shift_x": 0.0,
+          "shift_y": 0.0
+        },
+        "matrix_world": [
+          0.8420767784118652,
+          -0.28900250792503357,
+          0.45539459586143494,
+          0.45896583795547485,
+          0.5393576622009277,
+          0.4512079358100891,
+          -0.7109885215759277,
+          -0.9030447006225586,
+          -1.8800625412040972e-07,
+          0.8443275094032288,
+          0.5358274579048157,
+          0.5400294661521912,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "object": "Camera",
+        "pose_mode": "FIXED"
+      },
+      "cameras": [
+        {
+          "intrinsics": {
+            "focal_length": 50.0,
+            "sensor_height": 24.0,
+            "sensor_width": 36.0,
+            "shift_x": 0.0,
+            "shift_y": 0.0
+          },
+          "matrix_world": [
+            0.8420767784118652,
+            -0.28900250792503357,
+            0.45539459586143494,
+            0.45896583795547485,
+            0.5393576622009277,
+            0.4512079358100891,
+            -0.7109885215759277,
+            -0.9030447006225586,
+            -1.8800625412040972e-07,
+            0.8443275094032288,
+            0.5358274579048157,
+            0.5400294661521912,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "object": "Camera",
+          "pose_mode": "FIXED"
+        }
+      ],
+      "distractors": [],
+      "drivers": [],
+      "environment": {
+        "background_color": [
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "filepath": "",
+        "image": "",
+        "managed": true,
+        "mode": "STATIC",
+        "rotation_degrees": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "strength": 1.0,
+        "world": "World"
+      },
+      "lights": [],
+      "output": {
+        "class_mask": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\masks\\000004.png",
+        "depth": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\depth\\000004.png",
+        "instance_mask": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\instance_masks\\000004.png",
+        "label": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\labels\\000004.txt",
+        "metadata": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\metadata\\000004.json",
+        "part_class_mask": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\part_masks\\000004.png",
+        "part_instance_mask": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\part_instance_masks\\000004.png",
+        "pose": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\pose\\000004.json",
+        "rgb": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\rgb\\000004.png"
+      },
+      "targets": [
+        {
+          "baseline_pass_index": 0,
+          "class_id": 0,
+          "class_name": "box_1_v1",
+          "include_pose": true,
+          "include_segmentation": true,
+          "instance_id": 1,
+          "materials": [
+            "IDG_PART_MAT_6ecc92ef2ee9",
+            "IDG_PART_MAT_00a4f3b5a1dc",
+            "IDG_PART_MAT_8de1127a95f7",
+            "IDG_PART_MAT_32c9c69dc362"
+          ],
+          "matrix_basis": [
+            0.8826369047164917,
+            -0.4153379499912262,
+            -0.22010570764541626,
+            0.03128301724791527,
+            -0.3596632778644562,
+            -0.898221492767334,
+            0.252666711807251,
+            -0.16079755127429962,
+            -0.302645742893219,
+            -0.14384901523590088,
+            -0.9421852231025696,
+            -0.09480582922697067,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "matrix_parent_inverse": [
+            1.0,
+            -0.0,
+            0.0,
+            -0.0,
+            -0.0,
+            1.0,
+            -0.0,
+            0.0,
+            0.0,
+            -0.0,
+            1.0,
+            -0.0,
+            -0.0,
+            0.0,
+            -0.0,
+            1.0
+          ],
+          "matrix_world": [
+            0.8826369047164917,
+            -0.4153379499912262,
+            -0.22010570764541626,
+            0.03128301724791527,
+            -0.3596632778644562,
+            -0.898221492767334,
+            0.252666711807251,
+            -0.16079755127429962,
+            -0.302645742893219,
+            -0.14384901523590088,
+            -0.9421852231025696,
+            -0.09480582922697067,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "object": "Box 1_v1",
+          "parent": "Armature_Box1",
+          "parts": [
+            {
+              "bone_name": "DEF-Base",
+              "include_mask": true,
+              "include_pose": false,
+              "name": "Base",
+              "part_class_id": 10,
+              "part_id": 1,
+              "part_instance_id": 10,
+              "pose_object": "",
+              "pose_offset": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ],
+              "pose_source": "BONE",
+              "role": "ANCHOR"
+            },
+            {
+              "bone_name": "",
+              "include_mask": true,
+              "include_pose": false,
+              "name": "Lid",
+              "part_class_id": 100,
+              "part_id": 2,
+              "part_instance_id": 100,
+              "pose_object": "",
+              "pose_offset": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ],
+              "pose_source": "NONE",
+              "role": "MOVABLE"
+            },
+            {
+              "bone_name": "",
+              "include_mask": true,
+              "include_pose": false,
+              "name": "EAR",
+              "part_class_id": 101,
+              "part_id": 3,
+              "part_instance_id": 1,
+              "pose_object": "",
+              "pose_offset": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ],
+              "pose_source": "NONE",
+              "role": "MOVABLE"
+            }
+          ],
+          "render_object_id": 1,
+          "rig": {
+            "bones": [
+              {
+                "export_pose": true,
+                "matrix_basis": [
+                  1.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.6445709466934204,
+                  -0.7645444869995117,
+                  0.0,
+                  0.0,
+                  0.7645444869995117,
+                  0.6445709466934204,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ],
+                "name": "DEF-E3"
+              }
+            ],
+            "object": "Armature_Box1",
+            "placement_root": {
+              "matrix_world": [
+                0.8826369047164917,
+                -0.4153379499912262,
+                -0.22010570764541626,
+                0.03128301724791527,
+                -0.3596632778644562,
+                -0.898221492767334,
+                0.252666711807251,
+                -0.16079755127429962,
+                -0.302645742893219,
+                -0.14384901523590088,
+                -0.9421852231025696,
+                -0.09480582922697067,
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ],
+              "object": "Armature_Box1"
+            },
+            "root_bone": "Root"
+          },
+          "transform_via_root": true,
+          "visible": true,
+          "visible_threshold": 0.0
+        }
+      ]
+    },
+    "5": {
+      "appearance": {
+        "exposure": 0.0,
+        "gamma": 1.0,
+        "managed": false,
+        "saturation": 1.0,
+        "temperature": 6500.0,
+        "tint": 10.0,
+        "white_balance_managed": false
+      },
+      "camera": {
+        "intrinsics": {
+          "focal_length": 50.0,
+          "sensor_height": 24.0,
+          "sensor_width": 36.0,
+          "shift_x": 0.0,
+          "shift_y": 0.0
+        },
+        "matrix_world": [
+          0.8420767784118652,
+          -0.28900250792503357,
+          0.45539459586143494,
+          0.45896583795547485,
+          0.5393576622009277,
+          0.4512079358100891,
+          -0.7109885215759277,
+          -0.9030447006225586,
+          -1.8800625412040972e-07,
+          0.8443275094032288,
+          0.5358274579048157,
+          0.5400294661521912,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "object": "Camera",
+        "pose_mode": "FIXED"
+      },
+      "cameras": [
+        {
+          "intrinsics": {
+            "focal_length": 50.0,
+            "sensor_height": 24.0,
+            "sensor_width": 36.0,
+            "shift_x": 0.0,
+            "shift_y": 0.0
+          },
+          "matrix_world": [
+            0.8420767784118652,
+            -0.28900250792503357,
+            0.45539459586143494,
+            0.45896583795547485,
+            0.5393576622009277,
+            0.4512079358100891,
+            -0.7109885215759277,
+            -0.9030447006225586,
+            -1.8800625412040972e-07,
+            0.8443275094032288,
+            0.5358274579048157,
+            0.5400294661521912,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "object": "Camera",
+          "pose_mode": "FIXED"
+        }
+      ],
+      "distractors": [],
+      "drivers": [],
+      "environment": {
+        "background_color": [
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "filepath": "",
+        "image": "",
+        "managed": true,
+        "mode": "STATIC",
+        "rotation_degrees": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "strength": 1.0,
+        "world": "World"
+      },
+      "lights": [],
+      "output": {
+        "class_mask": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\masks\\000005.png",
+        "depth": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\depth\\000005.png",
+        "instance_mask": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\instance_masks\\000005.png",
+        "label": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\labels\\000005.txt",
+        "metadata": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\metadata\\000005.json",
+        "part_class_mask": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\part_masks\\000005.png",
+        "part_instance_mask": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\part_instance_masks\\000005.png",
+        "pose": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\pose\\000005.json",
+        "rgb": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\rgb\\000005.png"
+      },
+      "targets": [
+        {
+          "baseline_pass_index": 0,
+          "class_id": 0,
+          "class_name": "box_1_v1",
+          "include_pose": true,
+          "include_segmentation": true,
+          "instance_id": 1,
+          "materials": [
+            "IDG_PART_MAT_6ecc92ef2ee9",
+            "IDG_PART_MAT_00a4f3b5a1dc",
+            "IDG_PART_MAT_8de1127a95f7",
+            "IDG_PART_MAT_32c9c69dc362"
+          ],
+          "matrix_basis": [
+            -0.4772678315639496,
+            0.395246684551239,
+            0.7848537564277649,
+            0.06547559797763824,
+            -0.5851975679397583,
+            0.5233359932899475,
+            -0.6194055676460266,
+            -0.03426876664161682,
+            -0.6555601954460144,
+            -0.7549169063568115,
+            -0.018474018201231956,
+            0.10558345168828964,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "matrix_parent_inverse": [
+            1.0,
+            -0.0,
+            0.0,
+            -0.0,
+            -0.0,
+            1.0,
+            -0.0,
+            0.0,
+            0.0,
+            -0.0,
+            1.0,
+            -0.0,
+            -0.0,
+            0.0,
+            -0.0,
+            1.0
+          ],
+          "matrix_world": [
+            -0.4772678315639496,
+            0.395246684551239,
+            0.7848537564277649,
+            0.06547559797763824,
+            -0.5851975679397583,
+            0.5233359932899475,
+            -0.6194055676460266,
+            -0.03426876664161682,
+            -0.6555601954460144,
+            -0.7549169063568115,
+            -0.018474018201231956,
+            0.10558345168828964,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "object": "Box 1_v1",
+          "parent": "Armature_Box1",
+          "parts": [
+            {
+              "bone_name": "DEF-Base",
+              "include_mask": true,
+              "include_pose": false,
+              "name": "Base",
+              "part_class_id": 10,
+              "part_id": 1,
+              "part_instance_id": 10,
+              "pose_object": "",
+              "pose_offset": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ],
+              "pose_source": "BONE",
+              "role": "ANCHOR"
+            },
+            {
+              "bone_name": "",
+              "include_mask": true,
+              "include_pose": false,
+              "name": "Lid",
+              "part_class_id": 100,
+              "part_id": 2,
+              "part_instance_id": 100,
+              "pose_object": "",
+              "pose_offset": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ],
+              "pose_source": "NONE",
+              "role": "MOVABLE"
+            },
+            {
+              "bone_name": "",
+              "include_mask": true,
+              "include_pose": false,
+              "name": "EAR",
+              "part_class_id": 101,
+              "part_id": 3,
+              "part_instance_id": 1,
+              "pose_object": "",
+              "pose_offset": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ],
+              "pose_source": "NONE",
+              "role": "MOVABLE"
+            }
+          ],
+          "render_object_id": 1,
+          "rig": {
+            "bones": [
+              {
+                "export_pose": true,
+                "matrix_basis": [
+                  1.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.37789174914360046,
+                  -0.9258497357368469,
+                  0.0,
+                  0.0,
+                  0.9258497357368469,
+                  0.37789174914360046,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ],
+                "name": "DEF-E3"
+              }
+            ],
+            "object": "Armature_Box1",
+            "placement_root": {
+              "matrix_world": [
+                -0.4772678315639496,
+                0.395246684551239,
+                0.7848537564277649,
+                0.06547559797763824,
+                -0.5851975679397583,
+                0.5233359932899475,
+                -0.6194055676460266,
+                -0.03426876664161682,
+                -0.6555601954460144,
+                -0.7549169063568115,
+                -0.018474018201231956,
+                0.10558345168828964,
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ],
+              "object": "Armature_Box1"
+            },
+            "root_bone": "Root"
+          },
+          "transform_via_root": true,
+          "visible": true,
+          "visible_threshold": 0.0
+        }
+      ]
+    },
+    "6": {
+      "appearance": {
+        "exposure": 0.0,
+        "gamma": 1.0,
+        "managed": false,
+        "saturation": 1.0,
+        "temperature": 6500.0,
+        "tint": 10.0,
+        "white_balance_managed": false
+      },
+      "camera": {
+        "intrinsics": {
+          "focal_length": 50.0,
+          "sensor_height": 24.0,
+          "sensor_width": 36.0,
+          "shift_x": 0.0,
+          "shift_y": 0.0
+        },
+        "matrix_world": [
+          0.8420767784118652,
+          -0.28900250792503357,
+          0.45539459586143494,
+          0.45896583795547485,
+          0.5393576622009277,
+          0.4512079358100891,
+          -0.7109885215759277,
+          -0.9030447006225586,
+          -1.8800625412040972e-07,
+          0.8443275094032288,
+          0.5358274579048157,
+          0.5400294661521912,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "object": "Camera",
+        "pose_mode": "FIXED"
+      },
+      "cameras": [
+        {
+          "intrinsics": {
+            "focal_length": 50.0,
+            "sensor_height": 24.0,
+            "sensor_width": 36.0,
+            "shift_x": 0.0,
+            "shift_y": 0.0
+          },
+          "matrix_world": [
+            0.8420767784118652,
+            -0.28900250792503357,
+            0.45539459586143494,
+            0.45896583795547485,
+            0.5393576622009277,
+            0.4512079358100891,
+            -0.7109885215759277,
+            -0.9030447006225586,
+            -1.8800625412040972e-07,
+            0.8443275094032288,
+            0.5358274579048157,
+            0.5400294661521912,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "object": "Camera",
+          "pose_mode": "FIXED"
+        }
+      ],
+      "distractors": [],
+      "drivers": [],
+      "environment": {
+        "background_color": [
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "filepath": "",
+        "image": "",
+        "managed": true,
+        "mode": "STATIC",
+        "rotation_degrees": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "strength": 1.0,
+        "world": "World"
+      },
+      "lights": [],
+      "output": {
+        "class_mask": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\masks\\000006.png",
+        "depth": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\depth\\000006.png",
+        "instance_mask": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\instance_masks\\000006.png",
+        "label": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\labels\\000006.txt",
+        "metadata": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\metadata\\000006.json",
+        "part_class_mask": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\part_masks\\000006.png",
+        "part_instance_mask": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\part_instance_masks\\000006.png",
+        "pose": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\pose\\000006.json",
+        "rgb": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\rgb\\000006.png"
+      },
+      "targets": [
+        {
+          "baseline_pass_index": 0,
+          "class_id": 0,
+          "class_name": "box_1_v1",
+          "include_pose": true,
+          "include_segmentation": true,
+          "instance_id": 1,
+          "materials": [
+            "IDG_PART_MAT_6ecc92ef2ee9",
+            "IDG_PART_MAT_00a4f3b5a1dc",
+            "IDG_PART_MAT_8de1127a95f7",
+            "IDG_PART_MAT_32c9c69dc362"
+          ],
+          "matrix_basis": [
+            -0.7633983492851257,
+            -0.2705083191394806,
+            -0.5865562558174133,
+            -0.10193243622779846,
+            -0.2893487513065338,
+            0.9550896286964417,
+            -0.06388362497091293,
+            -0.08376291394233704,
+            0.5774948000907898,
+            0.12095066159963608,
+            -0.8073850870132446,
+            0.03476865962147713,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "matrix_parent_inverse": [
+            1.0,
+            -0.0,
+            0.0,
+            -0.0,
+            -0.0,
+            1.0,
+            -0.0,
+            0.0,
+            0.0,
+            -0.0,
+            1.0,
+            -0.0,
+            -0.0,
+            0.0,
+            -0.0,
+            1.0
+          ],
+          "matrix_world": [
+            -0.7633983492851257,
+            -0.2705083191394806,
+            -0.5865562558174133,
+            -0.10193243622779846,
+            -0.2893487513065338,
+            0.9550896286964417,
+            -0.06388362497091293,
+            -0.08376291394233704,
+            0.5774948000907898,
+            0.12095066159963608,
+            -0.8073850870132446,
+            0.03476865962147713,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "object": "Box 1_v1",
+          "parent": "Armature_Box1",
+          "parts": [
+            {
+              "bone_name": "DEF-Base",
+              "include_mask": true,
+              "include_pose": false,
+              "name": "Base",
+              "part_class_id": 10,
+              "part_id": 1,
+              "part_instance_id": 10,
+              "pose_object": "",
+              "pose_offset": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ],
+              "pose_source": "BONE",
+              "role": "ANCHOR"
+            },
+            {
+              "bone_name": "",
+              "include_mask": true,
+              "include_pose": false,
+              "name": "Lid",
+              "part_class_id": 100,
+              "part_id": 2,
+              "part_instance_id": 100,
+              "pose_object": "",
+              "pose_offset": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ],
+              "pose_source": "NONE",
+              "role": "MOVABLE"
+            },
+            {
+              "bone_name": "",
+              "include_mask": true,
+              "include_pose": false,
+              "name": "EAR",
+              "part_class_id": 101,
+              "part_id": 3,
+              "part_instance_id": 1,
+              "pose_object": "",
+              "pose_offset": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ],
+              "pose_source": "NONE",
+              "role": "MOVABLE"
+            }
+          ],
+          "render_object_id": 1,
+          "rig": {
+            "bones": [
+              {
+                "export_pose": true,
+                "matrix_basis": [
+                  1.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.9876537322998047,
+                  -0.15665248036384583,
+                  0.0,
+                  0.0,
+                  0.15665248036384583,
+                  0.9876537322998047,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ],
+                "name": "DEF-E3"
+              }
+            ],
+            "object": "Armature_Box1",
+            "placement_root": {
+              "matrix_world": [
+                -0.7633983492851257,
+                -0.2705083191394806,
+                -0.5865562558174133,
+                -0.10193243622779846,
+                -0.2893487513065338,
+                0.9550896286964417,
+                -0.06388362497091293,
+                -0.08376291394233704,
+                0.5774948000907898,
+                0.12095066159963608,
+                -0.8073850870132446,
+                0.03476865962147713,
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ],
+              "object": "Armature_Box1"
+            },
+            "root_bone": "Root"
+          },
+          "transform_via_root": true,
+          "visible": true,
+          "visible_threshold": 0.0
+        }
+      ]
+    },
+    "7": {
+      "appearance": {
+        "exposure": 0.0,
+        "gamma": 1.0,
+        "managed": false,
+        "saturation": 1.0,
+        "temperature": 6500.0,
+        "tint": 10.0,
+        "white_balance_managed": false
+      },
+      "camera": {
+        "intrinsics": {
+          "focal_length": 50.0,
+          "sensor_height": 24.0,
+          "sensor_width": 36.0,
+          "shift_x": 0.0,
+          "shift_y": 0.0
+        },
+        "matrix_world": [
+          0.8420767784118652,
+          -0.28900250792503357,
+          0.45539459586143494,
+          0.45896583795547485,
+          0.5393576622009277,
+          0.4512079358100891,
+          -0.7109885215759277,
+          -0.9030447006225586,
+          -1.8800625412040972e-07,
+          0.8443275094032288,
+          0.5358274579048157,
+          0.5400294661521912,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "object": "Camera",
+        "pose_mode": "FIXED"
+      },
+      "cameras": [
+        {
+          "intrinsics": {
+            "focal_length": 50.0,
+            "sensor_height": 24.0,
+            "sensor_width": 36.0,
+            "shift_x": 0.0,
+            "shift_y": 0.0
+          },
+          "matrix_world": [
+            0.8420767784118652,
+            -0.28900250792503357,
+            0.45539459586143494,
+            0.45896583795547485,
+            0.5393576622009277,
+            0.4512079358100891,
+            -0.7109885215759277,
+            -0.9030447006225586,
+            -1.8800625412040972e-07,
+            0.8443275094032288,
+            0.5358274579048157,
+            0.5400294661521912,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "object": "Camera",
+          "pose_mode": "FIXED"
+        }
+      ],
+      "distractors": [],
+      "drivers": [],
+      "environment": {
+        "background_color": [
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "filepath": "",
+        "image": "",
+        "managed": true,
+        "mode": "STATIC",
+        "rotation_degrees": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "strength": 1.0,
+        "world": "World"
+      },
+      "lights": [],
+      "output": {
+        "class_mask": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\masks\\000007.png",
+        "depth": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\depth\\000007.png",
+        "instance_mask": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\instance_masks\\000007.png",
+        "label": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\labels\\000007.txt",
+        "metadata": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\metadata\\000007.json",
+        "part_class_mask": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\part_masks\\000007.png",
+        "part_instance_mask": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\part_instance_masks\\000007.png",
+        "pose": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\pose\\000007.json",
+        "rgb": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\rgb\\000007.png"
+      },
+      "targets": [
+        {
+          "baseline_pass_index": 0,
+          "class_id": 0,
+          "class_name": "box_1_v1",
+          "include_pose": true,
+          "include_segmentation": true,
+          "instance_id": 1,
+          "materials": [
+            "IDG_PART_MAT_6ecc92ef2ee9",
+            "IDG_PART_MAT_00a4f3b5a1dc",
+            "IDG_PART_MAT_8de1127a95f7",
+            "IDG_PART_MAT_32c9c69dc362"
+          ],
+          "matrix_basis": [
+            -0.14885957539081573,
+            -0.9800925850868225,
+            -0.13137483596801758,
+            -0.1759006232023239,
+            -0.9600164890289307,
+            0.11138395220041275,
+            0.25683051347732544,
+            -0.06123105064034462,
+            -0.23708462715148926,
+            0.16435369849205017,
+            -0.9574856162071228,
+            0.11938842386007309,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "matrix_parent_inverse": [
+            1.0,
+            -0.0,
+            0.0,
+            -0.0,
+            -0.0,
+            1.0,
+            -0.0,
+            0.0,
+            0.0,
+            -0.0,
+            1.0,
+            -0.0,
+            -0.0,
+            0.0,
+            -0.0,
+            1.0
+          ],
+          "matrix_world": [
+            -0.14885957539081573,
+            -0.9800925850868225,
+            -0.13137483596801758,
+            -0.1759006232023239,
+            -0.9600164890289307,
+            0.11138395220041275,
+            0.25683051347732544,
+            -0.06123105064034462,
+            -0.23708462715148926,
+            0.16435369849205017,
+            -0.9574856162071228,
+            0.11938842386007309,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "object": "Box 1_v1",
+          "parent": "Armature_Box1",
+          "parts": [
+            {
+              "bone_name": "DEF-Base",
+              "include_mask": true,
+              "include_pose": false,
+              "name": "Base",
+              "part_class_id": 10,
+              "part_id": 1,
+              "part_instance_id": 10,
+              "pose_object": "",
+              "pose_offset": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ],
+              "pose_source": "BONE",
+              "role": "ANCHOR"
+            },
+            {
+              "bone_name": "",
+              "include_mask": true,
+              "include_pose": false,
+              "name": "Lid",
+              "part_class_id": 100,
+              "part_id": 2,
+              "part_instance_id": 100,
+              "pose_object": "",
+              "pose_offset": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ],
+              "pose_source": "NONE",
+              "role": "MOVABLE"
+            },
+            {
+              "bone_name": "",
+              "include_mask": true,
+              "include_pose": false,
+              "name": "EAR",
+              "part_class_id": 101,
+              "part_id": 3,
+              "part_instance_id": 1,
+              "pose_object": "",
+              "pose_offset": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ],
+              "pose_source": "NONE",
+              "role": "MOVABLE"
+            }
+          ],
+          "render_object_id": 1,
+          "rig": {
+            "bones": [
+              {
+                "export_pose": true,
+                "matrix_basis": [
+                  1.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.9995615482330322,
+                  0.029607683420181274,
+                  0.0,
+                  0.0,
+                  -0.029607683420181274,
+                  0.9995615482330322,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ],
+                "name": "DEF-E3"
+              }
+            ],
+            "object": "Armature_Box1",
+            "placement_root": {
+              "matrix_world": [
+                -0.14885957539081573,
+                -0.9800925850868225,
+                -0.13137483596801758,
+                -0.1759006232023239,
+                -0.9600164890289307,
+                0.11138395220041275,
+                0.25683051347732544,
+                -0.06123105064034462,
+                -0.23708462715148926,
+                0.16435369849205017,
+                -0.9574856162071228,
+                0.11938842386007309,
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ],
+              "object": "Armature_Box1"
+            },
+            "root_bone": "Root"
+          },
+          "transform_via_root": true,
+          "visible": true,
+          "visible_threshold": 0.0
+        }
+      ]
+    },
+    "8": {
+      "appearance": {
+        "exposure": 0.0,
+        "gamma": 1.0,
+        "managed": false,
+        "saturation": 1.0,
+        "temperature": 6500.0,
+        "tint": 10.0,
+        "white_balance_managed": false
+      },
+      "camera": {
+        "intrinsics": {
+          "focal_length": 50.0,
+          "sensor_height": 24.0,
+          "sensor_width": 36.0,
+          "shift_x": 0.0,
+          "shift_y": 0.0
+        },
+        "matrix_world": [
+          0.8420767784118652,
+          -0.28900250792503357,
+          0.45539459586143494,
+          0.45896583795547485,
+          0.5393576622009277,
+          0.4512079358100891,
+          -0.7109885215759277,
+          -0.9030447006225586,
+          -1.8800625412040972e-07,
+          0.8443275094032288,
+          0.5358274579048157,
+          0.5400294661521912,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "object": "Camera",
+        "pose_mode": "FIXED"
+      },
+      "cameras": [
+        {
+          "intrinsics": {
+            "focal_length": 50.0,
+            "sensor_height": 24.0,
+            "sensor_width": 36.0,
+            "shift_x": 0.0,
+            "shift_y": 0.0
+          },
+          "matrix_world": [
+            0.8420767784118652,
+            -0.28900250792503357,
+            0.45539459586143494,
+            0.45896583795547485,
+            0.5393576622009277,
+            0.4512079358100891,
+            -0.7109885215759277,
+            -0.9030447006225586,
+            -1.8800625412040972e-07,
+            0.8443275094032288,
+            0.5358274579048157,
+            0.5400294661521912,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "object": "Camera",
+          "pose_mode": "FIXED"
+        }
+      ],
+      "distractors": [],
+      "drivers": [],
+      "environment": {
+        "background_color": [
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "filepath": "",
+        "image": "",
+        "managed": true,
+        "mode": "STATIC",
+        "rotation_degrees": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "strength": 1.0,
+        "world": "World"
+      },
+      "lights": [],
+      "output": {
+        "class_mask": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\masks\\000008.png",
+        "depth": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\depth\\000008.png",
+        "instance_mask": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\instance_masks\\000008.png",
+        "label": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\labels\\000008.txt",
+        "metadata": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\metadata\\000008.json",
+        "part_class_mask": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\part_masks\\000008.png",
+        "part_instance_mask": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\part_instance_masks\\000008.png",
+        "pose": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\pose\\000008.json",
+        "rgb": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\rgb\\000008.png"
+      },
+      "targets": [
+        {
+          "baseline_pass_index": 0,
+          "class_id": 0,
+          "class_name": "box_1_v1",
+          "include_pose": true,
+          "include_segmentation": true,
+          "instance_id": 1,
+          "materials": [
+            "IDG_PART_MAT_6ecc92ef2ee9",
+            "IDG_PART_MAT_00a4f3b5a1dc",
+            "IDG_PART_MAT_8de1127a95f7",
+            "IDG_PART_MAT_32c9c69dc362"
+          ],
+          "matrix_basis": [
+            0.23118402063846588,
+            -0.14352579414844513,
+            -0.9622651934623718,
+            -0.19295577704906464,
+            0.776390552520752,
+            -0.568836510181427,
+            0.2713719606399536,
+            0.05706893280148506,
+            -0.5863204598426819,
+            -0.8098304867744446,
+            -0.020073825493454933,
+            -0.1306726336479187,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "matrix_parent_inverse": [
+            1.0,
+            -0.0,
+            0.0,
+            -0.0,
+            -0.0,
+            1.0,
+            -0.0,
+            0.0,
+            0.0,
+            -0.0,
+            1.0,
+            -0.0,
+            -0.0,
+            0.0,
+            -0.0,
+            1.0
+          ],
+          "matrix_world": [
+            0.23118402063846588,
+            -0.14352579414844513,
+            -0.9622651934623718,
+            -0.19295577704906464,
+            0.776390552520752,
+            -0.568836510181427,
+            0.2713719606399536,
+            0.05706893280148506,
+            -0.5863204598426819,
+            -0.8098304867744446,
+            -0.020073825493454933,
+            -0.1306726336479187,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "object": "Box 1_v1",
+          "parent": "Armature_Box1",
+          "parts": [
+            {
+              "bone_name": "DEF-Base",
+              "include_mask": true,
+              "include_pose": false,
+              "name": "Base",
+              "part_class_id": 10,
+              "part_id": 1,
+              "part_instance_id": 10,
+              "pose_object": "",
+              "pose_offset": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ],
+              "pose_source": "BONE",
+              "role": "ANCHOR"
+            },
+            {
+              "bone_name": "",
+              "include_mask": true,
+              "include_pose": false,
+              "name": "Lid",
+              "part_class_id": 100,
+              "part_id": 2,
+              "part_instance_id": 100,
+              "pose_object": "",
+              "pose_offset": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ],
+              "pose_source": "NONE",
+              "role": "MOVABLE"
+            },
+            {
+              "bone_name": "",
+              "include_mask": true,
+              "include_pose": false,
+              "name": "EAR",
+              "part_class_id": 101,
+              "part_id": 3,
+              "part_instance_id": 1,
+              "pose_object": "",
+              "pose_offset": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ],
+              "pose_source": "NONE",
+              "role": "MOVABLE"
+            }
+          ],
+          "render_object_id": 1,
+          "rig": {
+            "bones": [
+              {
+                "export_pose": true,
+                "matrix_basis": [
+                  1.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.7281911969184875,
+                  -0.6853740215301514,
+                  0.0,
+                  0.0,
+                  0.6853740215301514,
+                  0.7281911969184875,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ],
+                "name": "DEF-E3"
+              }
+            ],
+            "object": "Armature_Box1",
+            "placement_root": {
+              "matrix_world": [
+                0.23118402063846588,
+                -0.14352579414844513,
+                -0.9622651934623718,
+                -0.19295577704906464,
+                0.776390552520752,
+                -0.568836510181427,
+                0.2713719606399536,
+                0.05706893280148506,
+                -0.5863204598426819,
+                -0.8098304867744446,
+                -0.020073825493454933,
+                -0.1306726336479187,
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ],
+              "object": "Armature_Box1"
+            },
+            "root_bone": "Root"
+          },
+          "transform_via_root": true,
+          "visible": true,
+          "visible_threshold": 0.0
+        }
+      ]
+    },
+    "9": {
+      "appearance": {
+        "exposure": 0.0,
+        "gamma": 1.0,
+        "managed": false,
+        "saturation": 1.0,
+        "temperature": 6500.0,
+        "tint": 10.0,
+        "white_balance_managed": false
+      },
+      "camera": {
+        "intrinsics": {
+          "focal_length": 50.0,
+          "sensor_height": 24.0,
+          "sensor_width": 36.0,
+          "shift_x": 0.0,
+          "shift_y": 0.0
+        },
+        "matrix_world": [
+          0.8420767784118652,
+          -0.28900250792503357,
+          0.45539459586143494,
+          0.45896583795547485,
+          0.5393576622009277,
+          0.4512079358100891,
+          -0.7109885215759277,
+          -0.9030447006225586,
+          -1.8800625412040972e-07,
+          0.8443275094032288,
+          0.5358274579048157,
+          0.5400294661521912,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "object": "Camera",
+        "pose_mode": "FIXED"
+      },
+      "cameras": [
+        {
+          "intrinsics": {
+            "focal_length": 50.0,
+            "sensor_height": 24.0,
+            "sensor_width": 36.0,
+            "shift_x": 0.0,
+            "shift_y": 0.0
+          },
+          "matrix_world": [
+            0.8420767784118652,
+            -0.28900250792503357,
+            0.45539459586143494,
+            0.45896583795547485,
+            0.5393576622009277,
+            0.4512079358100891,
+            -0.7109885215759277,
+            -0.9030447006225586,
+            -1.8800625412040972e-07,
+            0.8443275094032288,
+            0.5358274579048157,
+            0.5400294661521912,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "object": "Camera",
+          "pose_mode": "FIXED"
+        }
+      ],
+      "distractors": [],
+      "drivers": [],
+      "environment": {
+        "background_color": [
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "filepath": "",
+        "image": "",
+        "managed": true,
+        "mode": "STATIC",
+        "rotation_degrees": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "strength": 1.0,
+        "world": "World"
+      },
+      "lights": [],
+      "output": {
+        "class_mask": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\masks\\000009.png",
+        "depth": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\depth\\000009.png",
+        "instance_mask": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\instance_masks\\000009.png",
+        "label": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\labels\\000009.txt",
+        "metadata": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\metadata\\000009.json",
+        "part_class_mask": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\part_masks\\000009.png",
+        "part_instance_mask": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\part_instance_masks\\000009.png",
+        "pose": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\pose\\000009.json",
+        "rgb": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset\\rgb\\000009.png"
+      },
+      "targets": [
+        {
+          "baseline_pass_index": 0,
+          "class_id": 0,
+          "class_name": "box_1_v1",
+          "include_pose": true,
+          "include_segmentation": true,
+          "instance_id": 1,
+          "materials": [
+            "IDG_PART_MAT_6ecc92ef2ee9",
+            "IDG_PART_MAT_00a4f3b5a1dc",
+            "IDG_PART_MAT_8de1127a95f7",
+            "IDG_PART_MAT_32c9c69dc362"
+          ],
+          "matrix_basis": [
+            -0.4551670551300049,
+            -0.7221165895462036,
+            0.5209323763847351,
+            -0.06838187575340271,
+            0.8825729489326477,
+            -0.4433242976665497,
+            0.15661591291427612,
+            -0.07872834801673889,
+            0.11784704029560089,
+            0.5310472249984741,
+            0.8391072154045105,
+            -0.00019051134586334229,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "matrix_parent_inverse": [
+            1.0,
+            -0.0,
+            0.0,
+            -0.0,
+            -0.0,
+            1.0,
+            -0.0,
+            0.0,
+            0.0,
+            -0.0,
+            1.0,
+            -0.0,
+            -0.0,
+            0.0,
+            -0.0,
+            1.0
+          ],
+          "matrix_world": [
+            -0.4551670551300049,
+            -0.7221165895462036,
+            0.5209323763847351,
+            -0.06838187575340271,
+            0.8825729489326477,
+            -0.4433242976665497,
+            0.15661591291427612,
+            -0.07872834801673889,
+            0.11784704029560089,
+            0.5310472249984741,
+            0.8391072154045105,
+            -0.00019051134586334229,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "object": "Box 1_v1",
+          "parent": "Armature_Box1",
+          "parts": [
+            {
+              "bone_name": "DEF-Base",
+              "include_mask": true,
+              "include_pose": false,
+              "name": "Base",
+              "part_class_id": 10,
+              "part_id": 1,
+              "part_instance_id": 10,
+              "pose_object": "",
+              "pose_offset": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ],
+              "pose_source": "BONE",
+              "role": "ANCHOR"
+            },
+            {
+              "bone_name": "",
+              "include_mask": true,
+              "include_pose": false,
+              "name": "Lid",
+              "part_class_id": 100,
+              "part_id": 2,
+              "part_instance_id": 100,
+              "pose_object": "",
+              "pose_offset": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ],
+              "pose_source": "NONE",
+              "role": "MOVABLE"
+            },
+            {
+              "bone_name": "",
+              "include_mask": true,
+              "include_pose": false,
+              "name": "EAR",
+              "part_class_id": 101,
+              "part_id": 3,
+              "part_instance_id": 1,
+              "pose_object": "",
+              "pose_offset": [
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ],
+              "pose_source": "NONE",
+              "role": "MOVABLE"
+            }
+          ],
+          "render_object_id": 1,
+          "rig": {
+            "bones": [
+              {
+                "export_pose": true,
+                "matrix_basis": [
+                  1.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.49797433614730835,
+                  -0.867191731929779,
+                  0.0,
+                  0.0,
+                  0.867191731929779,
+                  0.49797433614730835,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ],
+                "name": "DEF-E3"
+              }
+            ],
+            "object": "Armature_Box1",
+            "placement_root": {
+              "matrix_world": [
+                -0.4551670551300049,
+                -0.7221165895462036,
+                0.5209323763847351,
+                -0.06838187575340271,
+                0.8825729489326477,
+                -0.4433242976665497,
+                0.15661591291427612,
+                -0.07872834801673889,
+                0.11784704029560089,
+                0.5310472249984741,
+                0.8391072154045105,
+                -0.00019051134586334229,
+                0.0,
+                0.0,
+                0.0,
+                1.0
+              ],
+              "object": "Armature_Box1"
+            },
+            "root_bone": "Root"
+          },
+          "transform_via_root": true,
+          "visible": true,
+          "visible_threshold": 0.0
+        }
+      ]
+    }
+  },
+  "output_root": "D:\\tmp\\apple_packaging\\common\\brown_box\\Large_iPhone_Carton\\synthetic_dataset",
+  "part_classes": {
+    "10": {
+      "name": "Base",
+      "role": "ANCHOR"
+    },
+    "100": {
+      "name": "Lid",
+      "role": "MOVABLE"
+    },
+    "101": {
+      "name": "EAR",
+      "role": "MOVABLE"
+    }
+  },
+  "part_instances": {
+    "1": {
+      "part_class_id": 101,
+      "part_id": 3,
+      "part_name": "EAR",
+      "role": "MOVABLE",
+      "target_instance_id": 1,
+      "target_object": "Box 1_v1"
+    },
+    "10": {
+      "part_class_id": 10,
+      "part_id": 1,
+      "part_name": "Base",
+      "role": "ANCHOR",
+      "target_instance_id": 1,
+      "target_object": "Box 1_v1"
+    },
+    "100": {
+      "part_class_id": 100,
+      "part_id": 2,
+      "part_name": "Lid",
+      "role": "MOVABLE",
+      "target_instance_id": 1,
+      "target_object": "Box 1_v1"
+    }
+  },
+  "resolution": {
+    "height": 480,
+    "percentage": 100,
+    "width": 640
+  },
+  "scene": "Scene",
+  "schema_version": 2,
+  "seed": 1234
+}

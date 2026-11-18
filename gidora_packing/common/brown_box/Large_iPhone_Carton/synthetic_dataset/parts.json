@@ -1,0 +1,43 @@
+{
+  "part_classes": {
+    "10": {
+      "name": "Base",
+      "role": "ANCHOR"
+    },
+    "100": {
+      "name": "Lid",
+      "role": "MOVABLE"
+    },
+    "101": {
+      "name": "EAR",
+      "role": "MOVABLE"
+    }
+  },
+  "part_instances": {
+    "1": {
+      "part_class_id": 101,
+      "part_id": 3,
+      "part_name": "EAR",
+      "role": "MOVABLE",
+      "target_instance_id": 1,
+      "target_object": "Box 1_v1"
+    },
+    "10": {
+      "part_class_id": 10,
+      "part_id": 1,
+      "part_name": "Base",
+      "role": "ANCHOR",
+      "target_instance_id": 1,
+      "target_object": "Box 1_v1"
+    },
+    "100": {
+      "part_class_id": 100,
+      "part_id": 2,
+      "part_name": "Lid",
+      "role": "MOVABLE",
+      "target_instance_id": 1,
+      "target_object": "Box 1_v1"
+    }
+  },
+  "schema_version": 3
+}
